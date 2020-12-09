@@ -71,9 +71,12 @@ proto.audit.SetPlayTrackReq.toObject = function(includeInstance, msg) {
     albumid: jspb.Message.getFieldWithDefault(msg, 4, ""),
     albumname: jspb.Message.getFieldWithDefault(msg, 5, ""),
     artistsMap: (f = msg.getArtistsMap()) ? f.toObject(includeInstance, undefined) : [],
-    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    sourcetype: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    sourceurl: jspb.Message.getFieldWithDefault(msg, 9, "")
+    labelid: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    labelname: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    sourcetype: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    sourceurl: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    genre: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -137,17 +140,29 @@ proto.audit.SetPlayTrackReq.deserializeBinaryFromReader = function(msg, reader) 
          });
       break;
     case 7:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setTimestamp(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelid(value);
       break;
     case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelname(value);
+      break;
+    case 10:
       var value = /** @type {!proto.assets.SourceType} */ (reader.readEnum());
       msg.setSourcetype(value);
       break;
-    case 9:
+    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setSourceurl(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGenre(value);
+      break;
+    case 13:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setTimestamp(value);
       break;
     default:
       reader.skipField();
@@ -217,26 +232,47 @@ proto.audit.SetPlayTrackReq.serializeBinaryToWriter = function(message, writer) 
   if (f && f.getLength() > 0) {
     f.serializeBinary(6, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
-  f = message.getTimestamp();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getLabelid();
+  if (f.length > 0) {
+    writer.writeString(
       7,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
+    );
+  }
+  f = message.getLabelname();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
     );
   }
   f = message.getSourcetype();
   if (f !== 0.0) {
     writer.writeEnum(
-      8,
+      10,
       f
     );
   }
   f = message.getSourceurl();
   if (f.length > 0) {
     writer.writeString(
-      9,
+      11,
       f
+    );
+  }
+  f = message.getGenre();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = message.getTimestamp();
+  if (f != null) {
+    writer.writeMessage(
+      13,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
 };
@@ -336,18 +372,93 @@ proto.audit.SetPlayTrackReq.prototype.clearArtistsMap = function() {
 
 
 /**
- * optional google.protobuf.Timestamp timestamp = 7;
+ * optional string labelID = 7;
+ * @return {string}
+ */
+proto.audit.SetPlayTrackReq.prototype.getLabelid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.SetPlayTrackReq.prototype.setLabelid = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string labelName = 8;
+ * @return {string}
+ */
+proto.audit.SetPlayTrackReq.prototype.getLabelname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.SetPlayTrackReq.prototype.setLabelname = function(value) {
+  jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional assets.SourceType sourceType = 10;
+ * @return {!proto.assets.SourceType}
+ */
+proto.audit.SetPlayTrackReq.prototype.getSourcetype = function() {
+  return /** @type {!proto.assets.SourceType} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+};
+
+
+/** @param {!proto.assets.SourceType} value */
+proto.audit.SetPlayTrackReq.prototype.setSourcetype = function(value) {
+  jspb.Message.setProto3EnumField(this, 10, value);
+};
+
+
+/**
+ * optional string sourceURL = 11;
+ * @return {string}
+ */
+proto.audit.SetPlayTrackReq.prototype.getSourceurl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.SetPlayTrackReq.prototype.setSourceurl = function(value) {
+  jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
+/**
+ * optional string genre = 12;
+ * @return {string}
+ */
+proto.audit.SetPlayTrackReq.prototype.getGenre = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.SetPlayTrackReq.prototype.setGenre = function(value) {
+  jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 13;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.audit.SetPlayTrackReq.prototype.getTimestamp = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
 };
 
 
 /** @param {?proto.google.protobuf.Timestamp|undefined} value */
 proto.audit.SetPlayTrackReq.prototype.setTimestamp = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  jspb.Message.setWrapperField(this, 13, value);
 };
 
 
@@ -361,37 +472,7 @@ proto.audit.SetPlayTrackReq.prototype.clearTimestamp = function() {
  * @return {!boolean}
  */
 proto.audit.SetPlayTrackReq.prototype.hasTimestamp = function() {
-  return jspb.Message.getField(this, 7) != null;
-};
-
-
-/**
- * optional assets.SourceType sourceType = 8;
- * @return {!proto.assets.SourceType}
- */
-proto.audit.SetPlayTrackReq.prototype.getSourcetype = function() {
-  return /** @type {!proto.assets.SourceType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
-};
-
-
-/** @param {!proto.assets.SourceType} value */
-proto.audit.SetPlayTrackReq.prototype.setSourcetype = function(value) {
-  jspb.Message.setProto3EnumField(this, 8, value);
-};
-
-
-/**
- * optional string sourceURL = 9;
- * @return {string}
- */
-proto.audit.SetPlayTrackReq.prototype.getSourceurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
-};
-
-
-/** @param {string} value */
-proto.audit.SetPlayTrackReq.prototype.setSourceurl = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.getField(this, 13) != null;
 };
 
 

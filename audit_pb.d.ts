@@ -24,16 +24,25 @@ export class SetPlayTrackReq extends jspb.Message {
 
   getArtistsMap(): jspb.Map<string, string>;
   clearArtistsMap(): void;
-  hasTimestamp(): boolean;
-  clearTimestamp(): void;
-  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
+  getLabelid(): string;
+  setLabelid(value: string): void;
+
+  getLabelname(): string;
+  setLabelname(value: string): void;
 
   getSourcetype(): assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap];
   setSourcetype(value: assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap]): void;
 
   getSourceurl(): string;
   setSourceurl(value: string): void;
+
+  getGenre(): string;
+  setGenre(value: string): void;
+
+  hasTimestamp(): boolean;
+  clearTimestamp(): void;
+  getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): SetPlayTrackReq.AsObject;
@@ -53,9 +62,12 @@ export namespace SetPlayTrackReq {
     albumid: string,
     albumname: string,
     artistsMap: Array<[string, string]>,
-    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    labelid: string,
+    labelname: string,
     sourcetype: assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap],
     sourceurl: string,
+    genre: string,
+    timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
 
