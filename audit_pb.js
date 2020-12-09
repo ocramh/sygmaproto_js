@@ -1067,8 +1067,11 @@ proto.audit.AuditedTrack.toObject = function(includeInstance, msg) {
     trackname: jspb.Message.getFieldWithDefault(msg, 2, ""),
     albumid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     albumname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    labelid: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    labelname: jspb.Message.getFieldWithDefault(msg, 6, ""),
     artistsMap: (f = msg.getArtistsMap()) ? f.toObject(includeInstance, undefined) : [],
-    playCount: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    playCount: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    genre: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -1122,14 +1125,26 @@ proto.audit.AuditedTrack.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAlbumname(value);
       break;
     case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelid(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelname(value);
+      break;
+    case 7:
       var value = msg.getArtistsMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
       break;
-    case 6:
+    case 8:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPlayCount(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setGenre(value);
       break;
     default:
       reader.skipField();
@@ -1188,14 +1203,35 @@ proto.audit.AuditedTrack.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getLabelid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getLabelname();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
   f = message.getArtistsMap(true);
   if (f && f.getLength() > 0) {
-    f.serializeBinary(5, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+    f.serializeBinary(7, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
   f = message.getPlayCount();
   if (f !== 0) {
     writer.writeInt32(
-      6,
+      8,
+      f
+    );
+  }
+  f = message.getGenre();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -1263,14 +1299,44 @@ proto.audit.AuditedTrack.prototype.setAlbumname = function(value) {
 
 
 /**
- * map<string, string> artists = 5;
+ * optional string labelID = 5;
+ * @return {string}
+ */
+proto.audit.AuditedTrack.prototype.getLabelid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.AuditedTrack.prototype.setLabelid = function(value) {
+  jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string labelName = 6;
+ * @return {string}
+ */
+proto.audit.AuditedTrack.prototype.getLabelname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.AuditedTrack.prototype.setLabelname = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * map<string, string> artists = 7;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
  * empty, instead returning `undefined`
  * @return {!jspb.Map<string,string>}
  */
 proto.audit.AuditedTrack.prototype.getArtistsMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,string>} */ (
-      jspb.Message.getMapField(this, 5, opt_noLazyCreate,
+      jspb.Message.getMapField(this, 7, opt_noLazyCreate,
       null));
 };
 
@@ -1281,17 +1347,32 @@ proto.audit.AuditedTrack.prototype.clearArtistsMap = function() {
 
 
 /**
- * optional int32 play_count = 6;
+ * optional int32 play_count = 8;
  * @return {number}
  */
 proto.audit.AuditedTrack.prototype.getPlayCount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
 /** @param {number} value */
 proto.audit.AuditedTrack.prototype.setPlayCount = function(value) {
-  jspb.Message.setProto3IntField(this, 6, value);
+  jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional string genre = 9;
+ * @return {string}
+ */
+proto.audit.AuditedTrack.prototype.getGenre = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.AuditedTrack.prototype.setGenre = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
