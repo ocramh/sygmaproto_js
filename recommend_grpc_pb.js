@@ -30,7 +30,7 @@ function deserialize_audit_RecommendationsRes(buffer_arg) {
 
 
 var RecommendationsService = exports.RecommendationsService = {
-  // Generates albums recommendations for a user
+  // AlbumsForUser returns albums recommendations for a user
 albumsForUser: {
     path: '/audit.Recommendations/AlbumsForUser',
     requestStream: false,
