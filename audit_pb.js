@@ -66,17 +66,18 @@ proto.sygma_pb.SetPlayTrackReq.prototype.toObject = function(opt_includeInstance
 proto.sygma_pb.SetPlayTrackReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    trackid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    trackname: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    albumid: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    albumname: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    username: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    trackid: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    trackname: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    albumid: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    albumname: jspb.Message.getFieldWithDefault(msg, 6, ""),
     artistsMap: (f = msg.getArtistsMap()) ? f.toObject(includeInstance, undefined) : [],
-    labelid: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    labelname: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    sourcetype: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    sourceurl: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    genre: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    artworkUrl: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    labelid: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    labelname: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    sourcetype: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    sourceurl: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    genre: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    artworkUrl: jspb.Message.getFieldWithDefault(msg, 13, ""),
     timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -120,51 +121,55 @@ proto.sygma_pb.SetPlayTrackReq.deserializeBinaryFromReader = function(msg, reade
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTrackid(value);
+      msg.setUsername(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setTrackname(value);
+      msg.setTrackid(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumid(value);
+      msg.setTrackname(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumname(value);
+      msg.setAlbumid(value);
       break;
     case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAlbumname(value);
+      break;
+    case 7:
       var value = msg.getArtistsMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
       break;
-    case 7:
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setLabelid(value);
       break;
-    case 8:
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setLabelname(value);
       break;
-    case 9:
+    case 10:
       var value = /** @type {!proto.sygma_pb.SourceType} */ (reader.readEnum());
       msg.setSourcetype(value);
       break;
-    case 10:
+    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setSourceurl(value);
       break;
-    case 11:
+    case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setGenre(value);
       break;
-    case 12:
+    case 13:
       var value = /** @type {string} */ (reader.readString());
       msg.setArtworkUrl(value);
       break;
-    case 13:
+    case 14:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
@@ -205,84 +210,91 @@ proto.sygma_pb.SetPlayTrackReq.serializeBinaryToWriter = function(message, write
       f
     );
   }
-  f = message.getTrackid();
+  f = message.getUsername();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getTrackname();
+  f = message.getTrackid();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getAlbumid();
+  f = message.getTrackname();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getAlbumname();
+  f = message.getAlbumid();
   if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = message.getArtistsMap(true);
-  if (f && f.getLength() > 0) {
-    f.serializeBinary(6, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
-  }
-  f = message.getLabelid();
+  f = message.getAlbumname();
   if (f.length > 0) {
     writer.writeString(
-      7,
+      6,
       f
     );
   }
-  f = message.getLabelname();
+  f = message.getArtistsMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(7, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
+  f = message.getLabelid();
   if (f.length > 0) {
     writer.writeString(
       8,
       f
     );
   }
+  f = message.getLabelname();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
   f = message.getSourcetype();
   if (f !== 0.0) {
     writer.writeEnum(
-      9,
+      10,
       f
     );
   }
   f = message.getSourceurl();
   if (f.length > 0) {
     writer.writeString(
-      10,
+      11,
       f
     );
   }
   f = message.getGenre();
   if (f.length > 0) {
     writer.writeString(
-      11,
+      12,
       f
     );
   }
   f = message.getArtworkUrl();
   if (f.length > 0) {
     writer.writeString(
-      12,
+      13,
       f
     );
   }
   f = message.getTimestamp();
   if (f != null) {
     writer.writeMessage(
-      13,
+      14,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -306,74 +318,89 @@ proto.sygma_pb.SetPlayTrackReq.prototype.setUserid = function(value) {
 
 
 /**
- * optional string trackID = 2;
+ * optional string userName = 2;
  * @return {string}
  */
-proto.sygma_pb.SetPlayTrackReq.prototype.getTrackid = function() {
+proto.sygma_pb.SetPlayTrackReq.prototype.getUsername = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setTrackid = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setUsername = function(value) {
   jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string trackName = 3;
+ * optional string trackID = 3;
  * @return {string}
  */
-proto.sygma_pb.SetPlayTrackReq.prototype.getTrackname = function() {
+proto.sygma_pb.SetPlayTrackReq.prototype.getTrackid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setTrackname = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setTrackid = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string albumID = 4;
+ * optional string trackName = 4;
  * @return {string}
  */
-proto.sygma_pb.SetPlayTrackReq.prototype.getAlbumid = function() {
+proto.sygma_pb.SetPlayTrackReq.prototype.getTrackname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setAlbumid = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setTrackname = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional string albumName = 5;
+ * optional string albumID = 5;
  * @return {string}
  */
-proto.sygma_pb.SetPlayTrackReq.prototype.getAlbumname = function() {
+proto.sygma_pb.SetPlayTrackReq.prototype.getAlbumid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setAlbumname = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setAlbumid = function(value) {
   jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * map<string, string> artists = 6;
+ * optional string albumName = 6;
+ * @return {string}
+ */
+proto.sygma_pb.SetPlayTrackReq.prototype.getAlbumname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.SetPlayTrackReq.prototype.setAlbumname = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * map<string, string> artists = 7;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
  * empty, instead returning `undefined`
  * @return {!jspb.Map<string,string>}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.getArtistsMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,string>} */ (
-      jspb.Message.getMapField(this, 6, opt_noLazyCreate,
+      jspb.Message.getMapField(this, 7, opt_noLazyCreate,
       null));
 };
 
@@ -384,108 +411,108 @@ proto.sygma_pb.SetPlayTrackReq.prototype.clearArtistsMap = function() {
 
 
 /**
- * optional string labelID = 7;
+ * optional string labelID = 8;
  * @return {string}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.getLabelid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setLabelid = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-/**
- * optional string labelName = 8;
- * @return {string}
- */
-proto.sygma_pb.SetPlayTrackReq.prototype.getLabelname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setLabelname = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setLabelid = function(value) {
   jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
 /**
- * optional SourceType sourceType = 9;
+ * optional string labelName = 9;
+ * @return {string}
+ */
+proto.sygma_pb.SetPlayTrackReq.prototype.getLabelname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.SetPlayTrackReq.prototype.setLabelname = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional SourceType sourceType = 10;
  * @return {!proto.sygma_pb.SourceType}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.getSourcetype = function() {
-  return /** @type {!proto.sygma_pb.SourceType} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+  return /** @type {!proto.sygma_pb.SourceType} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
 };
 
 
 /** @param {!proto.sygma_pb.SourceType} value */
 proto.sygma_pb.SetPlayTrackReq.prototype.setSourcetype = function(value) {
-  jspb.Message.setProto3EnumField(this, 9, value);
+  jspb.Message.setProto3EnumField(this, 10, value);
 };
 
 
 /**
- * optional string sourceURL = 10;
+ * optional string sourceURL = 11;
  * @return {string}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.getSourceurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setSourceurl = function(value) {
-  jspb.Message.setProto3StringField(this, 10, value);
-};
-
-
-/**
- * optional string genre = 11;
- * @return {string}
- */
-proto.sygma_pb.SetPlayTrackReq.prototype.getGenre = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setGenre = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setSourceurl = function(value) {
   jspb.Message.setProto3StringField(this, 11, value);
 };
 
 
 /**
- * optional string artwork_url = 12;
+ * optional string genre = 12;
  * @return {string}
  */
-proto.sygma_pb.SetPlayTrackReq.prototype.getArtworkUrl = function() {
+proto.sygma_pb.SetPlayTrackReq.prototype.getGenre = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.SetPlayTrackReq.prototype.setArtworkUrl = function(value) {
+proto.sygma_pb.SetPlayTrackReq.prototype.setGenre = function(value) {
   jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
 /**
- * optional google.protobuf.Timestamp timestamp = 13;
+ * optional string artwork_url = 13;
+ * @return {string}
+ */
+proto.sygma_pb.SetPlayTrackReq.prototype.getArtworkUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.SetPlayTrackReq.prototype.setArtworkUrl = function(value) {
+  jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 14;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.getTimestamp = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
 };
 
 
 /** @param {?proto.google.protobuf.Timestamp|undefined} value */
 proto.sygma_pb.SetPlayTrackReq.prototype.setTimestamp = function(value) {
-  jspb.Message.setWrapperField(this, 13, value);
+  jspb.Message.setWrapperField(this, 14, value);
 };
 
 
@@ -499,7 +526,7 @@ proto.sygma_pb.SetPlayTrackReq.prototype.clearTimestamp = function() {
  * @return {!boolean}
  */
 proto.sygma_pb.SetPlayTrackReq.prototype.hasTimestamp = function() {
-  return jspb.Message.getField(this, 13) != null;
+  return jspb.Message.getField(this, 14) != null;
 };
 
 

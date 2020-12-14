@@ -10,6 +10,9 @@ export class SetPlayTrackReq extends jspb.Message {
   getUserid(): string;
   setUserid(value: string): void;
 
+  getUsername(): string;
+  setUsername(value: string): void;
+
   getTrackid(): string;
   setTrackid(value: string): void;
 
@@ -60,6 +63,7 @@ export class SetPlayTrackReq extends jspb.Message {
 export namespace SetPlayTrackReq {
   export type AsObject = {
     userid: string,
+    username: string,
     trackid: string,
     trackname: string,
     albumid: string,
