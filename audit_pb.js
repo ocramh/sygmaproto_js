@@ -76,6 +76,7 @@ proto.audit.SetPlayTrackReq.toObject = function(includeInstance, msg) {
     sourcetype: jspb.Message.getFieldWithDefault(msg, 10, 0),
     sourceurl: jspb.Message.getFieldWithDefault(msg, 11, ""),
     genre: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    artworkUrl: jspb.Message.getFieldWithDefault(msg, 13, ""),
     timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
   };
 
@@ -160,6 +161,10 @@ proto.audit.SetPlayTrackReq.deserializeBinaryFromReader = function(msg, reader) 
       msg.setGenre(value);
       break;
     case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArtworkUrl(value);
+      break;
+    case 14:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setTimestamp(value);
@@ -267,10 +272,17 @@ proto.audit.SetPlayTrackReq.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
+  f = message.getArtworkUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
   f = message.getTimestamp();
   if (f != null) {
     writer.writeMessage(
-      13,
+      14,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -447,18 +459,33 @@ proto.audit.SetPlayTrackReq.prototype.setGenre = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp timestamp = 13;
+ * optional string artwork_url = 13;
+ * @return {string}
+ */
+proto.audit.SetPlayTrackReq.prototype.getArtworkUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.SetPlayTrackReq.prototype.setArtworkUrl = function(value) {
+  jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 14;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.audit.SetPlayTrackReq.prototype.getTimestamp = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
 };
 
 
 /** @param {?proto.google.protobuf.Timestamp|undefined} value */
 proto.audit.SetPlayTrackReq.prototype.setTimestamp = function(value) {
-  jspb.Message.setWrapperField(this, 13, value);
+  jspb.Message.setWrapperField(this, 14, value);
 };
 
 
@@ -472,7 +499,7 @@ proto.audit.SetPlayTrackReq.prototype.clearTimestamp = function() {
  * @return {!boolean}
  */
 proto.audit.SetPlayTrackReq.prototype.hasTimestamp = function() {
-  return jspb.Message.getField(this, 13) != null;
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
@@ -1071,7 +1098,8 @@ proto.audit.AuditedTrack.toObject = function(includeInstance, msg) {
     labelname: jspb.Message.getFieldWithDefault(msg, 6, ""),
     artistsMap: (f = msg.getArtistsMap()) ? f.toObject(includeInstance, undefined) : [],
     playCount: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    genre: jspb.Message.getFieldWithDefault(msg, 9, "")
+    genre: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    artworkUrl: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -1145,6 +1173,10 @@ proto.audit.AuditedTrack.deserializeBinaryFromReader = function(msg, reader) {
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setGenre(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArtworkUrl(value);
       break;
     default:
       reader.skipField();
@@ -1232,6 +1264,13 @@ proto.audit.AuditedTrack.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getArtworkUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -1373,6 +1412,21 @@ proto.audit.AuditedTrack.prototype.getGenre = function() {
 /** @param {string} value */
 proto.audit.AuditedTrack.prototype.setGenre = function(value) {
   jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string artwork_url = 10;
+ * @return {string}
+ */
+proto.audit.AuditedTrack.prototype.getArtworkUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/** @param {string} value */
+proto.audit.AuditedTrack.prototype.setArtworkUrl = function(value) {
+  jspb.Message.setProto3StringField(this, 10, value);
 };
 
 

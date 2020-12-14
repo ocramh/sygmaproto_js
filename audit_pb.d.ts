@@ -39,6 +39,9 @@ export class SetPlayTrackReq extends jspb.Message {
   getGenre(): string;
   setGenre(value: string): void;
 
+  getArtworkUrl(): string;
+  setArtworkUrl(value: string): void;
+
   hasTimestamp(): boolean;
   clearTimestamp(): void;
   getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
@@ -67,6 +70,7 @@ export namespace SetPlayTrackReq {
     sourcetype: assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap],
     sourceurl: string,
     genre: string,
+    artworkUrl: string,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
   }
 }
@@ -172,6 +176,9 @@ export class AuditedTrack extends jspb.Message {
   getGenre(): string;
   setGenre(value: string): void;
 
+  getArtworkUrl(): string;
+  setArtworkUrl(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AuditedTrack.AsObject;
   static toObject(includeInstance: boolean, msg: AuditedTrack): AuditedTrack.AsObject;
@@ -193,6 +200,7 @@ export namespace AuditedTrack {
     artistsMap: Array<[string, string]>,
     playCount: number,
     genre: string,
+    artworkUrl: string,
   }
 }
 
