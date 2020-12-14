@@ -1,9 +1,9 @@
-// package: audit
+// package: sygma_pb
 // file: recommend.proto
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
-import * as node_types_pb from "./node/types_pb";
+import * as types_pb from "./types_pb";
 
 export class AlbumsForUserReq extends jspb.Message {
   getUserid(): string;
@@ -45,19 +45,19 @@ export namespace AlbumsForUserReq {
 
 export class RecommendationsRes extends jspb.Message {
   clearMostplayedList(): void;
-  getMostplayedList(): Array<node_types_pb.Album>;
-  setMostplayedList(value: Array<node_types_pb.Album>): void;
-  addMostplayed(value?: node_types_pb.Album, index?: number): node_types_pb.Album;
+  getMostplayedList(): Array<types_pb.Album>;
+  setMostplayedList(value: Array<types_pb.Album>): void;
+  addMostplayed(value?: types_pb.Album, index?: number): types_pb.Album;
 
   clearMostplayedbygenreList(): void;
-  getMostplayedbygenreList(): Array<node_types_pb.Album>;
-  setMostplayedbygenreList(value: Array<node_types_pb.Album>): void;
-  addMostplayedbygenre(value?: node_types_pb.Album, index?: number): node_types_pb.Album;
+  getMostplayedbygenreList(): Array<types_pb.Album>;
+  setMostplayedbygenreList(value: Array<types_pb.Album>): void;
+  addMostplayedbygenre(value?: types_pb.Album, index?: number): types_pb.Album;
 
   clearMostplayedbyfriendsList(): void;
-  getMostplayedbyfriendsList(): Array<node_types_pb.Album>;
-  setMostplayedbyfriendsList(value: Array<node_types_pb.Album>): void;
-  addMostplayedbyfriends(value?: node_types_pb.Album, index?: number): node_types_pb.Album;
+  getMostplayedbyfriendsList(): Array<types_pb.AlbumWithUser>;
+  setMostplayedbyfriendsList(value: Array<types_pb.AlbumWithUser>): void;
+  addMostplayedbyfriends(value?: types_pb.AlbumWithUser, index?: number): types_pb.AlbumWithUser;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RecommendationsRes.AsObject;
@@ -71,9 +71,9 @@ export class RecommendationsRes extends jspb.Message {
 
 export namespace RecommendationsRes {
   export type AsObject = {
-    mostplayedList: Array<node_types_pb.Album.AsObject>,
-    mostplayedbygenreList: Array<node_types_pb.Album.AsObject>,
-    mostplayedbyfriendsList: Array<node_types_pb.Album.AsObject>,
+    mostplayedList: Array<types_pb.Album.AsObject>,
+    mostplayedbygenreList: Array<types_pb.Album.AsObject>,
+    mostplayedbyfriendsList: Array<types_pb.AlbumWithUser.AsObject>,
   }
 }
 

@@ -1,10 +1,10 @@
-// package: audit
+// package: sygma_pb
 // file: audit.proto
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
-import * as assets_collections_pb from "./assets/collections_pb";
+import * as types_pb from "./types_pb";
 
 export class SetPlayTrackReq extends jspb.Message {
   getUserid(): string;
@@ -30,8 +30,8 @@ export class SetPlayTrackReq extends jspb.Message {
   getLabelname(): string;
   setLabelname(value: string): void;
 
-  getSourcetype(): assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap];
-  setSourcetype(value: assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap]): void;
+  getSourcetype(): types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap];
+  setSourcetype(value: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap]): void;
 
   getSourceurl(): string;
   setSourceurl(value: string): void;
@@ -67,7 +67,7 @@ export namespace SetPlayTrackReq {
     artistsMap: Array<[string, string]>,
     labelid: string,
     labelname: string,
-    sourcetype: assets_collections_pb.SourceTypeMap[keyof assets_collections_pb.SourceTypeMap],
+    sourcetype: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap],
     sourceurl: string,
     genre: string,
     artworkUrl: string,

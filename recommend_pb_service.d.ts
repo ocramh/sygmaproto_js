@@ -1,4 +1,4 @@
-// package: audit
+// package: sygma_pb
 // file: recommend.proto
 
 import * as recommend_pb from "./recommend_pb";

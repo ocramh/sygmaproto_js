@@ -1,4 +1,4 @@
-// package: audit
+// package: sygma_pb
 // file: audit.proto
 
 import * as audit_pb from "./audit_pb";

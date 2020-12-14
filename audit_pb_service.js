@@ -1,4 +1,4 @@
-// package: audit
+// package: sygma_pb
 // file: audit.proto
 
 var audit_pb = require("./audit_pb");
@@ -7,7 +7,7 @@ var grpc = require("@improbable-eng/grpc-web").grpc;
 
 var UsageAuditManager = (function () {
   function UsageAuditManager() {}
-  UsageAuditManager.serviceName = "audit.UsageAuditManager";
+  UsageAuditManager.serviceName = "sygma_pb.UsageAuditManager";
   return UsageAuditManager;
 }());
 

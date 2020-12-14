@@ -1,4 +1,4 @@
-// package: audit
+// package: sygma_pb
 // file: recommend.proto
 
 var recommend_pb = require("./recommend_pb");
@@ -6,7 +6,7 @@ var grpc = require("@improbable-eng/grpc-web").grpc;
 
 var Recommendations = (function () {
   function Recommendations() {}
-  Recommendations.serviceName = "audit.Recommendations";
+  Recommendations.serviceName = "sygma_pb.Recommendations";
   return Recommendations;
 }());
 
