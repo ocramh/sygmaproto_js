@@ -339,12 +339,19 @@ proto.sygma_pb.SocialNotificationsRes.prototype.clearNotificationsList = functio
  * @constructor
  */
 proto.sygma_pb.MarkAsReadReq = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sygma_pb.MarkAsReadReq.repeatedFields_, null);
 };
 goog.inherits(proto.sygma_pb.MarkAsReadReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   proto.sygma_pb.MarkAsReadReq.displayName = 'proto.sygma_pb.MarkAsReadReq';
 }
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sygma_pb.MarkAsReadReq.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -374,7 +381,7 @@ proto.sygma_pb.MarkAsReadReq.prototype.toObject = function(opt_includeInstance) 
  */
 proto.sygma_pb.MarkAsReadReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    notificationid: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    notificationidsList: jspb.Message.getRepeatedField(msg, 1)
   };
 
   if (includeInstance) {
@@ -412,8 +419,8 @@ proto.sygma_pb.MarkAsReadReq.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setNotificationid(value);
+      var value = /** @type {!Array.<number>} */ (reader.readPackedInt32());
+      msg.setNotificationidsList(value);
       break;
     default:
       reader.skipField();
@@ -444,9 +451,9 @@ proto.sygma_pb.MarkAsReadReq.prototype.serializeBinary = function() {
  */
 proto.sygma_pb.MarkAsReadReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNotificationid();
-  if (f !== 0) {
-    writer.writeInt32(
+  f = message.getNotificationidsList();
+  if (f.length > 0) {
+    writer.writePackedInt32(
       1,
       f
     );
@@ -455,17 +462,31 @@ proto.sygma_pb.MarkAsReadReq.serializeBinaryToWriter = function(message, writer)
 
 
 /**
- * optional int32 notificationID = 1;
- * @return {number}
+ * repeated int32 notificationIDs = 1;
+ * @return {!Array.<number>}
  */
-proto.sygma_pb.MarkAsReadReq.prototype.getNotificationid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.sygma_pb.MarkAsReadReq.prototype.getNotificationidsList = function() {
+  return /** @type {!Array.<number>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
-/** @param {number} value */
-proto.sygma_pb.MarkAsReadReq.prototype.setNotificationid = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+/** @param {!Array.<number>} value */
+proto.sygma_pb.MarkAsReadReq.prototype.setNotificationidsList = function(value) {
+  jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!number} value
+ * @param {number=} opt_index
+ */
+proto.sygma_pb.MarkAsReadReq.prototype.addNotificationids = function(value, opt_index) {
+  jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+proto.sygma_pb.MarkAsReadReq.prototype.clearNotificationidsList = function() {
+  this.setNotificationidsList([]);
 };
 
 
