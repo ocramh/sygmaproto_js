@@ -374,7 +374,7 @@ proto.sygma_pb.MarkAsReadReq.prototype.toObject = function(opt_includeInstance) 
  */
 proto.sygma_pb.MarkAsReadReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    notificationid: jspb.Message.getFieldWithDefault(msg, 1, "")
+    notificationid: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
 
   if (includeInstance) {
@@ -412,7 +412,7 @@ proto.sygma_pb.MarkAsReadReq.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setNotificationid(value);
       break;
     default:
@@ -445,8 +445,8 @@ proto.sygma_pb.MarkAsReadReq.prototype.serializeBinary = function() {
 proto.sygma_pb.MarkAsReadReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getNotificationid();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt32(
       1,
       f
     );
@@ -455,17 +455,17 @@ proto.sygma_pb.MarkAsReadReq.serializeBinaryToWriter = function(message, writer)
 
 
 /**
- * optional string notificationID = 1;
- * @return {string}
+ * optional int32 notificationID = 1;
+ * @return {number}
  */
 proto.sygma_pb.MarkAsReadReq.prototype.getNotificationid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
-/** @param {string} value */
+/** @param {number} value */
 proto.sygma_pb.MarkAsReadReq.prototype.setNotificationid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  jspb.Message.setProto3IntField(this, 1, value);
 };
 
 

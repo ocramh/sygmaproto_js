@@ -48,8 +48,8 @@ export namespace SocialNotificationsRes {
 }
 
 export class MarkAsReadReq extends jspb.Message {
-  getNotificationid(): string;
-  setNotificationid(value: string): void;
+  getNotificationid(): number;
+  setNotificationid(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MarkAsReadReq.AsObject;
@@ -63,7 +63,7 @@ export class MarkAsReadReq extends jspb.Message {
 
 export namespace MarkAsReadReq {
   export type AsObject = {
-    notificationid: string,
+    notificationid: number,
   }
 }
 
