@@ -73,6 +73,9 @@ export class Notification extends jspb.Message {
   getId(): number;
   setId(value: number): void;
 
+  getType(): SocialNotificationTypeMap[keyof SocialNotificationTypeMap];
+  setType(value: SocialNotificationTypeMap[keyof SocialNotificationTypeMap]): void;
+
   hasCreatedat(): boolean;
   clearCreatedat(): void;
   getCreatedat(): google_protobuf_timestamp_pb.Timestamp | undefined;
@@ -100,10 +103,19 @@ export class Notification extends jspb.Message {
 export namespace Notification {
   export type AsObject = {
     id: number,
+    type: SocialNotificationTypeMap[keyof SocialNotificationTypeMap],
     createdat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     userid: string,
     connectionid: number,
     info: string,
   }
 }
+
+export interface SocialNotificationTypeMap {
+  CONNECTION: 0;
+  FOLLOWING: 1;
+  FOLLOWER: 2;
+}
+
+export const SocialNotificationType: SocialNotificationTypeMap;
 

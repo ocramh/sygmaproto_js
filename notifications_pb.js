@@ -15,6 +15,7 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.exportSymbol('proto.sygma_pb.MarkAsReadReq', null, global);
 goog.exportSymbol('proto.sygma_pb.Notification', null, global);
+goog.exportSymbol('proto.sygma_pb.SocialNotificationType', null, global);
 goog.exportSymbol('proto.sygma_pb.SocialNotificationsReq', null, global);
 goog.exportSymbol('proto.sygma_pb.SocialNotificationsRes', null, global);
 
@@ -538,10 +539,11 @@ proto.sygma_pb.Notification.prototype.toObject = function(opt_includeInstance) {
 proto.sygma_pb.Notification.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
     createdat: (f = msg.getCreatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    userid: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    connectionid: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    info: jspb.Message.getFieldWithDefault(msg, 5, "")
+    userid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    connectionid: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    info: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -583,19 +585,23 @@ proto.sygma_pb.Notification.deserializeBinaryFromReader = function(msg, reader) 
       msg.setId(value);
       break;
     case 2:
+      var value = /** @type {!proto.sygma_pb.SocialNotificationType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setCreatedat(value);
       break;
-    case 3:
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setUserid(value);
       break;
-    case 4:
+    case 5:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setConnectionid(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setInfo(value);
       break;
@@ -635,10 +641,17 @@ proto.sygma_pb.Notification.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
   f = message.getCreatedat();
   if (f != null) {
     writer.writeMessage(
-      2,
+      3,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -646,21 +659,21 @@ proto.sygma_pb.Notification.serializeBinaryToWriter = function(message, writer) 
   f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      4,
       f
     );
   }
   f = message.getConnectionid();
   if (f !== 0) {
     writer.writeInt32(
-      4,
+      5,
       f
     );
   }
   f = message.getInfo();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      6,
       f
     );
   }
@@ -683,18 +696,33 @@ proto.sygma_pb.Notification.prototype.setId = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp createdAt = 2;
+ * optional SocialNotificationType type = 2;
+ * @return {!proto.sygma_pb.SocialNotificationType}
+ */
+proto.sygma_pb.Notification.prototype.getType = function() {
+  return /** @type {!proto.sygma_pb.SocialNotificationType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/** @param {!proto.sygma_pb.SocialNotificationType} value */
+proto.sygma_pb.Notification.prototype.setType = function(value) {
+  jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp createdAt = 3;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.sygma_pb.Notification.prototype.getCreatedat = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 2));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
 };
 
 
 /** @param {?proto.google.protobuf.Timestamp|undefined} value */
 proto.sygma_pb.Notification.prototype.setCreatedat = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
+  jspb.Message.setWrapperField(this, 3, value);
 };
 
 
@@ -708,53 +736,62 @@ proto.sygma_pb.Notification.prototype.clearCreatedat = function() {
  * @return {!boolean}
  */
 proto.sygma_pb.Notification.prototype.hasCreatedat = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional string userID = 3;
+ * optional string userID = 4;
  * @return {string}
  */
 proto.sygma_pb.Notification.prototype.getUserid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
 proto.sygma_pb.Notification.prototype.setUserid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional int32 connectionID = 4;
+ * optional int32 connectionID = 5;
  * @return {number}
  */
 proto.sygma_pb.Notification.prototype.getConnectionid = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
 
 /** @param {number} value */
 proto.sygma_pb.Notification.prototype.setConnectionid = function(value) {
-  jspb.Message.setProto3IntField(this, 4, value);
+  jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
 /**
- * optional string info = 5;
+ * optional string info = 6;
  * @return {string}
  */
 proto.sygma_pb.Notification.prototype.getInfo = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /** @param {string} value */
 proto.sygma_pb.Notification.prototype.setInfo = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  jspb.Message.setProto3StringField(this, 6, value);
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.sygma_pb.SocialNotificationType = {
+  CONNECTION: 0,
+  FOLLOWING: 1,
+  FOLLOWER: 2
+};
 
 goog.object.extend(exports, proto.sygma_pb);
