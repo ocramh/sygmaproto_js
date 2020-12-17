@@ -84,6 +84,9 @@ export class CollectionNotification extends jspb.Message {
   getSenderid(): string;
   setSenderid(value: string): void;
 
+  getSendername(): string;
+  setSendername(value: string): void;
+
   getCollectionid(): string;
   setCollectionid(value: string): void;
 
@@ -109,6 +112,7 @@ export namespace CollectionNotification {
     type: CollectionNotificationTypeMap[keyof CollectionNotificationTypeMap],
     createdat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     senderid: string,
+    sendername: string,
     collectionid: string,
     albumid: string,
     info: string,

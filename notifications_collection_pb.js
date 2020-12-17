@@ -542,9 +542,10 @@ proto.sygma_pb.CollectionNotification.toObject = function(includeInstance, msg) 
     type: jspb.Message.getFieldWithDefault(msg, 2, 0),
     createdat: (f = msg.getCreatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     senderid: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    collectionid: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    albumid: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    info: jspb.Message.getFieldWithDefault(msg, 7, "")
+    sendername: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    collectionid: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    albumid: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    info: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -600,13 +601,17 @@ proto.sygma_pb.CollectionNotification.deserializeBinaryFromReader = function(msg
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
-      msg.setCollectionid(value);
+      msg.setSendername(value);
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumid(value);
+      msg.setCollectionid(value);
       break;
     case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAlbumid(value);
+      break;
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.setInfo(value);
       break;
@@ -668,24 +673,31 @@ proto.sygma_pb.CollectionNotification.serializeBinaryToWriter = function(message
       f
     );
   }
-  f = message.getCollectionid();
+  f = message.getSendername();
   if (f.length > 0) {
     writer.writeString(
       5,
       f
     );
   }
-  f = message.getAlbumid();
+  f = message.getCollectionid();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getInfo();
+  f = message.getAlbumid();
   if (f.length > 0) {
     writer.writeString(
       7,
+      f
+    );
+  }
+  f = message.getInfo();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
       f
     );
   }
@@ -768,47 +780,62 @@ proto.sygma_pb.CollectionNotification.prototype.setSenderid = function(value) {
 
 
 /**
- * optional string collectionID = 5;
+ * optional string senderName = 5;
  * @return {string}
  */
-proto.sygma_pb.CollectionNotification.prototype.getCollectionid = function() {
+proto.sygma_pb.CollectionNotification.prototype.getSendername = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.CollectionNotification.prototype.setCollectionid = function(value) {
+proto.sygma_pb.CollectionNotification.prototype.setSendername = function(value) {
   jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * optional string albumID = 6;
+ * optional string collectionID = 6;
  * @return {string}
  */
-proto.sygma_pb.CollectionNotification.prototype.getAlbumid = function() {
+proto.sygma_pb.CollectionNotification.prototype.getCollectionid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.CollectionNotification.prototype.setAlbumid = function(value) {
+proto.sygma_pb.CollectionNotification.prototype.setCollectionid = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional string info = 7;
+ * optional string albumID = 7;
  * @return {string}
  */
-proto.sygma_pb.CollectionNotification.prototype.getInfo = function() {
+proto.sygma_pb.CollectionNotification.prototype.getAlbumid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.CollectionNotification.prototype.setInfo = function(value) {
+proto.sygma_pb.CollectionNotification.prototype.setAlbumid = function(value) {
   jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string info = 8;
+ * @return {string}
+ */
+proto.sygma_pb.CollectionNotification.prototype.getInfo = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.CollectionNotification.prototype.setInfo = function(value) {
+  jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
