@@ -151,6 +151,50 @@ export namespace NewCollectionRes {
   }
 }
 
+export class UpdateCollectionReq extends jspb.Message {
+  hasCollection(): boolean;
+  clearCollection(): void;
+  getCollection(): CollectionInfo | undefined;
+  setCollection(value?: CollectionInfo): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCollectionReq.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCollectionReq): UpdateCollectionReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpdateCollectionReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCollectionReq;
+  static deserializeBinaryFromReader(message: UpdateCollectionReq, reader: jspb.BinaryReader): UpdateCollectionReq;
+}
+
+export namespace UpdateCollectionReq {
+  export type AsObject = {
+    collection?: CollectionInfo.AsObject,
+  }
+}
+
+export class UpdateCollectionRes extends jspb.Message {
+  hasCollection(): boolean;
+  clearCollection(): void;
+  getCollection(): CollectionInfo | undefined;
+  setCollection(value?: CollectionInfo): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateCollectionRes.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateCollectionRes): UpdateCollectionRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpdateCollectionRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateCollectionRes;
+  static deserializeBinaryFromReader(message: UpdateCollectionRes, reader: jspb.BinaryReader): UpdateCollectionRes;
+}
+
+export namespace UpdateCollectionRes {
+  export type AsObject = {
+    collection?: CollectionInfo.AsObject,
+  }
+}
+
 export class GetCollectionsReq extends jspb.Message {
   hasUser(): boolean;
   clearUser(): void;

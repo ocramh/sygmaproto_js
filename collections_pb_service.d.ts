@@ -32,6 +32,15 @@ type CollectionsManagerGetCollection = {
   readonly responseType: typeof collections_pb.GetCollectionRes;
 };
 
+type CollectionsManagerUpdateCollection = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsManager;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.UpdateCollectionReq;
+  readonly responseType: typeof collections_pb.UpdateCollectionRes;
+};
+
 type CollectionsManagerDeleteCollection = {
   readonly methodName: string;
   readonly service: typeof CollectionsManager;
@@ -64,6 +73,7 @@ export class CollectionsManager {
   static readonly NewCollection: CollectionsManagerNewCollection;
   static readonly GetCollectionsByUser: CollectionsManagerGetCollectionsByUser;
   static readonly GetCollection: CollectionsManagerGetCollection;
+  static readonly UpdateCollection: CollectionsManagerUpdateCollection;
   static readonly DeleteCollection: CollectionsManagerDeleteCollection;
   static readonly ShareWithUser: CollectionsManagerShareWithUser;
   static readonly AddDocument: CollectionsManagerAddDocument;
@@ -127,6 +137,15 @@ export class CollectionsManagerClient {
   getCollection(
     requestMessage: collections_pb.GetCollectionReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionRes|null) => void
+  ): UnaryResponse;
+  updateCollection(
+    requestMessage: collections_pb.UpdateCollectionReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.UpdateCollectionRes|null) => void
+  ): UnaryResponse;
+  updateCollection(
+    requestMessage: collections_pb.UpdateCollectionReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.UpdateCollectionRes|null) => void
   ): UnaryResponse;
   deleteCollection(
     requestMessage: collections_pb.DeleteCollectionReq,

@@ -118,6 +118,28 @@ function deserialize_sygma_pb_ShareWithUserReq(buffer_arg) {
   return collections_pb.ShareWithUserReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_UpdateCollectionReq(arg) {
+  if (!(arg instanceof collections_pb.UpdateCollectionReq)) {
+    throw new Error('Expected argument of type sygma_pb.UpdateCollectionReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_UpdateCollectionReq(buffer_arg) {
+  return collections_pb.UpdateCollectionReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_UpdateCollectionRes(arg) {
+  if (!(arg instanceof collections_pb.UpdateCollectionRes)) {
+    throw new Error('Expected argument of type sygma_pb.UpdateCollectionRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_UpdateCollectionRes(buffer_arg) {
+  return collections_pb.UpdateCollectionRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var CollectionsManagerService = exports.CollectionsManagerService = {
   // Collection creates a new Collection
@@ -155,6 +177,18 @@ getCollection: {
     requestDeserialize: deserialize_sygma_pb_GetCollectionReq,
     responseSerialize: serialize_sygma_pb_GetCollectionRes,
     responseDeserialize: deserialize_sygma_pb_GetCollectionRes,
+  },
+  // UpdateCollection updates an existing collection info
+updateCollection: {
+    path: '/sygma_pb.CollectionsManager/UpdateCollection',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.UpdateCollectionReq,
+    responseType: collections_pb.UpdateCollectionRes,
+    requestSerialize: serialize_sygma_pb_UpdateCollectionReq,
+    requestDeserialize: deserialize_sygma_pb_UpdateCollectionReq,
+    responseSerialize: serialize_sygma_pb_UpdateCollectionRes,
+    responseDeserialize: deserialize_sygma_pb_UpdateCollectionRes,
   },
   // DeleteCollection removes a Collection. Only owners should be allowed to perform
 // this operation
