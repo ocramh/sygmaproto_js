@@ -1121,12 +1121,14 @@ proto.sygma_pb.AuditedTrack.toObject = function(includeInstance, msg) {
     trackname: jspb.Message.getFieldWithDefault(msg, 2, ""),
     albumid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     albumname: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    labelid: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    labelname: jspb.Message.getFieldWithDefault(msg, 6, ""),
     artistsMap: (f = msg.getArtistsMap()) ? f.toObject(includeInstance, undefined) : [],
-    playCount: jspb.Message.getFieldWithDefault(msg, 8, 0),
-    genre: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    artworkUrl: jspb.Message.getFieldWithDefault(msg, 10, "")
+    labelid: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    labelname: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    sourcetype: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    sourceurl: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    genre: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    artworkUrl: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    playCount: jspb.Message.getFieldWithDefault(msg, 12, 0)
   };
 
   if (includeInstance) {
@@ -1180,30 +1182,38 @@ proto.sygma_pb.AuditedTrack.deserializeBinaryFromReader = function(msg, reader) 
       msg.setAlbumname(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLabelid(value);
-      break;
-    case 6:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLabelname(value);
-      break;
-    case 7:
       var value = msg.getArtistsMap();
       reader.readMessage(value, function(message, reader) {
         jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString);
          });
       break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelid(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabelname(value);
+      break;
     case 8:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setPlayCount(value);
+      var value = /** @type {!proto.sygma_pb.SourceType} */ (reader.readEnum());
+      msg.setSourcetype(value);
       break;
     case 9:
       var value = /** @type {string} */ (reader.readString());
-      msg.setGenre(value);
+      msg.setSourceurl(value);
       break;
     case 10:
       var value = /** @type {string} */ (reader.readString());
+      msg.setGenre(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
       msg.setArtworkUrl(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPlayCount(value);
       break;
     default:
       reader.skipField();
@@ -1262,42 +1272,56 @@ proto.sygma_pb.AuditedTrack.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getLabelid();
-  if (f.length > 0) {
-    writer.writeString(
-      5,
-      f
-    );
+  f = message.getArtistsMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(5, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
-  f = message.getLabelname();
+  f = message.getLabelid();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getArtistsMap(true);
-  if (f && f.getLength() > 0) {
-    f.serializeBinary(7, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  f = message.getLabelname();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
   }
-  f = message.getPlayCount();
-  if (f !== 0) {
-    writer.writeInt32(
+  f = message.getSourcetype();
+  if (f !== 0.0) {
+    writer.writeEnum(
       8,
       f
     );
   }
-  f = message.getGenre();
+  f = message.getSourceurl();
   if (f.length > 0) {
     writer.writeString(
       9,
       f
     );
   }
-  f = message.getArtworkUrl();
+  f = message.getGenre();
   if (f.length > 0) {
     writer.writeString(
       10,
+      f
+    );
+  }
+  f = message.getArtworkUrl();
+  if (f.length > 0) {
+    writer.writeString(
+      11,
+      f
+    );
+  }
+  f = message.getPlayCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      12,
       f
     );
   }
@@ -1365,44 +1389,14 @@ proto.sygma_pb.AuditedTrack.prototype.setAlbumname = function(value) {
 
 
 /**
- * optional string labelID = 5;
- * @return {string}
- */
-proto.sygma_pb.AuditedTrack.prototype.getLabelid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.AuditedTrack.prototype.setLabelid = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
-/**
- * optional string labelName = 6;
- * @return {string}
- */
-proto.sygma_pb.AuditedTrack.prototype.getLabelname = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.AuditedTrack.prototype.setLabelname = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
-};
-
-
-/**
- * map<string, string> artists = 7;
+ * map<string, string> artists = 5;
  * @param {boolean=} opt_noLazyCreate Do not create the map if
  * empty, instead returning `undefined`
  * @return {!jspb.Map<string,string>}
  */
 proto.sygma_pb.AuditedTrack.prototype.getArtistsMap = function(opt_noLazyCreate) {
   return /** @type {!jspb.Map<string,string>} */ (
-      jspb.Message.getMapField(this, 7, opt_noLazyCreate,
+      jspb.Message.getMapField(this, 5, opt_noLazyCreate,
       null));
 };
 
@@ -1413,47 +1407,107 @@ proto.sygma_pb.AuditedTrack.prototype.clearArtistsMap = function() {
 
 
 /**
- * optional int32 play_count = 8;
- * @return {number}
+ * optional string labelID = 6;
+ * @return {string}
  */
-proto.sygma_pb.AuditedTrack.prototype.getPlayCount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+proto.sygma_pb.AuditedTrack.prototype.getLabelid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
-/** @param {number} value */
-proto.sygma_pb.AuditedTrack.prototype.setPlayCount = function(value) {
-  jspb.Message.setProto3IntField(this, 8, value);
+/** @param {string} value */
+proto.sygma_pb.AuditedTrack.prototype.setLabelid = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional string genre = 9;
+ * optional string labelName = 7;
  * @return {string}
  */
-proto.sygma_pb.AuditedTrack.prototype.getGenre = function() {
+proto.sygma_pb.AuditedTrack.prototype.getLabelname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.AuditedTrack.prototype.setLabelname = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional SourceType sourceType = 8;
+ * @return {!proto.sygma_pb.SourceType}
+ */
+proto.sygma_pb.AuditedTrack.prototype.getSourcetype = function() {
+  return /** @type {!proto.sygma_pb.SourceType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/** @param {!proto.sygma_pb.SourceType} value */
+proto.sygma_pb.AuditedTrack.prototype.setSourcetype = function(value) {
+  jspb.Message.setProto3EnumField(this, 8, value);
+};
+
+
+/**
+ * optional string sourceURL = 9;
+ * @return {string}
+ */
+proto.sygma_pb.AuditedTrack.prototype.getSourceurl = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.AuditedTrack.prototype.setGenre = function(value) {
+proto.sygma_pb.AuditedTrack.prototype.setSourceurl = function(value) {
   jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
 /**
- * optional string artwork_url = 10;
+ * optional string genre = 10;
  * @return {string}
  */
-proto.sygma_pb.AuditedTrack.prototype.getArtworkUrl = function() {
+proto.sygma_pb.AuditedTrack.prototype.getGenre = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.AuditedTrack.prototype.setArtworkUrl = function(value) {
+proto.sygma_pb.AuditedTrack.prototype.setGenre = function(value) {
   jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional string artwork_url = 11;
+ * @return {string}
+ */
+proto.sygma_pb.AuditedTrack.prototype.getArtworkUrl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.AuditedTrack.prototype.setArtworkUrl = function(value) {
+  jspb.Message.setProto3StringField(this, 11, value);
+};
+
+
+/**
+ * optional int32 play_count = 12;
+ * @return {number}
+ */
+proto.sygma_pb.AuditedTrack.prototype.getPlayCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+};
+
+
+/** @param {number} value */
+proto.sygma_pb.AuditedTrack.prototype.setPlayCount = function(value) {
+  jspb.Message.setProto3IntField(this, 12, value);
 };
 
 

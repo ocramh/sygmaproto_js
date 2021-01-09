@@ -166,22 +166,28 @@ export class AuditedTrack extends jspb.Message {
   getAlbumname(): string;
   setAlbumname(value: string): void;
 
+  getArtistsMap(): jspb.Map<string, string>;
+  clearArtistsMap(): void;
   getLabelid(): string;
   setLabelid(value: string): void;
 
   getLabelname(): string;
   setLabelname(value: string): void;
 
-  getArtistsMap(): jspb.Map<string, string>;
-  clearArtistsMap(): void;
-  getPlayCount(): number;
-  setPlayCount(value: number): void;
+  getSourcetype(): types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap];
+  setSourcetype(value: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap]): void;
+
+  getSourceurl(): string;
+  setSourceurl(value: string): void;
 
   getGenre(): string;
   setGenre(value: string): void;
 
   getArtworkUrl(): string;
   setArtworkUrl(value: string): void;
+
+  getPlayCount(): number;
+  setPlayCount(value: number): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AuditedTrack.AsObject;
@@ -199,12 +205,14 @@ export namespace AuditedTrack {
     trackname: string,
     albumid: string,
     albumname: string,
+    artistsMap: Array<[string, string]>,
     labelid: string,
     labelname: string,
-    artistsMap: Array<[string, string]>,
-    playCount: number,
+    sourcetype: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap],
+    sourceurl: string,
     genre: string,
     artworkUrl: string,
+    playCount: number,
   }
 }
 

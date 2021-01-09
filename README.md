@@ -1,4 +1,4 @@
 # sygmaproto-js
 This repository was automatically generated. DO NOT EDIT. 
 
-Last build: Wed 23 Dec 2020 12:47:08 GMT
+Last build: Sat  9 Jan 2021 14:49:45 GMT
