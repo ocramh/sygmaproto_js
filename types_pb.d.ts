@@ -126,6 +126,9 @@ export class Track extends jspb.Message {
   getUrl(): string;
   setUrl(value: string): void;
 
+  getAudiourl(): string;
+  setAudiourl(value: string): void;
+
   getIsrccode(): string;
   setIsrccode(value: string): void;
 
@@ -133,12 +136,6 @@ export class Track extends jspb.Message {
   getCollaboratorsList(): Array<Artist>;
   setCollaboratorsList(value: Array<Artist>): void;
   addCollaborators(value?: Artist, index?: number): Artist;
-
-  getOwnerid(): string;
-  setOwnerid(value: string): void;
-
-  getOwnername(): string;
-  setOwnername(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Track.AsObject;
@@ -157,10 +154,9 @@ export namespace Track {
     num: number,
     durationsec: number,
     url: string,
+    audiourl: string,
     isrccode: string,
     collaboratorsList: Array<Artist.AsObject>,
-    ownerid: string,
-    ownername: string,
   }
 }
 

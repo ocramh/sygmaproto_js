@@ -2644,7 +2644,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.CollectionItem.repeatedFields_ = [9,16];
+proto.sygma_pb.CollectionItem.repeatedFields_ = [8];
 
 
 
@@ -2681,17 +2681,9 @@ proto.sygma_pb.CollectionItem.toObject = function(includeInstance, msg) {
     title: jspb.Message.getFieldWithDefault(msg, 4, ""),
     id: jspb.Message.getFieldWithDefault(msg, 5, ""),
     description: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    albumid: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    albumtitle: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    authorList: jspb.Message.toObjectList(msg.getAuthorList(),
-    types_pb.Artist.toObject, includeInstance),
-    label: (f = msg.getLabel()) && types_pb.Label.toObject(includeInstance, f),
-    publisheddate: (f = msg.getPublisheddate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    artworkurl: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    sourcetype: jspb.Message.getFieldWithDefault(msg, 13, 0),
-    sourceurl: jspb.Message.getFieldWithDefault(msg, 14, ""),
-    score: jspb.Message.getFieldWithDefault(msg, 15, 0),
-    tagsList: jspb.Message.getRepeatedField(msg, 16)
+    score: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    tagsList: jspb.Message.getRepeatedField(msg, 8),
+    album: (f = msg.getAlbum()) && types_pb.Album.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2756,47 +2748,17 @@ proto.sygma_pb.CollectionItem.deserializeBinaryFromReader = function(msg, reader
       msg.setDescription(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumid(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumtitle(value);
-      break;
-    case 9:
-      var value = new types_pb.Artist;
-      reader.readMessage(value,types_pb.Artist.deserializeBinaryFromReader);
-      msg.addAuthor(value);
-      break;
-    case 10:
-      var value = new types_pb.Label;
-      reader.readMessage(value,types_pb.Label.deserializeBinaryFromReader);
-      msg.setLabel(value);
-      break;
-    case 11:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
-      msg.setPublisheddate(value);
-      break;
-    case 12:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setArtworkurl(value);
-      break;
-    case 13:
-      var value = /** @type {!proto.sygma_pb.SourceType} */ (reader.readEnum());
-      msg.setSourcetype(value);
-      break;
-    case 14:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setSourceurl(value);
-      break;
-    case 15:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setScore(value);
       break;
-    case 16:
+    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.addTags(value);
+      break;
+    case 9:
+      var value = new types_pb.Album;
+      reader.readMessage(value,types_pb.Album.deserializeBinaryFromReader);
+      msg.setAlbum(value);
       break;
     default:
       reader.skipField();
@@ -2872,77 +2834,26 @@ proto.sygma_pb.CollectionItem.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getAlbumid();
-  if (f.length > 0) {
-    writer.writeString(
-      7,
-      f
-    );
-  }
-  f = message.getAlbumtitle();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = message.getAuthorList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      9,
-      f,
-      types_pb.Artist.serializeBinaryToWriter
-    );
-  }
-  f = message.getLabel();
-  if (f != null) {
-    writer.writeMessage(
-      10,
-      f,
-      types_pb.Label.serializeBinaryToWriter
-    );
-  }
-  f = message.getPublisheddate();
-  if (f != null) {
-    writer.writeMessage(
-      11,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
-    );
-  }
-  f = message.getArtworkurl();
-  if (f.length > 0) {
-    writer.writeString(
-      12,
-      f
-    );
-  }
-  f = message.getSourcetype();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      13,
-      f
-    );
-  }
-  f = message.getSourceurl();
-  if (f.length > 0) {
-    writer.writeString(
-      14,
-      f
-    );
-  }
   f = message.getScore();
   if (f !== 0) {
     writer.writeInt32(
-      15,
+      7,
       f
     );
   }
   f = message.getTagsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      16,
+      8,
       f
+    );
+  }
+  f = message.getAlbum();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      types_pb.Album.serializeBinaryToWriter
     );
   }
 };
@@ -3084,198 +2995,32 @@ proto.sygma_pb.CollectionItem.prototype.setDescription = function(value) {
 
 
 /**
- * optional string albumID = 7;
- * @return {string}
- */
-proto.sygma_pb.CollectionItem.prototype.getAlbumid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.CollectionItem.prototype.setAlbumid = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
-};
-
-
-/**
- * optional string albumTitle = 8;
- * @return {string}
- */
-proto.sygma_pb.CollectionItem.prototype.getAlbumtitle = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.CollectionItem.prototype.setAlbumtitle = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
-};
-
-
-/**
- * repeated Artist author = 9;
- * @return {!Array.<!proto.sygma_pb.Artist>}
- */
-proto.sygma_pb.CollectionItem.prototype.getAuthorList = function() {
-  return /** @type{!Array.<!proto.sygma_pb.Artist>} */ (
-    jspb.Message.getRepeatedWrapperField(this, types_pb.Artist, 9));
-};
-
-
-/** @param {!Array.<!proto.sygma_pb.Artist>} value */
-proto.sygma_pb.CollectionItem.prototype.setAuthorList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 9, value);
-};
-
-
-/**
- * @param {!proto.sygma_pb.Artist=} opt_value
- * @param {number=} opt_index
- * @return {!proto.sygma_pb.Artist}
- */
-proto.sygma_pb.CollectionItem.prototype.addAuthor = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.sygma_pb.Artist, opt_index);
-};
-
-
-proto.sygma_pb.CollectionItem.prototype.clearAuthorList = function() {
-  this.setAuthorList([]);
-};
-
-
-/**
- * optional Label label = 10;
- * @return {?proto.sygma_pb.Label}
- */
-proto.sygma_pb.CollectionItem.prototype.getLabel = function() {
-  return /** @type{?proto.sygma_pb.Label} */ (
-    jspb.Message.getWrapperField(this, types_pb.Label, 10));
-};
-
-
-/** @param {?proto.sygma_pb.Label|undefined} value */
-proto.sygma_pb.CollectionItem.prototype.setLabel = function(value) {
-  jspb.Message.setWrapperField(this, 10, value);
-};
-
-
-proto.sygma_pb.CollectionItem.prototype.clearLabel = function() {
-  this.setLabel(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.sygma_pb.CollectionItem.prototype.hasLabel = function() {
-  return jspb.Message.getField(this, 10) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp publishedDate = 11;
- * @return {?proto.google.protobuf.Timestamp}
- */
-proto.sygma_pb.CollectionItem.prototype.getPublisheddate = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11));
-};
-
-
-/** @param {?proto.google.protobuf.Timestamp|undefined} value */
-proto.sygma_pb.CollectionItem.prototype.setPublisheddate = function(value) {
-  jspb.Message.setWrapperField(this, 11, value);
-};
-
-
-proto.sygma_pb.CollectionItem.prototype.clearPublisheddate = function() {
-  this.setPublisheddate(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {!boolean}
- */
-proto.sygma_pb.CollectionItem.prototype.hasPublisheddate = function() {
-  return jspb.Message.getField(this, 11) != null;
-};
-
-
-/**
- * optional string artworkURL = 12;
- * @return {string}
- */
-proto.sygma_pb.CollectionItem.prototype.getArtworkurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.CollectionItem.prototype.setArtworkurl = function(value) {
-  jspb.Message.setProto3StringField(this, 12, value);
-};
-
-
-/**
- * optional SourceType sourceType = 13;
- * @return {!proto.sygma_pb.SourceType}
- */
-proto.sygma_pb.CollectionItem.prototype.getSourcetype = function() {
-  return /** @type {!proto.sygma_pb.SourceType} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
-};
-
-
-/** @param {!proto.sygma_pb.SourceType} value */
-proto.sygma_pb.CollectionItem.prototype.setSourcetype = function(value) {
-  jspb.Message.setProto3EnumField(this, 13, value);
-};
-
-
-/**
- * optional string sourceURL = 14;
- * @return {string}
- */
-proto.sygma_pb.CollectionItem.prototype.getSourceurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.CollectionItem.prototype.setSourceurl = function(value) {
-  jspb.Message.setProto3StringField(this, 14, value);
-};
-
-
-/**
- * optional int32 score = 15;
+ * optional int32 score = 7;
  * @return {number}
  */
 proto.sygma_pb.CollectionItem.prototype.getScore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
 };
 
 
 /** @param {number} value */
 proto.sygma_pb.CollectionItem.prototype.setScore = function(value) {
-  jspb.Message.setProto3IntField(this, 15, value);
+  jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
 /**
- * repeated string tags = 16;
+ * repeated string tags = 8;
  * @return {!Array.<string>}
  */
 proto.sygma_pb.CollectionItem.prototype.getTagsList = function() {
-  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 16));
+  return /** @type {!Array.<string>} */ (jspb.Message.getRepeatedField(this, 8));
 };
 
 
 /** @param {!Array.<string>} value */
 proto.sygma_pb.CollectionItem.prototype.setTagsList = function(value) {
-  jspb.Message.setField(this, 16, value || []);
+  jspb.Message.setField(this, 8, value || []);
 };
 
 
@@ -3284,12 +3029,42 @@ proto.sygma_pb.CollectionItem.prototype.setTagsList = function(value) {
  * @param {number=} opt_index
  */
 proto.sygma_pb.CollectionItem.prototype.addTags = function(value, opt_index) {
-  jspb.Message.addToRepeatedField(this, 16, value, opt_index);
+  jspb.Message.addToRepeatedField(this, 8, value, opt_index);
 };
 
 
 proto.sygma_pb.CollectionItem.prototype.clearTagsList = function() {
   this.setTagsList([]);
+};
+
+
+/**
+ * optional Album album = 9;
+ * @return {?proto.sygma_pb.Album}
+ */
+proto.sygma_pb.CollectionItem.prototype.getAlbum = function() {
+  return /** @type{?proto.sygma_pb.Album} */ (
+    jspb.Message.getWrapperField(this, types_pb.Album, 9));
+};
+
+
+/** @param {?proto.sygma_pb.Album|undefined} value */
+proto.sygma_pb.CollectionItem.prototype.setAlbum = function(value) {
+  jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+proto.sygma_pb.CollectionItem.prototype.clearAlbum = function() {
+  this.setAlbum(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {!boolean}
+ */
+proto.sygma_pb.CollectionItem.prototype.hasAlbum = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 

@@ -388,36 +388,6 @@ export class CollectionItem extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): void;
 
-  getAlbumid(): string;
-  setAlbumid(value: string): void;
-
-  getAlbumtitle(): string;
-  setAlbumtitle(value: string): void;
-
-  clearAuthorList(): void;
-  getAuthorList(): Array<types_pb.Artist>;
-  setAuthorList(value: Array<types_pb.Artist>): void;
-  addAuthor(value?: types_pb.Artist, index?: number): types_pb.Artist;
-
-  hasLabel(): boolean;
-  clearLabel(): void;
-  getLabel(): types_pb.Label | undefined;
-  setLabel(value?: types_pb.Label): void;
-
-  hasPublisheddate(): boolean;
-  clearPublisheddate(): void;
-  getPublisheddate(): google_protobuf_timestamp_pb.Timestamp | undefined;
-  setPublisheddate(value?: google_protobuf_timestamp_pb.Timestamp): void;
-
-  getArtworkurl(): string;
-  setArtworkurl(value: string): void;
-
-  getSourcetype(): types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap];
-  setSourcetype(value: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap]): void;
-
-  getSourceurl(): string;
-  setSourceurl(value: string): void;
-
   getScore(): number;
   setScore(value: number): void;
 
@@ -425,6 +395,11 @@ export class CollectionItem extends jspb.Message {
   getTagsList(): Array<string>;
   setTagsList(value: Array<string>): void;
   addTags(value: string, index?: number): string;
+
+  hasAlbum(): boolean;
+  clearAlbum(): void;
+  getAlbum(): types_pb.Album | undefined;
+  setAlbum(value?: types_pb.Album): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CollectionItem.AsObject;
@@ -444,16 +419,9 @@ export namespace CollectionItem {
     title: string,
     id: string,
     description: string,
-    albumid: string,
-    albumtitle: string,
-    authorList: Array<types_pb.Artist.AsObject>,
-    label?: types_pb.Label.AsObject,
-    publisheddate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    artworkurl: string,
-    sourcetype: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap],
-    sourceurl: string,
     score: number,
     tagsList: Array<string>,
+    album?: types_pb.Album.AsObject,
   }
 }
 

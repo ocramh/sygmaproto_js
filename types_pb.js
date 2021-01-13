@@ -799,7 +799,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.Track.repeatedFields_ = [7];
+proto.sygma_pb.Track.repeatedFields_ = [8];
 
 
 
@@ -835,11 +835,10 @@ proto.sygma_pb.Track.toObject = function(includeInstance, msg) {
     num: jspb.Message.getFieldWithDefault(msg, 3, 0),
     durationsec: jspb.Message.getFieldWithDefault(msg, 4, 0),
     url: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    isrccode: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    audiourl: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    isrccode: jspb.Message.getFieldWithDefault(msg, 7, ""),
     collaboratorsList: jspb.Message.toObjectList(msg.getCollaboratorsList(),
-    proto.sygma_pb.Artist.toObject, includeInstance),
-    ownerid: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    ownername: jspb.Message.getFieldWithDefault(msg, 9, "")
+    proto.sygma_pb.Artist.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -898,20 +897,16 @@ proto.sygma_pb.Track.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setIsrccode(value);
+      msg.setAudiourl(value);
       break;
     case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIsrccode(value);
+      break;
+    case 8:
       var value = new proto.sygma_pb.Artist;
       reader.readMessage(value,proto.sygma_pb.Artist.deserializeBinaryFromReader);
       msg.addCollaborators(value);
-      break;
-    case 8:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOwnerid(value);
-      break;
-    case 9:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setOwnername(value);
       break;
     default:
       reader.skipField();
@@ -977,33 +972,26 @@ proto.sygma_pb.Track.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getIsrccode();
+  f = message.getAudiourl();
   if (f.length > 0) {
     writer.writeString(
       6,
       f
     );
   }
+  f = message.getIsrccode();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
   f = message.getCollaboratorsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      7,
+      8,
       f,
       proto.sygma_pb.Artist.serializeBinaryToWriter
-    );
-  }
-  f = message.getOwnerid();
-  if (f.length > 0) {
-    writer.writeString(
-      8,
-      f
-    );
-  }
-  f = message.getOwnername();
-  if (f.length > 0) {
-    writer.writeString(
-      9,
-      f
     );
   }
 };
@@ -1085,33 +1073,48 @@ proto.sygma_pb.Track.prototype.setUrl = function(value) {
 
 
 /**
- * optional string isrcCode = 6;
+ * optional string audioURL = 6;
  * @return {string}
  */
-proto.sygma_pb.Track.prototype.getIsrccode = function() {
+proto.sygma_pb.Track.prototype.getAudiourl = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /** @param {string} value */
-proto.sygma_pb.Track.prototype.setIsrccode = function(value) {
+proto.sygma_pb.Track.prototype.setAudiourl = function(value) {
   jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * repeated Artist collaborators = 7;
+ * optional string isrcCode = 7;
+ * @return {string}
+ */
+proto.sygma_pb.Track.prototype.getIsrccode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.sygma_pb.Track.prototype.setIsrccode = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * repeated Artist collaborators = 8;
  * @return {!Array.<!proto.sygma_pb.Artist>}
  */
 proto.sygma_pb.Track.prototype.getCollaboratorsList = function() {
   return /** @type{!Array.<!proto.sygma_pb.Artist>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Artist, 7));
+    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Artist, 8));
 };
 
 
 /** @param {!Array.<!proto.sygma_pb.Artist>} value */
 proto.sygma_pb.Track.prototype.setCollaboratorsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 7, value);
+  jspb.Message.setRepeatedWrapperField(this, 8, value);
 };
 
 
@@ -1121,42 +1124,12 @@ proto.sygma_pb.Track.prototype.setCollaboratorsList = function(value) {
  * @return {!proto.sygma_pb.Artist}
  */
 proto.sygma_pb.Track.prototype.addCollaborators = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 7, opt_value, proto.sygma_pb.Artist, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.sygma_pb.Artist, opt_index);
 };
 
 
 proto.sygma_pb.Track.prototype.clearCollaboratorsList = function() {
   this.setCollaboratorsList([]);
-};
-
-
-/**
- * optional string ownerID = 8;
- * @return {string}
- */
-proto.sygma_pb.Track.prototype.getOwnerid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.Track.prototype.setOwnerid = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
-};
-
-
-/**
- * optional string ownerName = 9;
- * @return {string}
- */
-proto.sygma_pb.Track.prototype.getOwnername = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
-};
-
-
-/** @param {string} value */
-proto.sygma_pb.Track.prototype.setOwnername = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
