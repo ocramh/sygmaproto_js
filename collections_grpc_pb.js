@@ -30,6 +30,17 @@ function deserialize_sygma_pb_AddDocumentReq(buffer_arg) {
   return collections_pb.AddDocumentReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_AddDocumentRes(arg) {
+  if (!(arg instanceof collections_pb.AddDocumentRes)) {
+    throw new Error('Expected argument of type sygma_pb.AddDocumentRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_AddDocumentRes(buffer_arg) {
+  return collections_pb.AddDocumentRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_DeleteCollectionReq(arg) {
   if (!(arg instanceof collections_pb.DeleteCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.DeleteCollectionReq');
@@ -221,11 +232,11 @@ addDocument: {
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.AddDocumentReq,
-    responseType: google_protobuf_empty_pb.Empty,
+    responseType: collections_pb.AddDocumentRes,
     requestSerialize: serialize_sygma_pb_AddDocumentReq,
     requestDeserialize: deserialize_sygma_pb_AddDocumentReq,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_sygma_pb_AddDocumentRes,
+    responseDeserialize: deserialize_sygma_pb_AddDocumentRes,
   },
 };
 

@@ -71,7 +71,7 @@ CollectionsManager.AddDocument = {
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.AddDocumentReq,
-  responseType: google_protobuf_empty_pb.Empty
+  responseType: collections_pb.AddDocumentRes
 };
 
 exports.CollectionsManager = CollectionsManager;

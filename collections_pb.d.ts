@@ -363,6 +363,26 @@ export namespace AddDocumentReq {
   }
 }
 
+export class AddDocumentRes extends jspb.Message {
+  getDocumentid(): string;
+  setDocumentid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): AddDocumentRes.AsObject;
+  static toObject(includeInstance: boolean, msg: AddDocumentRes): AddDocumentRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: AddDocumentRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): AddDocumentRes;
+  static deserializeBinaryFromReader(message: AddDocumentRes, reader: jspb.BinaryReader): AddDocumentRes;
+}
+
+export namespace AddDocumentRes {
+  export type AsObject = {
+    documentid: string,
+  }
+}
+
 export class CollectionItem extends jspb.Message {
   hasSelectedby(): boolean;
   clearSelectedby(): void;

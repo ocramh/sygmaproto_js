@@ -65,7 +65,7 @@ type CollectionsManagerAddDocument = {
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.AddDocumentReq;
-  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+  readonly responseType: typeof collections_pb.AddDocumentRes;
 };
 
 export class CollectionsManager {
@@ -168,11 +168,11 @@ export class CollectionsManagerClient {
   addDocument(
     requestMessage: collections_pb.AddDocumentReq,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+    callback: (error: ServiceError|null, responseMessage: collections_pb.AddDocumentRes|null) => void
   ): UnaryResponse;
   addDocument(
     requestMessage: collections_pb.AddDocumentReq,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+    callback: (error: ServiceError|null, responseMessage: collections_pb.AddDocumentRes|null) => void
   ): UnaryResponse;
 }
 
