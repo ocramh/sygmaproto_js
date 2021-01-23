@@ -47,6 +47,15 @@ CollectionsManager.UpdateCollection = {
   responseType: collections_pb.UpdateCollectionRes
 };
 
+CollectionsManager.GetAlbumInfo = {
+  methodName: "GetAlbumInfo",
+  service: CollectionsManager,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetAlbumInfoReq,
+  responseType: collections_pb.GetAlbumInfoRes
+};
+
 CollectionsManager.DeleteCollection = {
   methodName: "DeleteCollection",
   service: CollectionsManager,
@@ -179,6 +188,37 @@ CollectionsManagerClient.prototype.updateCollection = function updateCollection(
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsManager.UpdateCollection, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsManagerClient.prototype.getAlbumInfo = function getAlbumInfo(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsManager.GetAlbumInfo, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

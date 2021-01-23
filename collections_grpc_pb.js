@@ -52,6 +52,28 @@ function deserialize_sygma_pb_DeleteCollectionReq(buffer_arg) {
   return collections_pb.DeleteCollectionReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetAlbumInfoReq(arg) {
+  if (!(arg instanceof collections_pb.GetAlbumInfoReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetAlbumInfoReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetAlbumInfoReq(buffer_arg) {
+  return collections_pb.GetAlbumInfoReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetAlbumInfoRes(arg) {
+  if (!(arg instanceof collections_pb.GetAlbumInfoRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetAlbumInfoRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetAlbumInfoRes(buffer_arg) {
+  return collections_pb.GetAlbumInfoRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetCollectionReq(arg) {
   if (!(arg instanceof collections_pb.GetCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.GetCollectionReq');
@@ -200,6 +222,19 @@ updateCollection: {
     requestDeserialize: deserialize_sygma_pb_UpdateCollectionReq,
     responseSerialize: serialize_sygma_pb_UpdateCollectionRes,
     responseDeserialize: deserialize_sygma_pb_UpdateCollectionRes,
+  },
+  // GetAlbumInfo returns information about a single album including the collections
+// it has been included in and the users that uploaded it
+getAlbumInfo: {
+    path: '/sygma_pb.CollectionsManager/GetAlbumInfo',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetAlbumInfoReq,
+    responseType: collections_pb.GetAlbumInfoRes,
+    requestSerialize: serialize_sygma_pb_GetAlbumInfoReq,
+    requestDeserialize: deserialize_sygma_pb_GetAlbumInfoReq,
+    responseSerialize: serialize_sygma_pb_GetAlbumInfoRes,
+    responseDeserialize: deserialize_sygma_pb_GetAlbumInfoRes,
   },
   // DeleteCollection removes a Collection. Only owners should be allowed to perform
 // this operation

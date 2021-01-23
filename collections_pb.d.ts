@@ -85,6 +85,34 @@ export namespace CollectionInfo {
   }
 }
 
+export class CollectionSummary extends jspb.Message {
+  getId(): string;
+  setId(value: string): void;
+
+  getName(): string;
+  setName(value: string): void;
+
+  getSubscriberscount(): number;
+  setSubscriberscount(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CollectionSummary.AsObject;
+  static toObject(includeInstance: boolean, msg: CollectionSummary): CollectionSummary.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CollectionSummary, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CollectionSummary;
+  static deserializeBinaryFromReader(message: CollectionSummary, reader: jspb.BinaryReader): CollectionSummary;
+}
+
+export namespace CollectionSummary {
+  export type AsObject = {
+    id: string,
+    name: string,
+    subscriberscount: number,
+  }
+}
+
 export class NewCollectionReq extends jspb.Message {
   getName(): string;
   setName(value: string): void;
@@ -192,6 +220,60 @@ export class UpdateCollectionRes extends jspb.Message {
 export namespace UpdateCollectionRes {
   export type AsObject = {
     collection?: CollectionInfo.AsObject,
+  }
+}
+
+export class GetAlbumInfoReq extends jspb.Message {
+  getAlbumid(): string;
+  setAlbumid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAlbumInfoReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAlbumInfoReq): GetAlbumInfoReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetAlbumInfoReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAlbumInfoReq;
+  static deserializeBinaryFromReader(message: GetAlbumInfoReq, reader: jspb.BinaryReader): GetAlbumInfoReq;
+}
+
+export namespace GetAlbumInfoReq {
+  export type AsObject = {
+    albumid: string,
+  }
+}
+
+export class GetAlbumInfoRes extends jspb.Message {
+  hasAlbum(): boolean;
+  clearAlbum(): void;
+  getAlbum(): types_pb.Album | undefined;
+  setAlbum(value?: types_pb.Album): void;
+
+  clearIncollectionsList(): void;
+  getIncollectionsList(): Array<CollectionSummary>;
+  setIncollectionsList(value: Array<CollectionSummary>): void;
+  addIncollections(value?: CollectionSummary, index?: number): CollectionSummary;
+
+  clearUploadedbyList(): void;
+  getUploadedbyList(): Array<connections_pb.User>;
+  setUploadedbyList(value: Array<connections_pb.User>): void;
+  addUploadedby(value?: connections_pb.User, index?: number): connections_pb.User;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAlbumInfoRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAlbumInfoRes): GetAlbumInfoRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetAlbumInfoRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAlbumInfoRes;
+  static deserializeBinaryFromReader(message: GetAlbumInfoRes, reader: jspb.BinaryReader): GetAlbumInfoRes;
+}
+
+export namespace GetAlbumInfoRes {
+  export type AsObject = {
+    album?: types_pb.Album.AsObject,
+    incollectionsList: Array<CollectionSummary.AsObject>,
+    uploadedbyList: Array<connections_pb.User.AsObject>,
   }
 }
 
