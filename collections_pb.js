@@ -4249,7 +4249,7 @@ proto.sygma_pb.CollectionShortInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    documentscount: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    documentscount: jspb.Message.getFieldWithDefault(msg, 3, 0),
     userscount: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
@@ -4296,7 +4296,7 @@ proto.sygma_pb.CollectionShortInfo.deserializeBinaryFromReader = function(msg, r
       msg.setName(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {number} */ (reader.readInt64());
       msg.setDocumentscount(value);
       break;
     case 4:
@@ -4347,8 +4347,8 @@ proto.sygma_pb.CollectionShortInfo.serializeBinaryToWriter = function(message, w
     );
   }
   f = message.getDocumentscount();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f !== 0) {
+    writer.writeInt64(
       3,
       f
     );
@@ -4400,20 +4400,20 @@ proto.sygma_pb.CollectionShortInfo.prototype.setName = function(value) {
 
 
 /**
- * optional string documentsCount = 3;
- * @return {string}
+ * optional int64 documentsCount = 3;
+ * @return {number}
  */
 proto.sygma_pb.CollectionShortInfo.prototype.getDocumentscount = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
 /**
- * @param {string} value
+ * @param {number} value
  * @return {!proto.sygma_pb.CollectionShortInfo} returns this
  */
 proto.sygma_pb.CollectionShortInfo.prototype.setDocumentscount = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

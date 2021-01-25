@@ -530,8 +530,8 @@ export class CollectionShortInfo extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
-  getDocumentscount(): string;
-  setDocumentscount(value: string): void;
+  getDocumentscount(): number;
+  setDocumentscount(value: number): void;
 
   getUserscount(): number;
   setUserscount(value: number): void;
@@ -550,7 +550,7 @@ export namespace CollectionShortInfo {
   export type AsObject = {
     id: string,
     name: string,
-    documentscount: string,
+    documentscount: number,
     userscount: number,
   }
 }
