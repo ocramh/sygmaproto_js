@@ -3821,7 +3821,7 @@ proto.sygma_pb.GetUserInfoReq.prototype.toObject = function(opt_includeInstance)
  */
 proto.sygma_pb.GetUserInfoReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    albumid: jspb.Message.getFieldWithDefault(msg, 1, "")
+    userid: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -3860,7 +3860,7 @@ proto.sygma_pb.GetUserInfoReq.deserializeBinaryFromReader = function(msg, reader
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setAlbumid(value);
+      msg.setUserid(value);
       break;
     default:
       reader.skipField();
@@ -3891,7 +3891,7 @@ proto.sygma_pb.GetUserInfoReq.prototype.serializeBinary = function() {
  */
 proto.sygma_pb.GetUserInfoReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getAlbumid();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -3902,10 +3902,10 @@ proto.sygma_pb.GetUserInfoReq.serializeBinaryToWriter = function(message, writer
 
 
 /**
- * optional string albumID = 1;
+ * optional string userID = 1;
  * @return {string}
  */
-proto.sygma_pb.GetUserInfoReq.prototype.getAlbumid = function() {
+proto.sygma_pb.GetUserInfoReq.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -3914,7 +3914,7 @@ proto.sygma_pb.GetUserInfoReq.prototype.getAlbumid = function() {
  * @param {string} value
  * @return {!proto.sygma_pb.GetUserInfoReq} returns this
  */
-proto.sygma_pb.GetUserInfoReq.prototype.setAlbumid = function(value) {
+proto.sygma_pb.GetUserInfoReq.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 

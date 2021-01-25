@@ -466,8 +466,8 @@ export namespace GetAlbumInfoRes {
 }
 
 export class GetUserInfoReq extends jspb.Message {
-  getAlbumid(): string;
-  setAlbumid(value: string): void;
+  getUserid(): string;
+  setUserid(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetUserInfoReq.AsObject;
@@ -481,7 +481,7 @@ export class GetUserInfoReq extends jspb.Message {
 
 export namespace GetUserInfoReq {
   export type AsObject = {
-    albumid: string,
+    userid: string,
   }
 }
 
