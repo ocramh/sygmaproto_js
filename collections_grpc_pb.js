@@ -118,6 +118,28 @@ function deserialize_sygma_pb_GetCollectionsRes(buffer_arg) {
   return collections_pb.GetCollectionsRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetUserInfoReq(arg) {
+  if (!(arg instanceof collections_pb.GetUserInfoReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserInfoReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserInfoReq(buffer_arg) {
+  return collections_pb.GetUserInfoReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetUserInfoRes(arg) {
+  if (!(arg instanceof collections_pb.GetUserInfoRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserInfoRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserInfoRes(buffer_arg) {
+  return collections_pb.GetUserInfoRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_NewCollectionReq(arg) {
   if (!(arg instanceof collections_pb.NewCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.NewCollectionReq');
@@ -223,19 +245,6 @@ updateCollection: {
     responseSerialize: serialize_sygma_pb_UpdateCollectionRes,
     responseDeserialize: deserialize_sygma_pb_UpdateCollectionRes,
   },
-  // GetAlbumInfo returns information about a single album including the collections
-// it has been included in and the users that uploaded it
-getAlbumInfo: {
-    path: '/sygma_pb.CollectionsManager/GetAlbumInfo',
-    requestStream: false,
-    responseStream: false,
-    requestType: collections_pb.GetAlbumInfoReq,
-    responseType: collections_pb.GetAlbumInfoRes,
-    requestSerialize: serialize_sygma_pb_GetAlbumInfoReq,
-    requestDeserialize: deserialize_sygma_pb_GetAlbumInfoReq,
-    responseSerialize: serialize_sygma_pb_GetAlbumInfoRes,
-    responseDeserialize: deserialize_sygma_pb_GetAlbumInfoRes,
-  },
   // DeleteCollection removes a Collection. Only owners should be allowed to perform
 // this operation
 deleteCollection: {
@@ -272,6 +281,31 @@ addDocument: {
     requestDeserialize: deserialize_sygma_pb_AddDocumentReq,
     responseSerialize: serialize_sygma_pb_AddDocumentRes,
     responseDeserialize: deserialize_sygma_pb_AddDocumentRes,
+  },
+  // GetAlbumInfo returns information about a single album including the collections
+// it has been included in and the users that uploaded it
+getAlbumInfo: {
+    path: '/sygma_pb.CollectionsManager/GetAlbumInfo',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetAlbumInfoReq,
+    responseType: collections_pb.GetAlbumInfoRes,
+    requestSerialize: serialize_sygma_pb_GetAlbumInfoReq,
+    requestDeserialize: deserialize_sygma_pb_GetAlbumInfoReq,
+    responseSerialize: serialize_sygma_pb_GetAlbumInfoRes,
+    responseDeserialize: deserialize_sygma_pb_GetAlbumInfoRes,
+  },
+  // GetUserInfo returns information about a user's collections and uploads
+getUserInfo: {
+    path: '/sygma_pb.CollectionsManager/GetUserInfo',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetUserInfoReq,
+    responseType: collections_pb.GetUserInfoRes,
+    requestSerialize: serialize_sygma_pb_GetUserInfoReq,
+    requestDeserialize: deserialize_sygma_pb_GetUserInfoReq,
+    responseSerialize: serialize_sygma_pb_GetUserInfoRes,
+    responseDeserialize: deserialize_sygma_pb_GetUserInfoRes,
   },
 };
 

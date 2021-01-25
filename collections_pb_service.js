@@ -47,15 +47,6 @@ CollectionsManager.UpdateCollection = {
   responseType: collections_pb.UpdateCollectionRes
 };
 
-CollectionsManager.GetAlbumInfo = {
-  methodName: "GetAlbumInfo",
-  service: CollectionsManager,
-  requestStream: false,
-  responseStream: false,
-  requestType: collections_pb.GetAlbumInfoReq,
-  responseType: collections_pb.GetAlbumInfoRes
-};
-
 CollectionsManager.DeleteCollection = {
   methodName: "DeleteCollection",
   service: CollectionsManager,
@@ -81,6 +72,24 @@ CollectionsManager.AddDocument = {
   responseStream: false,
   requestType: collections_pb.AddDocumentReq,
   responseType: collections_pb.AddDocumentRes
+};
+
+CollectionsManager.GetAlbumInfo = {
+  methodName: "GetAlbumInfo",
+  service: CollectionsManager,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetAlbumInfoReq,
+  responseType: collections_pb.GetAlbumInfoRes
+};
+
+CollectionsManager.GetUserInfo = {
+  methodName: "GetUserInfo",
+  service: CollectionsManager,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetUserInfoReq,
+  responseType: collections_pb.GetUserInfoRes
 };
 
 exports.CollectionsManager = CollectionsManager;
@@ -214,37 +223,6 @@ CollectionsManagerClient.prototype.updateCollection = function updateCollection(
   };
 };
 
-CollectionsManagerClient.prototype.getAlbumInfo = function getAlbumInfo(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(CollectionsManager.GetAlbumInfo, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
 CollectionsManagerClient.prototype.deleteCollection = function deleteCollection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
@@ -312,6 +290,68 @@ CollectionsManagerClient.prototype.addDocument = function addDocument(requestMes
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsManager.AddDocument, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsManagerClient.prototype.getAlbumInfo = function getAlbumInfo(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsManager.GetAlbumInfo, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsManagerClient.prototype.getUserInfo = function getUserInfo(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsManager.GetUserInfo, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

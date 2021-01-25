@@ -41,15 +41,6 @@ type CollectionsManagerUpdateCollection = {
   readonly responseType: typeof collections_pb.UpdateCollectionRes;
 };
 
-type CollectionsManagerGetAlbumInfo = {
-  readonly methodName: string;
-  readonly service: typeof CollectionsManager;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof collections_pb.GetAlbumInfoReq;
-  readonly responseType: typeof collections_pb.GetAlbumInfoRes;
-};
-
 type CollectionsManagerDeleteCollection = {
   readonly methodName: string;
   readonly service: typeof CollectionsManager;
@@ -77,16 +68,35 @@ type CollectionsManagerAddDocument = {
   readonly responseType: typeof collections_pb.AddDocumentRes;
 };
 
+type CollectionsManagerGetAlbumInfo = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsManager;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetAlbumInfoReq;
+  readonly responseType: typeof collections_pb.GetAlbumInfoRes;
+};
+
+type CollectionsManagerGetUserInfo = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsManager;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetUserInfoReq;
+  readonly responseType: typeof collections_pb.GetUserInfoRes;
+};
+
 export class CollectionsManager {
   static readonly serviceName: string;
   static readonly NewCollection: CollectionsManagerNewCollection;
   static readonly GetCollectionsByUser: CollectionsManagerGetCollectionsByUser;
   static readonly GetCollection: CollectionsManagerGetCollection;
   static readonly UpdateCollection: CollectionsManagerUpdateCollection;
-  static readonly GetAlbumInfo: CollectionsManagerGetAlbumInfo;
   static readonly DeleteCollection: CollectionsManagerDeleteCollection;
   static readonly ShareWithUser: CollectionsManagerShareWithUser;
   static readonly AddDocument: CollectionsManagerAddDocument;
+  static readonly GetAlbumInfo: CollectionsManagerGetAlbumInfo;
+  static readonly GetUserInfo: CollectionsManagerGetUserInfo;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -157,15 +167,6 @@ export class CollectionsManagerClient {
     requestMessage: collections_pb.UpdateCollectionReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.UpdateCollectionRes|null) => void
   ): UnaryResponse;
-  getAlbumInfo(
-    requestMessage: collections_pb.GetAlbumInfoReq,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: collections_pb.GetAlbumInfoRes|null) => void
-  ): UnaryResponse;
-  getAlbumInfo(
-    requestMessage: collections_pb.GetAlbumInfoReq,
-    callback: (error: ServiceError|null, responseMessage: collections_pb.GetAlbumInfoRes|null) => void
-  ): UnaryResponse;
   deleteCollection(
     requestMessage: collections_pb.DeleteCollectionReq,
     metadata: grpc.Metadata,
@@ -192,6 +193,24 @@ export class CollectionsManagerClient {
   addDocument(
     requestMessage: collections_pb.AddDocumentReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.AddDocumentRes|null) => void
+  ): UnaryResponse;
+  getAlbumInfo(
+    requestMessage: collections_pb.GetAlbumInfoReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetAlbumInfoRes|null) => void
+  ): UnaryResponse;
+  getAlbumInfo(
+    requestMessage: collections_pb.GetAlbumInfoReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetAlbumInfoRes|null) => void
+  ): UnaryResponse;
+  getUserInfo(
+    requestMessage: collections_pb.GetUserInfoReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetUserInfoRes|null) => void
+  ): UnaryResponse;
+  getUserInfo(
+    requestMessage: collections_pb.GetUserInfoReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetUserInfoRes|null) => void
   ): UnaryResponse;
 }
 
