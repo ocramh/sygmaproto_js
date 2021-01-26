@@ -565,6 +565,15 @@ export class UploadInfo extends jspb.Message {
   getGenre(): string;
   setGenre(value: string): void;
 
+  getArtworkurl(): string;
+  setArtworkurl(value: string): void;
+
+  getArtistid(): string;
+  setArtistid(value: string): void;
+
+  getArtistname(): string;
+  setArtistname(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UploadInfo.AsObject;
   static toObject(includeInstance: boolean, msg: UploadInfo): UploadInfo.AsObject;
@@ -580,6 +589,9 @@ export namespace UploadInfo {
     albumid: string,
     albumname: string,
     genre: string,
+    artworkurl: string,
+    artistid: string,
+    artistname: string,
   }
 }
 

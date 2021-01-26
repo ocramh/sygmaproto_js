@@ -4469,7 +4469,10 @@ proto.sygma_pb.UploadInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     albumid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     albumname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    genre: jspb.Message.getFieldWithDefault(msg, 3, "")
+    genre: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    artworkurl: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    artistid: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    artistname: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -4518,6 +4521,18 @@ proto.sygma_pb.UploadInfo.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setGenre(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArtworkurl(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArtistid(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setArtistname(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4565,6 +4580,27 @@ proto.sygma_pb.UploadInfo.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getArtworkurl();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getArtistid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getArtistname();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -4622,6 +4658,60 @@ proto.sygma_pb.UploadInfo.prototype.getGenre = function() {
  */
 proto.sygma_pb.UploadInfo.prototype.setGenre = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string artworkURL = 4;
+ * @return {string}
+ */
+proto.sygma_pb.UploadInfo.prototype.getArtworkurl = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.UploadInfo} returns this
+ */
+proto.sygma_pb.UploadInfo.prototype.setArtworkurl = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string artistID = 5;
+ * @return {string}
+ */
+proto.sygma_pb.UploadInfo.prototype.getArtistid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.UploadInfo} returns this
+ */
+proto.sygma_pb.UploadInfo.prototype.setArtistid = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string artistName = 6;
+ * @return {string}
+ */
+proto.sygma_pb.UploadInfo.prototype.getArtistname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.UploadInfo} returns this
+ */
+proto.sygma_pb.UploadInfo.prototype.setArtistname = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
