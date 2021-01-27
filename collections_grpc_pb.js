@@ -52,6 +52,17 @@ function deserialize_sygma_pb_DeleteCollectionReq(buffer_arg) {
   return collections_pb.DeleteCollectionReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_DeleteDocumentReq(arg) {
+  if (!(arg instanceof collections_pb.DeleteDocumentReq)) {
+    throw new Error('Expected argument of type sygma_pb.DeleteDocumentReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_DeleteDocumentReq(buffer_arg) {
+  return collections_pb.DeleteDocumentReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetAlbumInfoReq(arg) {
   if (!(arg instanceof collections_pb.GetAlbumInfoReq)) {
     throw new Error('Expected argument of type sygma_pb.GetAlbumInfoReq');
@@ -281,6 +292,18 @@ addDocument: {
     requestDeserialize: deserialize_sygma_pb_AddDocumentReq,
     responseSerialize: serialize_sygma_pb_AddDocumentRes,
     responseDeserialize: deserialize_sygma_pb_AddDocumentRes,
+  },
+  // DeleteDocument removes a document from a collection
+deleteDocument: {
+    path: '/sygma_pb.CollectionsManager/DeleteDocument',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.DeleteDocumentReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_DeleteDocumentReq,
+    requestDeserialize: deserialize_sygma_pb_DeleteDocumentReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // GetAlbumInfo returns information about a single album including the collections
 // it has been included in and the users that uploaded it

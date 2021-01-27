@@ -68,6 +68,15 @@ type CollectionsManagerAddDocument = {
   readonly responseType: typeof collections_pb.AddDocumentRes;
 };
 
+type CollectionsManagerDeleteDocument = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsManager;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.DeleteDocumentReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 type CollectionsManagerGetAlbumInfo = {
   readonly methodName: string;
   readonly service: typeof CollectionsManager;
@@ -95,6 +104,7 @@ export class CollectionsManager {
   static readonly DeleteCollection: CollectionsManagerDeleteCollection;
   static readonly ShareWithUser: CollectionsManagerShareWithUser;
   static readonly AddDocument: CollectionsManagerAddDocument;
+  static readonly DeleteDocument: CollectionsManagerDeleteDocument;
   static readonly GetAlbumInfo: CollectionsManagerGetAlbumInfo;
   static readonly GetUserInfo: CollectionsManagerGetUserInfo;
 }
@@ -193,6 +203,15 @@ export class CollectionsManagerClient {
   addDocument(
     requestMessage: collections_pb.AddDocumentReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.AddDocumentRes|null) => void
+  ): UnaryResponse;
+  deleteDocument(
+    requestMessage: collections_pb.DeleteDocumentReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  deleteDocument(
+    requestMessage: collections_pb.DeleteDocumentReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
   getAlbumInfo(
     requestMessage: collections_pb.GetAlbumInfoReq,

@@ -411,6 +411,26 @@ export namespace AddDocumentRes {
   }
 }
 
+export class DeleteDocumentReq extends jspb.Message {
+  getDocumentid(): string;
+  setDocumentid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DeleteDocumentReq.AsObject;
+  static toObject(includeInstance: boolean, msg: DeleteDocumentReq): DeleteDocumentReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DeleteDocumentReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DeleteDocumentReq;
+  static deserializeBinaryFromReader(message: DeleteDocumentReq, reader: jspb.BinaryReader): DeleteDocumentReq;
+}
+
+export namespace DeleteDocumentReq {
+  export type AsObject = {
+    documentid: string,
+  }
+}
+
 export class GetAlbumInfoReq extends jspb.Message {
   getAlbumid(): string;
   setAlbumid(value: string): void;
