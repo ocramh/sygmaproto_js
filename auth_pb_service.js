@@ -74,6 +74,15 @@ Auth.DeleteAccount = {
   responseType: google_protobuf_empty_pb.Empty
 };
 
+Auth.UpdateUserProfile = {
+  methodName: "UpdateUserProfile",
+  service: Auth,
+  requestStream: false,
+  responseStream: false,
+  requestType: auth_pb.UpdateProfileReq,
+  responseType: google_protobuf_empty_pb.Empty
+};
+
 exports.Auth = Auth;
 
 function AuthClient(serviceHost, options) {
@@ -272,6 +281,37 @@ AuthClient.prototype.deleteAccount = function deleteAccount(requestMessage, meta
     callback = arguments[1];
   }
   var client = grpc.unary(Auth.DeleteAccount, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+AuthClient.prototype.updateUserProfile = function updateUserProfile(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Auth.UpdateUserProfile, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

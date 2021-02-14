@@ -68,6 +68,15 @@ type AuthDeleteAccount = {
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
+type AuthUpdateUserProfile = {
+  readonly methodName: string;
+  readonly service: typeof Auth;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof auth_pb.UpdateProfileReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 export class Auth {
   static readonly serviceName: string;
   static readonly CreateAccount: AuthCreateAccount;
@@ -77,6 +86,7 @@ export class Auth {
   static readonly RequestPasswordReset: AuthRequestPasswordReset;
   static readonly ResetPassword: AuthResetPassword;
   static readonly DeleteAccount: AuthDeleteAccount;
+  static readonly UpdateUserProfile: AuthUpdateUserProfile;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -172,6 +182,15 @@ export class AuthClient {
   ): UnaryResponse;
   deleteAccount(
     requestMessage: auth_pb.DeleteAccountReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  updateUserProfile(
+    requestMessage: auth_pb.UpdateProfileReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  updateUserProfile(
+    requestMessage: auth_pb.UpdateProfileReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
 }

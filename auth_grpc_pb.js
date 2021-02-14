@@ -4,6 +4,7 @@
 var grpc = require('grpc');
 var auth_pb = require('./auth_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
   if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
@@ -137,6 +138,17 @@ function deserialize_sygma_pb_ResetPassReq(buffer_arg) {
   return auth_pb.ResetPassReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_UpdateProfileReq(arg) {
+  if (!(arg instanceof auth_pb.UpdateProfileReq)) {
+    throw new Error('Expected argument of type sygma_pb.UpdateProfileReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_UpdateProfileReq(buffer_arg) {
+  return auth_pb.UpdateProfileReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 // the Auth service definition
 var AuthService = exports.AuthService = {
@@ -221,6 +233,18 @@ deleteAccount: {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_sygma_pb_DeleteAccountReq,
     requestDeserialize: deserialize_sygma_pb_DeleteAccountReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // Updates an existing profile
+updateUserProfile: {
+    path: '/sygma_pb.Auth/UpdateUserProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.UpdateProfileReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_UpdateProfileReq,
+    requestDeserialize: deserialize_sygma_pb_UpdateProfileReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },

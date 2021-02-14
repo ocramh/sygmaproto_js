@@ -3,6 +3,7 @@
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
+import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 
 export class CreateAccountReq extends jspb.Message {
   getUsername(): string;
@@ -142,14 +143,16 @@ export class LoginResp extends jspb.Message {
   getEmailaddress(): string;
   setEmailaddress(value: string): void;
 
-  getProfilepic(): string;
-  setProfilepic(value: string): void;
-
   getAccesstoken(): string;
   setAccesstoken(value: string): void;
 
   getRefreshtoken(): string;
   setRefreshtoken(value: string): void;
+
+  hasProfile(): boolean;
+  clearProfile(): void;
+  getProfile(): UserProfile | undefined;
+  setProfile(value?: UserProfile): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginResp.AsObject;
@@ -166,9 +169,9 @@ export namespace LoginResp {
     userid: string,
     username: string,
     emailaddress: string,
-    profilepic: string,
     accesstoken: string,
     refreshtoken: string,
+    profile?: UserProfile.AsObject,
   }
 }
 
@@ -285,6 +288,68 @@ export class DeleteAccountReq extends jspb.Message {
 export namespace DeleteAccountReq {
   export type AsObject = {
     username: string,
+  }
+}
+
+export class UpdateProfileReq extends jspb.Message {
+  hasProfile(): boolean;
+  clearProfile(): void;
+  getProfile(): UserProfile | undefined;
+  setProfile(value?: UserProfile): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UpdateProfileReq.AsObject;
+  static toObject(includeInstance: boolean, msg: UpdateProfileReq): UpdateProfileReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UpdateProfileReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UpdateProfileReq;
+  static deserializeBinaryFromReader(message: UpdateProfileReq, reader: jspb.BinaryReader): UpdateProfileReq;
+}
+
+export namespace UpdateProfileReq {
+  export type AsObject = {
+    profile?: UserProfile.AsObject,
+  }
+}
+
+export class UserProfile extends jspb.Message {
+  hasUpdatedat(): boolean;
+  clearUpdatedat(): void;
+  getUpdatedat(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setUpdatedat(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getOnboarded(): boolean;
+  setOnboarded(value: boolean): void;
+
+  getBio(): string;
+  setBio(value: string): void;
+
+  getProfilepicurl(): string;
+  setProfilepicurl(value: string): void;
+
+  clearFavouritegenresList(): void;
+  getFavouritegenresList(): Array<string>;
+  setFavouritegenresList(value: Array<string>): void;
+  addFavouritegenres(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: UserProfile): UserProfile.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UserProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserProfile;
+  static deserializeBinaryFromReader(message: UserProfile, reader: jspb.BinaryReader): UserProfile;
+}
+
+export namespace UserProfile {
+  export type AsObject = {
+    updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    onboarded: boolean,
+    bio: string,
+    profilepicurl: string,
+    favouritegenresList: Array<string>,
   }
 }
 
