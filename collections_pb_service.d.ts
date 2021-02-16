@@ -5,108 +5,118 @@ import * as collections_pb from "./collections_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type CollectionsManagerNewCollection = {
+type CollectionsServiceNewCollection = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.NewCollectionReq;
   readonly responseType: typeof collections_pb.NewCollectionRes;
 };
 
-type CollectionsManagerGetCollectionsByUser = {
+type CollectionsServiceGetCollectionsByUser = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.GetCollectionsReq;
   readonly responseType: typeof collections_pb.GetCollectionsRes;
 };
 
-type CollectionsManagerGetCollection = {
+type CollectionsServiceGetCollectionsByGenre = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.CollectionsByGenreReq;
+  readonly responseType: typeof collections_pb.GetCollectionsRes;
+};
+
+type CollectionsServiceGetCollection = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.GetCollectionReq;
   readonly responseType: typeof collections_pb.GetCollectionRes;
 };
 
-type CollectionsManagerUpdateCollection = {
+type CollectionsServiceUpdateCollection = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.UpdateCollectionReq;
   readonly responseType: typeof collections_pb.UpdateCollectionRes;
 };
 
-type CollectionsManagerDeleteCollection = {
+type CollectionsServiceDeleteCollection = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.DeleteCollectionReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type CollectionsManagerShareWithUser = {
+type CollectionsServiceShareWithUser = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.ShareWithUserReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type CollectionsManagerAddDocument = {
+type CollectionsServiceAddDocument = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.AddDocumentReq;
   readonly responseType: typeof collections_pb.AddDocumentRes;
 };
 
-type CollectionsManagerDeleteDocument = {
+type CollectionsServiceDeleteDocument = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.DeleteDocumentReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type CollectionsManagerGetAlbumInfo = {
+type CollectionsServiceGetAlbumInfo = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.GetAlbumInfoReq;
   readonly responseType: typeof collections_pb.GetAlbumInfoRes;
 };
 
-type CollectionsManagerGetUserInfo = {
+type CollectionsServiceGetUserInfo = {
   readonly methodName: string;
-  readonly service: typeof CollectionsManager;
+  readonly service: typeof CollectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.GetUserInfoReq;
   readonly responseType: typeof collections_pb.GetUserInfoRes;
 };
 
-export class CollectionsManager {
+export class CollectionsService {
   static readonly serviceName: string;
-  static readonly NewCollection: CollectionsManagerNewCollection;
-  static readonly GetCollectionsByUser: CollectionsManagerGetCollectionsByUser;
-  static readonly GetCollection: CollectionsManagerGetCollection;
-  static readonly UpdateCollection: CollectionsManagerUpdateCollection;
-  static readonly DeleteCollection: CollectionsManagerDeleteCollection;
-  static readonly ShareWithUser: CollectionsManagerShareWithUser;
-  static readonly AddDocument: CollectionsManagerAddDocument;
-  static readonly DeleteDocument: CollectionsManagerDeleteDocument;
-  static readonly GetAlbumInfo: CollectionsManagerGetAlbumInfo;
-  static readonly GetUserInfo: CollectionsManagerGetUserInfo;
+  static readonly NewCollection: CollectionsServiceNewCollection;
+  static readonly GetCollectionsByUser: CollectionsServiceGetCollectionsByUser;
+  static readonly GetCollectionsByGenre: CollectionsServiceGetCollectionsByGenre;
+  static readonly GetCollection: CollectionsServiceGetCollection;
+  static readonly UpdateCollection: CollectionsServiceUpdateCollection;
+  static readonly DeleteCollection: CollectionsServiceDeleteCollection;
+  static readonly ShareWithUser: CollectionsServiceShareWithUser;
+  static readonly AddDocument: CollectionsServiceAddDocument;
+  static readonly DeleteDocument: CollectionsServiceDeleteDocument;
+  static readonly GetAlbumInfo: CollectionsServiceGetAlbumInfo;
+  static readonly GetUserInfo: CollectionsServiceGetUserInfo;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -137,7 +147,7 @@ interface BidirectionalStream<ReqT, ResT> {
   on(type: 'status', handler: (status: Status) => void): BidirectionalStream<ReqT, ResT>;
 }
 
-export class CollectionsManagerClient {
+export class CollectionsServiceClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
@@ -157,6 +167,15 @@ export class CollectionsManagerClient {
   ): UnaryResponse;
   getCollectionsByUser(
     requestMessage: collections_pb.GetCollectionsReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionsRes|null) => void
+  ): UnaryResponse;
+  getCollectionsByGenre(
+    requestMessage: collections_pb.CollectionsByGenreReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionsRes|null) => void
+  ): UnaryResponse;
+  getCollectionsByGenre(
+    requestMessage: collections_pb.CollectionsByGenreReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionsRes|null) => void
   ): UnaryResponse;
   getCollection(

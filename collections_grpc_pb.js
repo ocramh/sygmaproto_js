@@ -41,6 +41,17 @@ function deserialize_sygma_pb_AddDocumentRes(buffer_arg) {
   return collections_pb.AddDocumentRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_CollectionsByGenreReq(arg) {
+  if (!(arg instanceof collections_pb.CollectionsByGenreReq)) {
+    throw new Error('Expected argument of type sygma_pb.CollectionsByGenreReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_CollectionsByGenreReq(buffer_arg) {
+  return collections_pb.CollectionsByGenreReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_DeleteCollectionReq(arg) {
   if (!(arg instanceof collections_pb.DeleteCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.DeleteCollectionReq');
@@ -207,10 +218,10 @@ function deserialize_sygma_pb_UpdateCollectionRes(buffer_arg) {
 }
 
 
-var CollectionsManagerService = exports.CollectionsManagerService = {
+var CollectionsServiceService = exports.CollectionsServiceService = {
   // Collection creates a new Collection
 newCollection: {
-    path: '/sygma_pb.CollectionsManager/NewCollection',
+    path: '/sygma_pb.CollectionsService/NewCollection',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.NewCollectionReq,
@@ -222,7 +233,7 @@ newCollection: {
   },
   // GetCollectionsByUser returns Collections created by or shared with a user
 getCollectionsByUser: {
-    path: '/sygma_pb.CollectionsManager/GetCollectionsByUser',
+    path: '/sygma_pb.CollectionsService/GetCollectionsByUser',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.GetCollectionsReq,
@@ -232,9 +243,21 @@ getCollectionsByUser: {
     responseSerialize: serialize_sygma_pb_GetCollectionsRes,
     responseDeserialize: deserialize_sygma_pb_GetCollectionsRes,
   },
+  // GetCollectionsByGenre returns Collections containing albums of a certain genre
+getCollectionsByGenre: {
+    path: '/sygma_pb.CollectionsService/GetCollectionsByGenre',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.CollectionsByGenreReq,
+    responseType: collections_pb.GetCollectionsRes,
+    requestSerialize: serialize_sygma_pb_CollectionsByGenreReq,
+    requestDeserialize: deserialize_sygma_pb_CollectionsByGenreReq,
+    responseSerialize: serialize_sygma_pb_GetCollectionsRes,
+    responseDeserialize: deserialize_sygma_pb_GetCollectionsRes,
+  },
   // GetCollection returns a single Collection
 getCollection: {
-    path: '/sygma_pb.CollectionsManager/GetCollection',
+    path: '/sygma_pb.CollectionsService/GetCollection',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.GetCollectionReq,
@@ -246,7 +269,7 @@ getCollection: {
   },
   // UpdateCollection updates an existing collection info
 updateCollection: {
-    path: '/sygma_pb.CollectionsManager/UpdateCollection',
+    path: '/sygma_pb.CollectionsService/UpdateCollection',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.UpdateCollectionReq,
@@ -259,7 +282,7 @@ updateCollection: {
   // DeleteCollection removes a Collection. Only owners should be allowed to perform
 // this operation
 deleteCollection: {
-    path: '/sygma_pb.CollectionsManager/DeleteCollection',
+    path: '/sygma_pb.CollectionsService/DeleteCollection',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.DeleteCollectionReq,
@@ -271,7 +294,7 @@ deleteCollection: {
   },
   // ShareWithUser grants access to a Collection to a user
 shareWithUser: {
-    path: '/sygma_pb.CollectionsManager/ShareWithUser',
+    path: '/sygma_pb.CollectionsService/ShareWithUser',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.ShareWithUserReq,
@@ -283,7 +306,7 @@ shareWithUser: {
   },
   // AddDocument includes a new document to an existing Collection
 addDocument: {
-    path: '/sygma_pb.CollectionsManager/AddDocument',
+    path: '/sygma_pb.CollectionsService/AddDocument',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.AddDocumentReq,
@@ -295,7 +318,7 @@ addDocument: {
   },
   // DeleteDocument removes a document from a collection
 deleteDocument: {
-    path: '/sygma_pb.CollectionsManager/DeleteDocument',
+    path: '/sygma_pb.CollectionsService/DeleteDocument',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.DeleteDocumentReq,
@@ -308,7 +331,7 @@ deleteDocument: {
   // GetAlbumInfo returns information about a single album including the collections
 // it has been included in and the users that uploaded it
 getAlbumInfo: {
-    path: '/sygma_pb.CollectionsManager/GetAlbumInfo',
+    path: '/sygma_pb.CollectionsService/GetAlbumInfo',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.GetAlbumInfoReq,
@@ -320,7 +343,7 @@ getAlbumInfo: {
   },
   // GetUserInfo returns information about a user's collections and uploads
 getUserInfo: {
-    path: '/sygma_pb.CollectionsManager/GetUserInfo',
+    path: '/sygma_pb.CollectionsService/GetUserInfo',
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.GetUserInfoReq,
@@ -332,4 +355,4 @@ getUserInfo: {
   },
 };
 
-exports.CollectionsManagerClient = grpc.makeGenericClientConstructor(CollectionsManagerService);
+exports.CollectionsServiceClient = grpc.makeGenericClientConstructor(CollectionsServiceService);

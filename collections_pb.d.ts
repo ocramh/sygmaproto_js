@@ -267,6 +267,30 @@ export namespace GetCollectionsRes {
   }
 }
 
+export class CollectionsByGenreReq extends jspb.Message {
+  getGenre(): string;
+  setGenre(value: string): void;
+
+  getLimit(): number;
+  setLimit(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CollectionsByGenreReq.AsObject;
+  static toObject(includeInstance: boolean, msg: CollectionsByGenreReq): CollectionsByGenreReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CollectionsByGenreReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CollectionsByGenreReq;
+  static deserializeBinaryFromReader(message: CollectionsByGenreReq, reader: jspb.BinaryReader): CollectionsByGenreReq;
+}
+
+export namespace CollectionsByGenreReq {
+  export type AsObject = {
+    genre: string,
+    limit: number,
+  }
+}
+
 export class GetCollectionReq extends jspb.Message {
   getCollectionid(): string;
   setCollectionid(value: string): void;

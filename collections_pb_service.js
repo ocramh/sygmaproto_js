@@ -5,114 +5,123 @@ var collections_pb = require("./collections_pb");
 var google_protobuf_empty_pb = require("google-protobuf/google/protobuf/empty_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var CollectionsManager = (function () {
-  function CollectionsManager() {}
-  CollectionsManager.serviceName = "sygma_pb.CollectionsManager";
-  return CollectionsManager;
+var CollectionsService = (function () {
+  function CollectionsService() {}
+  CollectionsService.serviceName = "sygma_pb.CollectionsService";
+  return CollectionsService;
 }());
 
-CollectionsManager.NewCollection = {
+CollectionsService.NewCollection = {
   methodName: "NewCollection",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.NewCollectionReq,
   responseType: collections_pb.NewCollectionRes
 };
 
-CollectionsManager.GetCollectionsByUser = {
+CollectionsService.GetCollectionsByUser = {
   methodName: "GetCollectionsByUser",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.GetCollectionsReq,
   responseType: collections_pb.GetCollectionsRes
 };
 
-CollectionsManager.GetCollection = {
+CollectionsService.GetCollectionsByGenre = {
+  methodName: "GetCollectionsByGenre",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.CollectionsByGenreReq,
+  responseType: collections_pb.GetCollectionsRes
+};
+
+CollectionsService.GetCollection = {
   methodName: "GetCollection",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.GetCollectionReq,
   responseType: collections_pb.GetCollectionRes
 };
 
-CollectionsManager.UpdateCollection = {
+CollectionsService.UpdateCollection = {
   methodName: "UpdateCollection",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.UpdateCollectionReq,
   responseType: collections_pb.UpdateCollectionRes
 };
 
-CollectionsManager.DeleteCollection = {
+CollectionsService.DeleteCollection = {
   methodName: "DeleteCollection",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.DeleteCollectionReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-CollectionsManager.ShareWithUser = {
+CollectionsService.ShareWithUser = {
   methodName: "ShareWithUser",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.ShareWithUserReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-CollectionsManager.AddDocument = {
+CollectionsService.AddDocument = {
   methodName: "AddDocument",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.AddDocumentReq,
   responseType: collections_pb.AddDocumentRes
 };
 
-CollectionsManager.DeleteDocument = {
+CollectionsService.DeleteDocument = {
   methodName: "DeleteDocument",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.DeleteDocumentReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-CollectionsManager.GetAlbumInfo = {
+CollectionsService.GetAlbumInfo = {
   methodName: "GetAlbumInfo",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.GetAlbumInfoReq,
   responseType: collections_pb.GetAlbumInfoRes
 };
 
-CollectionsManager.GetUserInfo = {
+CollectionsService.GetUserInfo = {
   methodName: "GetUserInfo",
-  service: CollectionsManager,
+  service: CollectionsService,
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.GetUserInfoReq,
   responseType: collections_pb.GetUserInfoRes
 };
 
-exports.CollectionsManager = CollectionsManager;
+exports.CollectionsService = CollectionsService;
 
-function CollectionsManagerClient(serviceHost, options) {
+function CollectionsServiceClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
 
-CollectionsManagerClient.prototype.newCollection = function newCollection(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.newCollection = function newCollection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.NewCollection, {
+  var client = grpc.unary(CollectionsService.NewCollection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -139,11 +148,11 @@ CollectionsManagerClient.prototype.newCollection = function newCollection(reques
   };
 };
 
-CollectionsManagerClient.prototype.getCollectionsByUser = function getCollectionsByUser(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.getCollectionsByUser = function getCollectionsByUser(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.GetCollectionsByUser, {
+  var client = grpc.unary(CollectionsService.GetCollectionsByUser, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -170,11 +179,11 @@ CollectionsManagerClient.prototype.getCollectionsByUser = function getCollection
   };
 };
 
-CollectionsManagerClient.prototype.getCollection = function getCollection(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.getCollectionsByGenre = function getCollectionsByGenre(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.GetCollection, {
+  var client = grpc.unary(CollectionsService.GetCollectionsByGenre, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -201,11 +210,11 @@ CollectionsManagerClient.prototype.getCollection = function getCollection(reques
   };
 };
 
-CollectionsManagerClient.prototype.updateCollection = function updateCollection(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.getCollection = function getCollection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.UpdateCollection, {
+  var client = grpc.unary(CollectionsService.GetCollection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -232,11 +241,11 @@ CollectionsManagerClient.prototype.updateCollection = function updateCollection(
   };
 };
 
-CollectionsManagerClient.prototype.deleteCollection = function deleteCollection(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.updateCollection = function updateCollection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.DeleteCollection, {
+  var client = grpc.unary(CollectionsService.UpdateCollection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -263,11 +272,11 @@ CollectionsManagerClient.prototype.deleteCollection = function deleteCollection(
   };
 };
 
-CollectionsManagerClient.prototype.shareWithUser = function shareWithUser(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.deleteCollection = function deleteCollection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.ShareWithUser, {
+  var client = grpc.unary(CollectionsService.DeleteCollection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -294,11 +303,11 @@ CollectionsManagerClient.prototype.shareWithUser = function shareWithUser(reques
   };
 };
 
-CollectionsManagerClient.prototype.addDocument = function addDocument(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.shareWithUser = function shareWithUser(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.AddDocument, {
+  var client = grpc.unary(CollectionsService.ShareWithUser, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -325,11 +334,11 @@ CollectionsManagerClient.prototype.addDocument = function addDocument(requestMes
   };
 };
 
-CollectionsManagerClient.prototype.deleteDocument = function deleteDocument(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.addDocument = function addDocument(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.DeleteDocument, {
+  var client = grpc.unary(CollectionsService.AddDocument, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -356,11 +365,11 @@ CollectionsManagerClient.prototype.deleteDocument = function deleteDocument(requ
   };
 };
 
-CollectionsManagerClient.prototype.getAlbumInfo = function getAlbumInfo(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.deleteDocument = function deleteDocument(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.GetAlbumInfo, {
+  var client = grpc.unary(CollectionsService.DeleteDocument, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -387,11 +396,11 @@ CollectionsManagerClient.prototype.getAlbumInfo = function getAlbumInfo(requestM
   };
 };
 
-CollectionsManagerClient.prototype.getUserInfo = function getUserInfo(requestMessage, metadata, callback) {
+CollectionsServiceClient.prototype.getAlbumInfo = function getAlbumInfo(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(CollectionsManager.GetUserInfo, {
+  var client = grpc.unary(CollectionsService.GetAlbumInfo, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -418,5 +427,36 @@ CollectionsManagerClient.prototype.getUserInfo = function getUserInfo(requestMes
   };
 };
 
-exports.CollectionsManagerClient = CollectionsManagerClient;
+CollectionsServiceClient.prototype.getUserInfo = function getUserInfo(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.GetUserInfo, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+exports.CollectionsServiceClient = CollectionsServiceClient;
 
