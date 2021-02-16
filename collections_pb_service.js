@@ -35,7 +35,7 @@ CollectionsService.GetCollectionsByGenre = {
   requestStream: false,
   responseStream: false,
   requestType: collections_pb.CollectionsByGenreReq,
-  responseType: collections_pb.GetCollectionsRes
+  responseType: collections_pb.CollectionsByGenreRes
 };
 
 CollectionsService.GetCollection = {

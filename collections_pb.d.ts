@@ -291,6 +291,28 @@ export namespace CollectionsByGenreReq {
   }
 }
 
+export class CollectionsByGenreRes extends jspb.Message {
+  clearCollectionsinfoList(): void;
+  getCollectionsinfoList(): Array<CollectionShortInfo>;
+  setCollectionsinfoList(value: Array<CollectionShortInfo>): void;
+  addCollectionsinfo(value?: CollectionShortInfo, index?: number): CollectionShortInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CollectionsByGenreRes.AsObject;
+  static toObject(includeInstance: boolean, msg: CollectionsByGenreRes): CollectionsByGenreRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CollectionsByGenreRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CollectionsByGenreRes;
+  static deserializeBinaryFromReader(message: CollectionsByGenreRes, reader: jspb.BinaryReader): CollectionsByGenreRes;
+}
+
+export namespace CollectionsByGenreRes {
+  export type AsObject = {
+    collectionsinfoList: Array<CollectionShortInfo.AsObject>,
+  }
+}
+
 export class GetCollectionReq extends jspb.Message {
   getCollectionid(): string;
   setCollectionid(value: string): void;
@@ -574,6 +596,11 @@ export class CollectionShortInfo extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
+  hasUpdatedat(): boolean;
+  clearUpdatedat(): void;
+  getUpdatedat(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setUpdatedat(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
   getDocumentscount(): number;
   setDocumentscount(value: number): void;
 
@@ -594,6 +621,7 @@ export namespace CollectionShortInfo {
   export type AsObject = {
     id: string,
     name: string,
+    updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     documentscount: number,
     userscount: number,
   }

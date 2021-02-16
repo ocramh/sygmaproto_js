@@ -29,7 +29,7 @@ type CollectionsServiceGetCollectionsByGenre = {
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof collections_pb.CollectionsByGenreReq;
-  readonly responseType: typeof collections_pb.GetCollectionsRes;
+  readonly responseType: typeof collections_pb.CollectionsByGenreRes;
 };
 
 type CollectionsServiceGetCollection = {
@@ -172,11 +172,11 @@ export class CollectionsServiceClient {
   getCollectionsByGenre(
     requestMessage: collections_pb.CollectionsByGenreReq,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionsRes|null) => void
+    callback: (error: ServiceError|null, responseMessage: collections_pb.CollectionsByGenreRes|null) => void
   ): UnaryResponse;
   getCollectionsByGenre(
     requestMessage: collections_pb.CollectionsByGenreReq,
-    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionsRes|null) => void
+    callback: (error: ServiceError|null, responseMessage: collections_pb.CollectionsByGenreRes|null) => void
   ): UnaryResponse;
   getCollection(
     requestMessage: collections_pb.GetCollectionReq,

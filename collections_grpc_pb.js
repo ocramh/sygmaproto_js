@@ -52,6 +52,17 @@ function deserialize_sygma_pb_CollectionsByGenreReq(buffer_arg) {
   return collections_pb.CollectionsByGenreReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_CollectionsByGenreRes(arg) {
+  if (!(arg instanceof collections_pb.CollectionsByGenreRes)) {
+    throw new Error('Expected argument of type sygma_pb.CollectionsByGenreRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_CollectionsByGenreRes(buffer_arg) {
+  return collections_pb.CollectionsByGenreRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_DeleteCollectionReq(arg) {
   if (!(arg instanceof collections_pb.DeleteCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.DeleteCollectionReq');
@@ -249,11 +260,11 @@ getCollectionsByGenre: {
     requestStream: false,
     responseStream: false,
     requestType: collections_pb.CollectionsByGenreReq,
-    responseType: collections_pb.GetCollectionsRes,
+    responseType: collections_pb.CollectionsByGenreRes,
     requestSerialize: serialize_sygma_pb_CollectionsByGenreReq,
     requestDeserialize: deserialize_sygma_pb_CollectionsByGenreReq,
-    responseSerialize: serialize_sygma_pb_GetCollectionsRes,
-    responseDeserialize: deserialize_sygma_pb_GetCollectionsRes,
+    responseSerialize: serialize_sygma_pb_CollectionsByGenreRes,
+    responseDeserialize: deserialize_sygma_pb_CollectionsByGenreRes,
   },
   // GetCollection returns a single Collection
 getCollection: {
