@@ -24,6 +24,11 @@ export class AlbumsForUserReq extends jspb.Message {
   setConectionidsList(value: Array<string>): void;
   addConectionids(value: string, index?: number): string;
 
+  clearFavouritegenresList(): void;
+  getFavouritegenresList(): Array<string>;
+  setFavouritegenresList(value: Array<string>): void;
+  addFavouritegenres(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AlbumsForUserReq.AsObject;
   static toObject(includeInstance: boolean, msg: AlbumsForUserReq): AlbumsForUserReq.AsObject;
@@ -40,6 +45,7 @@ export namespace AlbumsForUserReq {
     queryfrom?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     queryto?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     conectionidsList: Array<string>,
+    favouritegenresList: Array<string>,
   }
 }
 

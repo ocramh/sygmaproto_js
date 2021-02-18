@@ -68,7 +68,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.AlbumsForUserReq.repeatedFields_ = [4];
+proto.sygma_pb.AlbumsForUserReq.repeatedFields_ = [4,5];
 
 
 
@@ -104,7 +104,8 @@ proto.sygma_pb.AlbumsForUserReq.toObject = function(includeInstance, msg) {
     userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     queryfrom: (f = msg.getQueryfrom()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     queryto: (f = msg.getQueryto()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    conectionidsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f
+    conectionidsList: (f = jspb.Message.getRepeatedField(msg, 4)) == null ? undefined : f,
+    favouritegenresList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -158,6 +159,10 @@ proto.sygma_pb.AlbumsForUserReq.deserializeBinaryFromReader = function(msg, read
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.addConectionids(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addFavouritegenres(value);
       break;
     default:
       reader.skipField();
@@ -215,6 +220,13 @@ proto.sygma_pb.AlbumsForUserReq.serializeBinaryToWriter = function(message, writ
   if (f.length > 0) {
     writer.writeRepeatedString(
       4,
+      f
+    );
+  }
+  f = message.getFavouritegenresList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      5,
       f
     );
   }
@@ -347,6 +359,43 @@ proto.sygma_pb.AlbumsForUserReq.prototype.addConectionids = function(value, opt_
  */
 proto.sygma_pb.AlbumsForUserReq.prototype.clearConectionidsList = function() {
   return this.setConectionidsList([]);
+};
+
+
+/**
+ * repeated string favouriteGenres = 5;
+ * @return {!Array<string>}
+ */
+proto.sygma_pb.AlbumsForUserReq.prototype.getFavouritegenresList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sygma_pb.AlbumsForUserReq} returns this
+ */
+proto.sygma_pb.AlbumsForUserReq.prototype.setFavouritegenresList = function(value) {
+  return jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sygma_pb.AlbumsForUserReq} returns this
+ */
+proto.sygma_pb.AlbumsForUserReq.prototype.addFavouritegenres = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sygma_pb.AlbumsForUserReq} returns this
+ */
+proto.sygma_pb.AlbumsForUserReq.prototype.clearFavouritegenresList = function() {
+  return this.setFavouritegenresList([]);
 };
 
 
