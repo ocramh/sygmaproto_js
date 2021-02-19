@@ -578,7 +578,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.CollectionInfo.repeatedFields_ = [8,11];
+proto.sygma_pb.CollectionInfo.repeatedFields_ = [8,12];
 
 
 
@@ -622,9 +622,10 @@ proto.sygma_pb.CollectionInfo.toObject = function(includeInstance, msg) {
     connections_pb.User.toObject, includeInstance),
     collaboratorscount: jspb.Message.getFieldWithDefault(msg, 9, 0),
     subscriberscount: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    tagsList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
-    pb_private: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
-    readOnly: jspb.Message.getBooleanFieldWithDefault(msg, 13, false)
+    documentscount: jspb.Message.getFieldWithDefault(msg, 11, 0),
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f,
+    pb_private: jspb.Message.getBooleanFieldWithDefault(msg, 13, false),
+    readOnly: jspb.Message.getBooleanFieldWithDefault(msg, 14, false)
   };
 
   if (includeInstance) {
@@ -706,14 +707,18 @@ proto.sygma_pb.CollectionInfo.deserializeBinaryFromReader = function(msg, reader
       msg.setSubscriberscount(value);
       break;
     case 11:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setDocumentscount(value);
+      break;
+    case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.addTags(value);
       break;
-    case 12:
+    case 13:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setPrivate(value);
       break;
-    case 13:
+    case 14:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setReadOnly(value);
       break;
@@ -820,24 +825,31 @@ proto.sygma_pb.CollectionInfo.serializeBinaryToWriter = function(message, writer
       f
     );
   }
+  f = message.getDocumentscount();
+  if (f !== 0) {
+    writer.writeInt32(
+      11,
+      f
+    );
+  }
   f = message.getTagsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      11,
+      12,
       f
     );
   }
   f = message.getPrivate();
   if (f) {
     writer.writeBool(
-      12,
+      13,
       f
     );
   }
   f = message.getReadOnly();
   if (f) {
     writer.writeBool(
-      13,
+      14,
       f
     );
   }
@@ -1102,11 +1114,29 @@ proto.sygma_pb.CollectionInfo.prototype.setSubscriberscount = function(value) {
 
 
 /**
- * repeated string tags = 11;
+ * optional int32 documentsCount = 11;
+ * @return {number}
+ */
+proto.sygma_pb.CollectionInfo.prototype.getDocumentscount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sygma_pb.CollectionInfo} returns this
+ */
+proto.sygma_pb.CollectionInfo.prototype.setDocumentscount = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+/**
+ * repeated string tags = 12;
  * @return {!Array<string>}
  */
 proto.sygma_pb.CollectionInfo.prototype.getTagsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 12));
 };
 
 
@@ -1115,7 +1145,7 @@ proto.sygma_pb.CollectionInfo.prototype.getTagsList = function() {
  * @return {!proto.sygma_pb.CollectionInfo} returns this
  */
 proto.sygma_pb.CollectionInfo.prototype.setTagsList = function(value) {
-  return jspb.Message.setField(this, 11, value || []);
+  return jspb.Message.setField(this, 12, value || []);
 };
 
 
@@ -1125,7 +1155,7 @@ proto.sygma_pb.CollectionInfo.prototype.setTagsList = function(value) {
  * @return {!proto.sygma_pb.CollectionInfo} returns this
  */
 proto.sygma_pb.CollectionInfo.prototype.addTags = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 12, value, opt_index);
 };
 
 
@@ -1139,28 +1169,10 @@ proto.sygma_pb.CollectionInfo.prototype.clearTagsList = function() {
 
 
 /**
- * optional bool private = 12;
+ * optional bool private = 13;
  * @return {boolean}
  */
 proto.sygma_pb.CollectionInfo.prototype.getPrivate = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
-};
-
-
-/**
- * @param {boolean} value
- * @return {!proto.sygma_pb.CollectionInfo} returns this
- */
-proto.sygma_pb.CollectionInfo.prototype.setPrivate = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 12, value);
-};
-
-
-/**
- * optional bool read_only = 13;
- * @return {boolean}
- */
-proto.sygma_pb.CollectionInfo.prototype.getReadOnly = function() {
   return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 13, false));
 };
 
@@ -1169,8 +1181,26 @@ proto.sygma_pb.CollectionInfo.prototype.getReadOnly = function() {
  * @param {boolean} value
  * @return {!proto.sygma_pb.CollectionInfo} returns this
  */
-proto.sygma_pb.CollectionInfo.prototype.setReadOnly = function(value) {
+proto.sygma_pb.CollectionInfo.prototype.setPrivate = function(value) {
   return jspb.Message.setProto3BooleanField(this, 13, value);
+};
+
+
+/**
+ * optional bool read_only = 14;
+ * @return {boolean}
+ */
+proto.sygma_pb.CollectionInfo.prototype.getReadOnly = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 14, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sygma_pb.CollectionInfo} returns this
+ */
+proto.sygma_pb.CollectionInfo.prototype.setReadOnly = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 14, value);
 };
 
 

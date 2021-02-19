@@ -46,6 +46,9 @@ export class CollectionInfo extends jspb.Message {
   getSubscriberscount(): number;
   setSubscriberscount(value: number): void;
 
+  getDocumentscount(): number;
+  setDocumentscount(value: number): void;
+
   clearTagsList(): void;
   getTagsList(): Array<string>;
   setTagsList(value: Array<string>): void;
@@ -79,6 +82,7 @@ export namespace CollectionInfo {
     collaboratorsList: Array<connections_pb.User.AsObject>,
     collaboratorscount: number,
     subscriberscount: number,
+    documentscount: number,
     tagsList: Array<string>,
     pb_private: boolean,
     readOnly: boolean,
