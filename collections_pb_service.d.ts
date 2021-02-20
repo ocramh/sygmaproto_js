@@ -104,6 +104,15 @@ type CollectionsServiceGetUserInfo = {
   readonly responseType: typeof collections_pb.GetUserInfoRes;
 };
 
+type CollectionsServiceGetGenres = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetGenresReq;
+  readonly responseType: typeof collections_pb.GetGenresRes;
+};
+
 export class CollectionsService {
   static readonly serviceName: string;
   static readonly NewCollection: CollectionsServiceNewCollection;
@@ -117,6 +126,7 @@ export class CollectionsService {
   static readonly DeleteDocument: CollectionsServiceDeleteDocument;
   static readonly GetAlbumInfo: CollectionsServiceGetAlbumInfo;
   static readonly GetUserInfo: CollectionsServiceGetUserInfo;
+  static readonly GetGenres: CollectionsServiceGetGenres;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -249,6 +259,15 @@ export class CollectionsServiceClient {
   getUserInfo(
     requestMessage: collections_pb.GetUserInfoReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetUserInfoRes|null) => void
+  ): UnaryResponse;
+  getGenres(
+    requestMessage: collections_pb.GetGenresReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetGenresRes|null) => void
+  ): UnaryResponse;
+  getGenres(
+    requestMessage: collections_pb.GetGenresReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetGenresRes|null) => void
   ): UnaryResponse;
 }
 

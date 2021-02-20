@@ -757,3 +757,45 @@ export namespace CollectionItem {
   }
 }
 
+export class GetGenresReq extends jspb.Message {
+  getInuse(): boolean;
+  setInuse(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetGenresReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetGenresReq): GetGenresReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetGenresReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetGenresReq;
+  static deserializeBinaryFromReader(message: GetGenresReq, reader: jspb.BinaryReader): GetGenresReq;
+}
+
+export namespace GetGenresReq {
+  export type AsObject = {
+    inuse: boolean,
+  }
+}
+
+export class GetGenresRes extends jspb.Message {
+  clearGenresList(): void;
+  getGenresList(): Array<string>;
+  setGenresList(value: Array<string>): void;
+  addGenres(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetGenresRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetGenresRes): GetGenresRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetGenresRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetGenresRes;
+  static deserializeBinaryFromReader(message: GetGenresRes, reader: jspb.BinaryReader): GetGenresRes;
+}
+
+export namespace GetGenresRes {
+  export type AsObject = {
+    genresList: Array<string>,
+  }
+}
+

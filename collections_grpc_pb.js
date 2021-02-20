@@ -151,6 +151,28 @@ function deserialize_sygma_pb_GetCollectionsRes(buffer_arg) {
   return collections_pb.GetCollectionsRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetGenresReq(arg) {
+  if (!(arg instanceof collections_pb.GetGenresReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetGenresReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetGenresReq(buffer_arg) {
+  return collections_pb.GetGenresReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetGenresRes(arg) {
+  if (!(arg instanceof collections_pb.GetGenresRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetGenresRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetGenresRes(buffer_arg) {
+  return collections_pb.GetGenresRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetUserInfoReq(arg) {
   if (!(arg instanceof collections_pb.GetUserInfoReq)) {
     throw new Error('Expected argument of type sygma_pb.GetUserInfoReq');
@@ -363,6 +385,20 @@ getUserInfo: {
     requestDeserialize: deserialize_sygma_pb_GetUserInfoReq,
     responseSerialize: serialize_sygma_pb_GetUserInfoRes,
     responseDeserialize: deserialize_sygma_pb_GetUserInfoRes,
+  },
+  // GetGenres returns either the genres of music available on the platfom. If the
+// request inUse option is set to true the genres returned will only include the
+// genres in use by collections
+getGenres: {
+    path: '/sygma_pb.CollectionsService/GetGenres',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetGenresReq,
+    responseType: collections_pb.GetGenresRes,
+    requestSerialize: serialize_sygma_pb_GetGenresReq,
+    requestDeserialize: deserialize_sygma_pb_GetGenresReq,
+    responseSerialize: serialize_sygma_pb_GetGenresRes,
+    responseDeserialize: deserialize_sygma_pb_GetGenresRes,
   },
 };
 
