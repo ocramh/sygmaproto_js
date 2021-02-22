@@ -72,6 +72,28 @@ function deserialize_sygma_pb_DeleteAccountReq(buffer_arg) {
   return auth_pb.DeleteAccountReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetProfileReq(arg) {
+  if (!(arg instanceof auth_pb.GetProfileReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetProfileReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetProfileReq(buffer_arg) {
+  return auth_pb.GetProfileReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetProfileRes(arg) {
+  if (!(arg instanceof auth_pb.GetProfileRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetProfileRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetProfileRes(buffer_arg) {
+  return auth_pb.GetProfileRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_LoginReq(arg) {
   if (!(arg instanceof auth_pb.LoginReq)) {
     throw new Error('Expected argument of type sygma_pb.LoginReq');
@@ -150,11 +172,10 @@ function deserialize_sygma_pb_UpdateProfileReq(buffer_arg) {
 }
 
 
-// the Auth service definition
-var AuthService = exports.AuthService = {
+var AuthServiceService = exports.AuthServiceService = {
   // Creates a new user account
 createAccount: {
-    path: '/sygma_pb.Auth/CreateAccount',
+    path: '/sygma_pb.AuthService/CreateAccount',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.CreateAccountReq,
@@ -166,7 +187,7 @@ createAccount: {
   },
   // Activates the account
 activateAccount: {
-    path: '/sygma_pb.Auth/ActivateAccount',
+    path: '/sygma_pb.AuthService/ActivateAccount',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.ActivateAccountReq,
@@ -178,7 +199,7 @@ activateAccount: {
   },
   // Returns an access token that allows the user to access the Sygma services
 login: {
-    path: '/sygma_pb.Auth/Login',
+    path: '/sygma_pb.AuthService/Login',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.LoginReq,
@@ -190,7 +211,7 @@ login: {
   },
   // Returns a new access and refresh token for authenticated users
 refeshToken: {
-    path: '/sygma_pb.Auth/RefeshToken',
+    path: '/sygma_pb.AuthService/RefeshToken',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.RefeshTokenReq,
@@ -202,7 +223,7 @@ refeshToken: {
   },
   // Returns a URL that allows the user to reset his/her password
 requestPasswordReset: {
-    path: '/sygma_pb.Auth/RequestPasswordReset',
+    path: '/sygma_pb.AuthService/RequestPasswordReset',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.RequestPassResetReq,
@@ -214,7 +235,7 @@ requestPasswordReset: {
   },
   // Replaces the old password with a new one
 resetPassword: {
-    path: '/sygma_pb.Auth/ResetPassword',
+    path: '/sygma_pb.AuthService/ResetPassword',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.ResetPassReq,
@@ -226,7 +247,7 @@ resetPassword: {
   },
   // Deletes an existing account
 deleteAccount: {
-    path: '/sygma_pb.Auth/DeleteAccount',
+    path: '/sygma_pb.AuthService/DeleteAccount',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.DeleteAccountReq,
@@ -236,9 +257,21 @@ deleteAccount: {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // Updates an existing profile
+  // Returns an existing user profile
+getUserProfile: {
+    path: '/sygma_pb.AuthService/GetUserProfile',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.GetProfileReq,
+    responseType: auth_pb.GetProfileRes,
+    requestSerialize: serialize_sygma_pb_GetProfileReq,
+    requestDeserialize: deserialize_sygma_pb_GetProfileReq,
+    responseSerialize: serialize_sygma_pb_GetProfileRes,
+    responseDeserialize: deserialize_sygma_pb_GetProfileRes,
+  },
+  // Updates an existing user profile
 updateUserProfile: {
-    path: '/sygma_pb.Auth/UpdateUserProfile',
+    path: '/sygma_pb.AuthService/UpdateUserProfile',
     requestStream: false,
     responseStream: false,
     requestType: auth_pb.UpdateProfileReq,
@@ -250,4 +283,4 @@ updateUserProfile: {
   },
 };
 
-exports.AuthClient = grpc.makeGenericClientConstructor(AuthService);
+exports.AuthServiceClient = grpc.makeGenericClientConstructor(AuthServiceService);

@@ -5,88 +5,98 @@ import * as auth_pb from "./auth_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type AuthCreateAccount = {
+type AuthServiceCreateAccount = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.CreateAccountReq;
   readonly responseType: typeof auth_pb.CreateAccountResp;
 };
 
-type AuthActivateAccount = {
+type AuthServiceActivateAccount = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.ActivateAccountReq;
   readonly responseType: typeof auth_pb.ActivateAccountResp;
 };
 
-type AuthLogin = {
+type AuthServiceLogin = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.LoginReq;
   readonly responseType: typeof auth_pb.LoginResp;
 };
 
-type AuthRefeshToken = {
+type AuthServiceRefeshToken = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.RefeshTokenReq;
   readonly responseType: typeof auth_pb.RefeshTokenRes;
 };
 
-type AuthRequestPasswordReset = {
+type AuthServiceRequestPasswordReset = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.RequestPassResetReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type AuthResetPassword = {
+type AuthServiceResetPassword = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.ResetPassReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type AuthDeleteAccount = {
+type AuthServiceDeleteAccount = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.DeleteAccountReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type AuthUpdateUserProfile = {
+type AuthServiceGetUserProfile = {
   readonly methodName: string;
-  readonly service: typeof Auth;
+  readonly service: typeof AuthService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof auth_pb.GetProfileReq;
+  readonly responseType: typeof auth_pb.GetProfileRes;
+};
+
+type AuthServiceUpdateUserProfile = {
+  readonly methodName: string;
+  readonly service: typeof AuthService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof auth_pb.UpdateProfileReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-export class Auth {
+export class AuthService {
   static readonly serviceName: string;
-  static readonly CreateAccount: AuthCreateAccount;
-  static readonly ActivateAccount: AuthActivateAccount;
-  static readonly Login: AuthLogin;
-  static readonly RefeshToken: AuthRefeshToken;
-  static readonly RequestPasswordReset: AuthRequestPasswordReset;
-  static readonly ResetPassword: AuthResetPassword;
-  static readonly DeleteAccount: AuthDeleteAccount;
-  static readonly UpdateUserProfile: AuthUpdateUserProfile;
+  static readonly CreateAccount: AuthServiceCreateAccount;
+  static readonly ActivateAccount: AuthServiceActivateAccount;
+  static readonly Login: AuthServiceLogin;
+  static readonly RefeshToken: AuthServiceRefeshToken;
+  static readonly RequestPasswordReset: AuthServiceRequestPasswordReset;
+  static readonly ResetPassword: AuthServiceResetPassword;
+  static readonly DeleteAccount: AuthServiceDeleteAccount;
+  static readonly GetUserProfile: AuthServiceGetUserProfile;
+  static readonly UpdateUserProfile: AuthServiceUpdateUserProfile;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -117,7 +127,7 @@ interface BidirectionalStream<ReqT, ResT> {
   on(type: 'status', handler: (status: Status) => void): BidirectionalStream<ReqT, ResT>;
 }
 
-export class AuthClient {
+export class AuthServiceClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
@@ -183,6 +193,15 @@ export class AuthClient {
   deleteAccount(
     requestMessage: auth_pb.DeleteAccountReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  getUserProfile(
+    requestMessage: auth_pb.GetProfileReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.GetProfileRes|null) => void
+  ): UnaryResponse;
+  getUserProfile(
+    requestMessage: auth_pb.GetProfileReq,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.GetProfileRes|null) => void
   ): UnaryResponse;
   updateUserProfile(
     requestMessage: auth_pb.UpdateProfileReq,

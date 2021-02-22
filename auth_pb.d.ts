@@ -291,6 +291,48 @@ export namespace DeleteAccountReq {
   }
 }
 
+export class GetProfileReq extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetProfileReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetProfileReq): GetProfileReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetProfileReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetProfileReq;
+  static deserializeBinaryFromReader(message: GetProfileReq, reader: jspb.BinaryReader): GetProfileReq;
+}
+
+export namespace GetProfileReq {
+  export type AsObject = {
+    userid: string,
+  }
+}
+
+export class GetProfileRes extends jspb.Message {
+  hasProfile(): boolean;
+  clearProfile(): void;
+  getProfile(): UserProfile | undefined;
+  setProfile(value?: UserProfile): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetProfileRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetProfileRes): GetProfileRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetProfileRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetProfileRes;
+  static deserializeBinaryFromReader(message: GetProfileRes, reader: jspb.BinaryReader): GetProfileRes;
+}
+
+export namespace GetProfileRes {
+  export type AsObject = {
+    profile?: UserProfile.AsObject,
+  }
+}
+
 export class UpdateProfileReq extends jspb.Message {
   hasProfile(): boolean;
   clearProfile(): void;

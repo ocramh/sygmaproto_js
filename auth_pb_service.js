@@ -5,96 +5,105 @@ var auth_pb = require("./auth_pb");
 var google_protobuf_empty_pb = require("google-protobuf/google/protobuf/empty_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var Auth = (function () {
-  function Auth() {}
-  Auth.serviceName = "sygma_pb.Auth";
-  return Auth;
+var AuthService = (function () {
+  function AuthService() {}
+  AuthService.serviceName = "sygma_pb.AuthService";
+  return AuthService;
 }());
 
-Auth.CreateAccount = {
+AuthService.CreateAccount = {
   methodName: "CreateAccount",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.CreateAccountReq,
   responseType: auth_pb.CreateAccountResp
 };
 
-Auth.ActivateAccount = {
+AuthService.ActivateAccount = {
   methodName: "ActivateAccount",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.ActivateAccountReq,
   responseType: auth_pb.ActivateAccountResp
 };
 
-Auth.Login = {
+AuthService.Login = {
   methodName: "Login",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.LoginReq,
   responseType: auth_pb.LoginResp
 };
 
-Auth.RefeshToken = {
+AuthService.RefeshToken = {
   methodName: "RefeshToken",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.RefeshTokenReq,
   responseType: auth_pb.RefeshTokenRes
 };
 
-Auth.RequestPasswordReset = {
+AuthService.RequestPasswordReset = {
   methodName: "RequestPasswordReset",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.RequestPassResetReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-Auth.ResetPassword = {
+AuthService.ResetPassword = {
   methodName: "ResetPassword",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.ResetPassReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-Auth.DeleteAccount = {
+AuthService.DeleteAccount = {
   methodName: "DeleteAccount",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.DeleteAccountReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-Auth.UpdateUserProfile = {
+AuthService.GetUserProfile = {
+  methodName: "GetUserProfile",
+  service: AuthService,
+  requestStream: false,
+  responseStream: false,
+  requestType: auth_pb.GetProfileReq,
+  responseType: auth_pb.GetProfileRes
+};
+
+AuthService.UpdateUserProfile = {
   methodName: "UpdateUserProfile",
-  service: Auth,
+  service: AuthService,
   requestStream: false,
   responseStream: false,
   requestType: auth_pb.UpdateProfileReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-exports.Auth = Auth;
+exports.AuthService = AuthService;
 
-function AuthClient(serviceHost, options) {
+function AuthServiceClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
 
-AuthClient.prototype.createAccount = function createAccount(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.createAccount = function createAccount(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.CreateAccount, {
+  var client = grpc.unary(AuthService.CreateAccount, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -121,11 +130,11 @@ AuthClient.prototype.createAccount = function createAccount(requestMessage, meta
   };
 };
 
-AuthClient.prototype.activateAccount = function activateAccount(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.activateAccount = function activateAccount(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.ActivateAccount, {
+  var client = grpc.unary(AuthService.ActivateAccount, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -152,11 +161,11 @@ AuthClient.prototype.activateAccount = function activateAccount(requestMessage, 
   };
 };
 
-AuthClient.prototype.login = function login(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.login = function login(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.Login, {
+  var client = grpc.unary(AuthService.Login, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -183,11 +192,11 @@ AuthClient.prototype.login = function login(requestMessage, metadata, callback) 
   };
 };
 
-AuthClient.prototype.refeshToken = function refeshToken(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.refeshToken = function refeshToken(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.RefeshToken, {
+  var client = grpc.unary(AuthService.RefeshToken, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -214,11 +223,11 @@ AuthClient.prototype.refeshToken = function refeshToken(requestMessage, metadata
   };
 };
 
-AuthClient.prototype.requestPasswordReset = function requestPasswordReset(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.requestPasswordReset = function requestPasswordReset(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.RequestPasswordReset, {
+  var client = grpc.unary(AuthService.RequestPasswordReset, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -245,11 +254,11 @@ AuthClient.prototype.requestPasswordReset = function requestPasswordReset(reques
   };
 };
 
-AuthClient.prototype.resetPassword = function resetPassword(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.resetPassword = function resetPassword(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.ResetPassword, {
+  var client = grpc.unary(AuthService.ResetPassword, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -276,11 +285,11 @@ AuthClient.prototype.resetPassword = function resetPassword(requestMessage, meta
   };
 };
 
-AuthClient.prototype.deleteAccount = function deleteAccount(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.deleteAccount = function deleteAccount(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.DeleteAccount, {
+  var client = grpc.unary(AuthService.DeleteAccount, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -307,11 +316,11 @@ AuthClient.prototype.deleteAccount = function deleteAccount(requestMessage, meta
   };
 };
 
-AuthClient.prototype.updateUserProfile = function updateUserProfile(requestMessage, metadata, callback) {
+AuthServiceClient.prototype.getUserProfile = function getUserProfile(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Auth.UpdateUserProfile, {
+  var client = grpc.unary(AuthService.GetUserProfile, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -338,5 +347,36 @@ AuthClient.prototype.updateUserProfile = function updateUserProfile(requestMessa
   };
 };
 
-exports.AuthClient = AuthClient;
+AuthServiceClient.prototype.updateUserProfile = function updateUserProfile(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(AuthService.UpdateUserProfile, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+exports.AuthServiceClient = AuthServiceClient;
 
