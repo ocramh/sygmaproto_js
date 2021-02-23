@@ -18,6 +18,20 @@ export class Recommendations {
   static readonly AlbumsForUser: RecommendationsAlbumsForUser;
 }
 
+type SocialRecommendationsServiceConnectionsForUser = {
+  readonly methodName: string;
+  readonly service: typeof SocialRecommendationsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof recommend_pb.ConnectionsForUserReq;
+  readonly responseType: typeof recommend_pb.ConnectionsForUserRes;
+};
+
+export class SocialRecommendationsService {
+  static readonly serviceName: string;
+  static readonly ConnectionsForUser: SocialRecommendationsServiceConnectionsForUser;
+}
+
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
 export type Status = { details: string, code: number; metadata: grpc.Metadata }
 
@@ -58,6 +72,21 @@ export class RecommendationsClient {
   albumsForUser(
     requestMessage: recommend_pb.AlbumsForUserReq,
     callback: (error: ServiceError|null, responseMessage: recommend_pb.RecommendationsRes|null) => void
+  ): UnaryResponse;
+}
+
+export class SocialRecommendationsServiceClient {
+  readonly serviceHost: string;
+
+  constructor(serviceHost: string, options?: grpc.RpcOptions);
+  connectionsForUser(
+    requestMessage: recommend_pb.ConnectionsForUserReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: recommend_pb.ConnectionsForUserRes|null) => void
+  ): UnaryResponse;
+  connectionsForUser(
+    requestMessage: recommend_pb.ConnectionsForUserReq,
+    callback: (error: ServiceError|null, responseMessage: recommend_pb.ConnectionsForUserRes|null) => void
   ): UnaryResponse;
 }
 
