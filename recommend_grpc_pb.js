@@ -68,7 +68,7 @@ albumsForUser: {
 };
 
 exports.RecommendationsClient = grpc.makeGenericClientConstructor(RecommendationsService);
-// SocialRecommendationsService is responsible for suggesting social contacts to 
+// SocialRecommendationsService is responsible for suggesting social contacts to
 // users
 var SocialRecommendationsServiceService = exports.SocialRecommendationsServiceService = {
   // ConnectionsForUser returns a list of users that share similar interests to

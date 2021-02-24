@@ -120,7 +120,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sygma_pb.RecommendedUser = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sygma_pb.RecommendedUser.repeatedFields_, null);
 };
 goog.inherits(proto.sygma_pb.RecommendedUser, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1080,6 +1080,13 @@ proto.sygma_pb.ConnectionsForUserRes.prototype.clearSocialrecommendationsList = 
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sygma_pb.RecommendedUser.repeatedFields_ = [5];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1113,7 +1120,9 @@ proto.sygma_pb.RecommendedUser.toObject = function(includeInstance, msg) {
   var f, obj = {
     user: (f = msg.getUser()) && connections_pb.User.toObject(includeInstance, f),
     mostplayedalbum: (f = msg.getMostplayedalbum()) && types_pb.Album.toObject(includeInstance, f),
-    numberofcollections: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    numberofcollections: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    numberofalbumsuploaded: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    matchinggenresList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1164,6 +1173,14 @@ proto.sygma_pb.RecommendedUser.deserializeBinaryFromReader = function(msg, reade
       var value = /** @type {number} */ (reader.readInt32());
       msg.setNumberofcollections(value);
       break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setNumberofalbumsuploaded(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addMatchinggenres(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1213,6 +1230,20 @@ proto.sygma_pb.RecommendedUser.serializeBinaryToWriter = function(message, write
   if (f !== 0) {
     writer.writeInt32(
       3,
+      f
+    );
+  }
+  f = message.getNumberofalbumsuploaded();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getMatchinggenresList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      5,
       f
     );
   }
@@ -1308,6 +1339,61 @@ proto.sygma_pb.RecommendedUser.prototype.getNumberofcollections = function() {
  */
 proto.sygma_pb.RecommendedUser.prototype.setNumberofcollections = function(value) {
   return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 numberOfAlbumsUploaded = 4;
+ * @return {number}
+ */
+proto.sygma_pb.RecommendedUser.prototype.getNumberofalbumsuploaded = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sygma_pb.RecommendedUser} returns this
+ */
+proto.sygma_pb.RecommendedUser.prototype.setNumberofalbumsuploaded = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * repeated string matchingGenres = 5;
+ * @return {!Array<string>}
+ */
+proto.sygma_pb.RecommendedUser.prototype.getMatchinggenresList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sygma_pb.RecommendedUser} returns this
+ */
+proto.sygma_pb.RecommendedUser.prototype.setMatchinggenresList = function(value) {
+  return jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sygma_pb.RecommendedUser} returns this
+ */
+proto.sygma_pb.RecommendedUser.prototype.addMatchinggenres = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sygma_pb.RecommendedUser} returns this
+ */
+proto.sygma_pb.RecommendedUser.prototype.clearMatchinggenresList = function() {
+  return this.setMatchinggenresList([]);
 };
 
 

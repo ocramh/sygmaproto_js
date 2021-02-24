@@ -146,6 +146,14 @@ export class RecommendedUser extends jspb.Message {
   getNumberofcollections(): number;
   setNumberofcollections(value: number): void;
 
+  getNumberofalbumsuploaded(): number;
+  setNumberofalbumsuploaded(value: number): void;
+
+  clearMatchinggenresList(): void;
+  getMatchinggenresList(): Array<string>;
+  setMatchinggenresList(value: Array<string>): void;
+  addMatchinggenres(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RecommendedUser.AsObject;
   static toObject(includeInstance: boolean, msg: RecommendedUser): RecommendedUser.AsObject;
@@ -161,6 +169,8 @@ export namespace RecommendedUser {
     user?: connections_pb.User.AsObject,
     mostplayedalbum?: types_pb.Album.AsObject,
     numberofcollections: number,
+    numberofalbumsuploaded: number,
+    matchinggenresList: Array<string>,
   }
 }
 
