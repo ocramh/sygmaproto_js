@@ -20,8 +20,6 @@ var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb
 goog.object.extend(proto, google_protobuf_empty_pb);
 var types_pb = require('./types_pb.js');
 goog.object.extend(proto, types_pb);
-var connections_pb = require('./connections_pb.js');
-goog.object.extend(proto, connections_pb);
 goog.exportSymbol('proto.sygma_pb.AddDocumentReq', null, global);
 goog.exportSymbol('proto.sygma_pb.AddDocumentRes', null, global);
 goog.exportSymbol('proto.sygma_pb.CollectionInfo', null, global);
@@ -660,10 +658,10 @@ proto.sygma_pb.CollectionInfo.toObject = function(includeInstance, msg) {
     description: jspb.Message.getFieldWithDefault(msg, 3, ""),
     createdat: (f = msg.getCreatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedat: (f = msg.getUpdatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    owner: (f = msg.getOwner()) && connections_pb.User.toObject(includeInstance, f),
+    owner: (f = msg.getOwner()) && types_pb.User.toObject(includeInstance, f),
     role: jspb.Message.getFieldWithDefault(msg, 7, ""),
     collaboratorsList: jspb.Message.toObjectList(msg.getCollaboratorsList(),
-    connections_pb.User.toObject, includeInstance),
+    types_pb.User.toObject, includeInstance),
     collaboratorscount: jspb.Message.getFieldWithDefault(msg, 9, 0),
     subscriberscount: jspb.Message.getFieldWithDefault(msg, 10, 0),
     documentscount: jspb.Message.getFieldWithDefault(msg, 11, 0),
@@ -729,8 +727,8 @@ proto.sygma_pb.CollectionInfo.deserializeBinaryFromReader = function(msg, reader
       msg.setUpdatedat(value);
       break;
     case 6:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.setOwner(value);
       break;
     case 7:
@@ -738,8 +736,8 @@ proto.sygma_pb.CollectionInfo.deserializeBinaryFromReader = function(msg, reader
       msg.setRole(value);
       break;
     case 8:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.addCollaborators(value);
       break;
     case 9:
@@ -837,7 +835,7 @@ proto.sygma_pb.CollectionInfo.serializeBinaryToWriter = function(message, writer
     writer.writeMessage(
       6,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getRole();
@@ -852,7 +850,7 @@ proto.sygma_pb.CollectionInfo.serializeBinaryToWriter = function(message, writer
     writer.writeRepeatedMessage(
       8,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getCollaboratorscount();
@@ -1034,7 +1032,7 @@ proto.sygma_pb.CollectionInfo.prototype.hasUpdatedat = function() {
  */
 proto.sygma_pb.CollectionInfo.prototype.getOwner = function() {
   return /** @type{?proto.sygma_pb.User} */ (
-    jspb.Message.getWrapperField(this, connections_pb.User, 6));
+    jspb.Message.getWrapperField(this, types_pb.User, 6));
 };
 
 
@@ -1089,7 +1087,7 @@ proto.sygma_pb.CollectionInfo.prototype.setRole = function(value) {
  */
 proto.sygma_pb.CollectionInfo.prototype.getCollaboratorsList = function() {
   return /** @type{!Array<!proto.sygma_pb.User>} */ (
-    jspb.Message.getRepeatedWrapperField(this, connections_pb.User, 8));
+    jspb.Message.getRepeatedWrapperField(this, types_pb.User, 8));
 };
 
 
@@ -1479,9 +1477,9 @@ proto.sygma_pb.NewCollectionReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     name: jspb.Message.getFieldWithDefault(msg, 1, ""),
     description: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    owner: (f = msg.getOwner()) && connections_pb.User.toObject(includeInstance, f),
+    owner: (f = msg.getOwner()) && types_pb.User.toObject(includeInstance, f),
     sharedwithList: jspb.Message.toObjectList(msg.getSharedwithList(),
-    connections_pb.User.toObject, includeInstance),
+    types_pb.User.toObject, includeInstance),
     pb_private: jspb.Message.getBooleanFieldWithDefault(msg, 5, false),
     readOnly: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
@@ -1529,13 +1527,13 @@ proto.sygma_pb.NewCollectionReq.deserializeBinaryFromReader = function(msg, read
       msg.setDescription(value);
       break;
     case 3:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.setOwner(value);
       break;
     case 4:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.addSharedwith(value);
       break;
     case 5:
@@ -1594,7 +1592,7 @@ proto.sygma_pb.NewCollectionReq.serializeBinaryToWriter = function(message, writ
     writer.writeMessage(
       3,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getSharedwithList();
@@ -1602,7 +1600,7 @@ proto.sygma_pb.NewCollectionReq.serializeBinaryToWriter = function(message, writ
     writer.writeRepeatedMessage(
       4,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getPrivate();
@@ -1664,7 +1662,7 @@ proto.sygma_pb.NewCollectionReq.prototype.setDescription = function(value) {
  */
 proto.sygma_pb.NewCollectionReq.prototype.getOwner = function() {
   return /** @type{?proto.sygma_pb.User} */ (
-    jspb.Message.getWrapperField(this, connections_pb.User, 3));
+    jspb.Message.getWrapperField(this, types_pb.User, 3));
 };
 
 
@@ -1701,7 +1699,7 @@ proto.sygma_pb.NewCollectionReq.prototype.hasOwner = function() {
  */
 proto.sygma_pb.NewCollectionReq.prototype.getSharedwithList = function() {
   return /** @type{!Array<!proto.sygma_pb.User>} */ (
-    jspb.Message.getRepeatedWrapperField(this, connections_pb.User, 4));
+    jspb.Message.getRepeatedWrapperField(this, types_pb.User, 4));
 };
 
 
@@ -2254,7 +2252,7 @@ proto.sygma_pb.GetCollectionsReq.prototype.toObject = function(opt_includeInstan
  */
 proto.sygma_pb.GetCollectionsReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    user: (f = msg.getUser()) && connections_pb.User.toObject(includeInstance, f)
+    user: (f = msg.getUser()) && types_pb.User.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2292,8 +2290,8 @@ proto.sygma_pb.GetCollectionsReq.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.setUser(value);
       break;
     default:
@@ -2330,7 +2328,7 @@ proto.sygma_pb.GetCollectionsReq.serializeBinaryToWriter = function(message, wri
     writer.writeMessage(
       1,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
 };
@@ -2342,7 +2340,7 @@ proto.sygma_pb.GetCollectionsReq.serializeBinaryToWriter = function(message, wri
  */
 proto.sygma_pb.GetCollectionsReq.prototype.getUser = function() {
   return /** @type{?proto.sygma_pb.User} */ (
-    jspb.Message.getWrapperField(this, connections_pb.User, 1));
+    jspb.Message.getWrapperField(this, types_pb.User, 1));
 };
 
 
@@ -3395,7 +3393,7 @@ proto.sygma_pb.ShareWithUserReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     collectionid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     usersList: jspb.Message.toObjectList(msg.getUsersList(),
-    connections_pb.User.toObject, includeInstance)
+    types_pb.User.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -3437,8 +3435,8 @@ proto.sygma_pb.ShareWithUserReq.deserializeBinaryFromReader = function(msg, read
       msg.setCollectionid(value);
       break;
     case 2:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.addUsers(value);
       break;
     default:
@@ -3482,7 +3480,7 @@ proto.sygma_pb.ShareWithUserReq.serializeBinaryToWriter = function(message, writ
     writer.writeRepeatedMessage(
       2,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
 };
@@ -3512,7 +3510,7 @@ proto.sygma_pb.ShareWithUserReq.prototype.setCollectionid = function(value) {
  */
 proto.sygma_pb.ShareWithUserReq.prototype.getUsersList = function() {
   return /** @type{!Array<!proto.sygma_pb.User>} */ (
-    jspb.Message.getRepeatedWrapperField(this, connections_pb.User, 2));
+    jspb.Message.getRepeatedWrapperField(this, types_pb.User, 2));
 };
 
 
@@ -4158,7 +4156,7 @@ proto.sygma_pb.GetAlbumInfoRes.toObject = function(includeInstance, msg) {
     incollectionsList: jspb.Message.toObjectList(msg.getIncollectionsList(),
     proto.sygma_pb.CollectionSummary.toObject, includeInstance),
     uploadedbyList: jspb.Message.toObjectList(msg.getUploadedbyList(),
-    connections_pb.User.toObject, includeInstance)
+    types_pb.User.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -4206,8 +4204,8 @@ proto.sygma_pb.GetAlbumInfoRes.deserializeBinaryFromReader = function(msg, reade
       msg.addIncollections(value);
       break;
     case 3:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.addUploadedby(value);
       break;
     default:
@@ -4260,7 +4258,7 @@ proto.sygma_pb.GetAlbumInfoRes.serializeBinaryToWriter = function(message, write
     writer.writeRepeatedMessage(
       3,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
 };
@@ -4347,7 +4345,7 @@ proto.sygma_pb.GetAlbumInfoRes.prototype.clearIncollectionsList = function() {
  */
 proto.sygma_pb.GetAlbumInfoRes.prototype.getUploadedbyList = function() {
   return /** @type{!Array<!proto.sygma_pb.User>} */ (
-    jspb.Message.getRepeatedWrapperField(this, connections_pb.User, 3));
+    jspb.Message.getRepeatedWrapperField(this, types_pb.User, 3));
 };
 
 
@@ -5555,7 +5553,7 @@ proto.sygma_pb.CollectionItem.prototype.toObject = function(opt_includeInstance)
  */
 proto.sygma_pb.CollectionItem.toObject = function(includeInstance, msg) {
   var f, obj = {
-    selectedby: (f = msg.getSelectedby()) && connections_pb.User.toObject(includeInstance, f),
+    selectedby: (f = msg.getSelectedby()) && types_pb.User.toObject(includeInstance, f),
     uplaodedat: (f = msg.getUplaodedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     updatedat: (f = msg.getUpdatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     title: jspb.Message.getFieldWithDefault(msg, 4, ""),
@@ -5601,8 +5599,8 @@ proto.sygma_pb.CollectionItem.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.setSelectedby(value);
       break;
     case 2:
@@ -5674,7 +5672,7 @@ proto.sygma_pb.CollectionItem.serializeBinaryToWriter = function(message, writer
     writer.writeMessage(
       1,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getUplaodedat();
@@ -5745,7 +5743,7 @@ proto.sygma_pb.CollectionItem.serializeBinaryToWriter = function(message, writer
  */
 proto.sygma_pb.CollectionItem.prototype.getSelectedby = function() {
   return /** @type{?proto.sygma_pb.User} */ (
-    jspb.Message.getWrapperField(this, connections_pb.User, 1));
+    jspb.Message.getWrapperField(this, types_pb.User, 1));
 };
 
 

@@ -1118,7 +1118,7 @@ proto.sygma_pb.RecommendedUser.prototype.toObject = function(opt_includeInstance
  */
 proto.sygma_pb.RecommendedUser.toObject = function(includeInstance, msg) {
   var f, obj = {
-    user: (f = msg.getUser()) && connections_pb.User.toObject(includeInstance, f),
+    user: (f = msg.getUser()) && types_pb.User.toObject(includeInstance, f),
     mostplayedalbum: (f = msg.getMostplayedalbum()) && types_pb.Album.toObject(includeInstance, f),
     numberofcollections: jspb.Message.getFieldWithDefault(msg, 3, 0),
     numberofalbumsuploaded: jspb.Message.getFieldWithDefault(msg, 4, 0),
@@ -1160,8 +1160,8 @@ proto.sygma_pb.RecommendedUser.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new connections_pb.User;
-      reader.readMessage(value,connections_pb.User.deserializeBinaryFromReader);
+      var value = new types_pb.User;
+      reader.readMessage(value,types_pb.User.deserializeBinaryFromReader);
       msg.setUser(value);
       break;
     case 2:
@@ -1215,7 +1215,7 @@ proto.sygma_pb.RecommendedUser.serializeBinaryToWriter = function(message, write
     writer.writeMessage(
       1,
       f,
-      connections_pb.User.serializeBinaryToWriter
+      types_pb.User.serializeBinaryToWriter
     );
   }
   f = message.getMostplayedalbum();
@@ -1256,7 +1256,7 @@ proto.sygma_pb.RecommendedUser.serializeBinaryToWriter = function(message, write
  */
 proto.sygma_pb.RecommendedUser.prototype.getUser = function() {
   return /** @type{?proto.sygma_pb.User} */ (
-    jspb.Message.getWrapperField(this, connections_pb.User, 1));
+    jspb.Message.getWrapperField(this, types_pb.User, 1));
 };
 
 

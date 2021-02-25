@@ -5,7 +5,6 @@ import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as types_pb from "./types_pb";
-import * as connections_pb from "./connections_pb";
 
 export class CollectionInfo extends jspb.Message {
   getId(): string;
@@ -29,16 +28,16 @@ export class CollectionInfo extends jspb.Message {
 
   hasOwner(): boolean;
   clearOwner(): void;
-  getOwner(): connections_pb.User | undefined;
-  setOwner(value?: connections_pb.User): void;
+  getOwner(): types_pb.User | undefined;
+  setOwner(value?: types_pb.User): void;
 
   getRole(): string;
   setRole(value: string): void;
 
   clearCollaboratorsList(): void;
-  getCollaboratorsList(): Array<connections_pb.User>;
-  setCollaboratorsList(value: Array<connections_pb.User>): void;
-  addCollaborators(value?: connections_pb.User, index?: number): connections_pb.User;
+  getCollaboratorsList(): Array<types_pb.User>;
+  setCollaboratorsList(value: Array<types_pb.User>): void;
+  addCollaborators(value?: types_pb.User, index?: number): types_pb.User;
 
   getCollaboratorscount(): number;
   setCollaboratorscount(value: number): void;
@@ -77,9 +76,9 @@ export namespace CollectionInfo {
     description: string,
     createdat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-    owner?: connections_pb.User.AsObject,
+    owner?: types_pb.User.AsObject,
     role: string,
-    collaboratorsList: Array<connections_pb.User.AsObject>,
+    collaboratorsList: Array<types_pb.User.AsObject>,
     collaboratorscount: number,
     subscriberscount: number,
     documentscount: number,
@@ -126,13 +125,13 @@ export class NewCollectionReq extends jspb.Message {
 
   hasOwner(): boolean;
   clearOwner(): void;
-  getOwner(): connections_pb.User | undefined;
-  setOwner(value?: connections_pb.User): void;
+  getOwner(): types_pb.User | undefined;
+  setOwner(value?: types_pb.User): void;
 
   clearSharedwithList(): void;
-  getSharedwithList(): Array<connections_pb.User>;
-  setSharedwithList(value: Array<connections_pb.User>): void;
-  addSharedwith(value?: connections_pb.User, index?: number): connections_pb.User;
+  getSharedwithList(): Array<types_pb.User>;
+  setSharedwithList(value: Array<types_pb.User>): void;
+  addSharedwith(value?: types_pb.User, index?: number): types_pb.User;
 
   getPrivate(): boolean;
   setPrivate(value: boolean): void;
@@ -154,8 +153,8 @@ export namespace NewCollectionReq {
   export type AsObject = {
     name: string,
     description: string,
-    owner?: connections_pb.User.AsObject,
-    sharedwithList: Array<connections_pb.User.AsObject>,
+    owner?: types_pb.User.AsObject,
+    sharedwithList: Array<types_pb.User.AsObject>,
     pb_private: boolean,
     readOnly: boolean,
   }
@@ -230,8 +229,8 @@ export namespace UpdateCollectionRes {
 export class GetCollectionsReq extends jspb.Message {
   hasUser(): boolean;
   clearUser(): void;
-  getUser(): connections_pb.User | undefined;
-  setUser(value?: connections_pb.User): void;
+  getUser(): types_pb.User | undefined;
+  setUser(value?: types_pb.User): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetCollectionsReq.AsObject;
@@ -245,7 +244,7 @@ export class GetCollectionsReq extends jspb.Message {
 
 export namespace GetCollectionsReq {
   export type AsObject = {
-    user?: connections_pb.User.AsObject,
+    user?: types_pb.User.AsObject,
   }
 }
 
@@ -394,9 +393,9 @@ export class ShareWithUserReq extends jspb.Message {
   setCollectionid(value: string): void;
 
   clearUsersList(): void;
-  getUsersList(): Array<connections_pb.User>;
-  setUsersList(value: Array<connections_pb.User>): void;
-  addUsers(value?: connections_pb.User, index?: number): connections_pb.User;
+  getUsersList(): Array<types_pb.User>;
+  setUsersList(value: Array<types_pb.User>): void;
+  addUsers(value?: types_pb.User, index?: number): types_pb.User;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ShareWithUserReq.AsObject;
@@ -411,7 +410,7 @@ export class ShareWithUserReq extends jspb.Message {
 export namespace ShareWithUserReq {
   export type AsObject = {
     collectionid: string,
-    usersList: Array<connections_pb.User.AsObject>,
+    usersList: Array<types_pb.User.AsObject>,
   }
 }
 
@@ -513,9 +512,9 @@ export class GetAlbumInfoRes extends jspb.Message {
   addIncollections(value?: CollectionSummary, index?: number): CollectionSummary;
 
   clearUploadedbyList(): void;
-  getUploadedbyList(): Array<connections_pb.User>;
-  setUploadedbyList(value: Array<connections_pb.User>): void;
-  addUploadedby(value?: connections_pb.User, index?: number): connections_pb.User;
+  getUploadedbyList(): Array<types_pb.User>;
+  setUploadedbyList(value: Array<types_pb.User>): void;
+  addUploadedby(value?: types_pb.User, index?: number): types_pb.User;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GetAlbumInfoRes.AsObject;
@@ -531,7 +530,7 @@ export namespace GetAlbumInfoRes {
   export type AsObject = {
     album?: types_pb.Album.AsObject,
     incollectionsList: Array<CollectionSummary.AsObject>,
-    uploadedbyList: Array<connections_pb.User.AsObject>,
+    uploadedbyList: Array<types_pb.User.AsObject>,
   }
 }
 
@@ -698,8 +697,8 @@ export namespace GenreInfo {
 export class CollectionItem extends jspb.Message {
   hasSelectedby(): boolean;
   clearSelectedby(): void;
-  getSelectedby(): connections_pb.User | undefined;
-  setSelectedby(value?: connections_pb.User): void;
+  getSelectedby(): types_pb.User | undefined;
+  setSelectedby(value?: types_pb.User): void;
 
   hasUplaodedat(): boolean;
   clearUplaodedat(): void;
@@ -745,7 +744,7 @@ export class CollectionItem extends jspb.Message {
 
 export namespace CollectionItem {
   export type AsObject = {
-    selectedby?: connections_pb.User.AsObject,
+    selectedby?: types_pb.User.AsObject,
     uplaodedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     title: string,

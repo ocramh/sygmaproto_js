@@ -3,34 +3,7 @@
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
-
-export class User extends jspb.Message {
-  getUserid(): string;
-  setUserid(value: string): void;
-
-  getUsername(): string;
-  setUsername(value: string): void;
-
-  getProfilepic(): string;
-  setProfilepic(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): User.AsObject;
-  static toObject(includeInstance: boolean, msg: User): User.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: User, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): User;
-  static deserializeBinaryFromReader(message: User, reader: jspb.BinaryReader): User;
-}
-
-export namespace User {
-  export type AsObject = {
-    userid: string,
-    username: string,
-    profilepic: string,
-  }
-}
+import * as types_pb from "./types_pb";
 
 export class ConnectedUser extends jspb.Message {
   getConnectionid(): number;
@@ -41,8 +14,8 @@ export class ConnectedUser extends jspb.Message {
 
   hasUserinfo(): boolean;
   clearUserinfo(): void;
-  getUserinfo(): User | undefined;
-  setUserinfo(value?: User): void;
+  getUserinfo(): types_pb.User | undefined;
+  setUserinfo(value?: types_pb.User): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ConnectedUser.AsObject;
@@ -58,7 +31,7 @@ export namespace ConnectedUser {
   export type AsObject = {
     connectionid: number,
     type: ConnectionTypeMap[keyof ConnectionTypeMap],
-    userinfo?: User.AsObject,
+    userinfo?: types_pb.User.AsObject,
   }
 }
 
@@ -84,9 +57,9 @@ export namespace FindUsersReq {
 
 export class FindUsersRes extends jspb.Message {
   clearUsersList(): void;
-  getUsersList(): Array<User>;
-  setUsersList(value: Array<User>): void;
-  addUsers(value?: User, index?: number): User;
+  getUsersList(): Array<types_pb.User>;
+  setUsersList(value: Array<types_pb.User>): void;
+  addUsers(value?: types_pb.User, index?: number): types_pb.User;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FindUsersRes.AsObject;
@@ -100,7 +73,7 @@ export class FindUsersRes extends jspb.Message {
 
 export namespace FindUsersRes {
   export type AsObject = {
-    usersList: Array<User.AsObject>,
+    usersList: Array<types_pb.User.AsObject>,
   }
 }
 
@@ -125,10 +98,10 @@ export namespace FindUserReq {
 }
 
 export class FindUserRes extends jspb.Message {
-  hasUsers(): boolean;
-  clearUsers(): void;
-  getUsers(): User | undefined;
-  setUsers(value?: User): void;
+  hasUser(): boolean;
+  clearUser(): void;
+  getUser(): types_pb.User | undefined;
+  setUser(value?: types_pb.User): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FindUserRes.AsObject;
@@ -142,7 +115,7 @@ export class FindUserRes extends jspb.Message {
 
 export namespace FindUserRes {
   export type AsObject = {
-    users?: User.AsObject,
+    user?: types_pb.User.AsObject,
   }
 }
 

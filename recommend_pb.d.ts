@@ -135,8 +135,8 @@ export namespace ConnectionsForUserRes {
 export class RecommendedUser extends jspb.Message {
   hasUser(): boolean;
   clearUser(): void;
-  getUser(): connections_pb.User | undefined;
-  setUser(value?: connections_pb.User): void;
+  getUser(): types_pb.User | undefined;
+  setUser(value?: types_pb.User): void;
 
   hasMostplayedalbum(): boolean;
   clearMostplayedalbum(): void;
@@ -166,7 +166,7 @@ export class RecommendedUser extends jspb.Message {
 
 export namespace RecommendedUser {
   export type AsObject = {
-    user?: connections_pb.User.AsObject,
+    user?: types_pb.User.AsObject,
     mostplayedalbum?: types_pb.Album.AsObject,
     numberofcollections: number,
     numberofalbumsuploaded: number,

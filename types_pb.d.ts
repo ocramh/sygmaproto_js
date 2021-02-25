@@ -224,6 +224,76 @@ export namespace Label {
   }
 }
 
+export class User extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  getUsername(): string;
+  setUsername(value: string): void;
+
+  hasProfile(): boolean;
+  clearProfile(): void;
+  getProfile(): UserProfile | undefined;
+  setProfile(value?: UserProfile): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): User.AsObject;
+  static toObject(includeInstance: boolean, msg: User): User.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: User, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): User;
+  static deserializeBinaryFromReader(message: User, reader: jspb.BinaryReader): User;
+}
+
+export namespace User {
+  export type AsObject = {
+    userid: string,
+    username: string,
+    profile?: UserProfile.AsObject,
+  }
+}
+
+export class UserProfile extends jspb.Message {
+  hasUpdatedat(): boolean;
+  clearUpdatedat(): void;
+  getUpdatedat(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setUpdatedat(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  getOnboarded(): boolean;
+  setOnboarded(value: boolean): void;
+
+  getBio(): string;
+  setBio(value: string): void;
+
+  getProfilepicurl(): string;
+  setProfilepicurl(value: string): void;
+
+  clearFavouritegenresList(): void;
+  getFavouritegenresList(): Array<string>;
+  setFavouritegenresList(value: Array<string>): void;
+  addFavouritegenres(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserProfile.AsObject;
+  static toObject(includeInstance: boolean, msg: UserProfile): UserProfile.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UserProfile, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserProfile;
+  static deserializeBinaryFromReader(message: UserProfile, reader: jspb.BinaryReader): UserProfile;
+}
+
+export namespace UserProfile {
+  export type AsObject = {
+    updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    onboarded: boolean,
+    bio: string,
+    profilepicurl: string,
+    favouritegenresList: Array<string>,
+  }
+}
+
 export interface SourceTypeMap {
   INTERNAL: 0;
   BANDCAMP: 1;
