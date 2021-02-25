@@ -275,7 +275,7 @@ getCollectionsByUser: {
     responseSerialize: serialize_sygma_pb_GetCollectionsRes,
     responseDeserialize: deserialize_sygma_pb_GetCollectionsRes,
   },
-  // GetCollectionsByGenre returns Collections containing albums of a certain genre
+  // GetCollectionsByGenre returns Collections containing albums of a certain genres
 getCollectionsByGenre: {
     path: '/sygma_pb.CollectionsService/GetCollectionsByGenre',
     requestStream: false,

@@ -226,7 +226,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sygma_pb.CollectionsByGenreReq = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sygma_pb.CollectionsByGenreReq.repeatedFields_, null);
 };
 goog.inherits(proto.sygma_pb.CollectionsByGenreReq, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -2532,6 +2532,13 @@ proto.sygma_pb.GetCollectionsRes.prototype.clearCollectionsList = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sygma_pb.CollectionsByGenreReq.repeatedFields_ = [1];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2563,7 +2570,7 @@ proto.sygma_pb.CollectionsByGenreReq.prototype.toObject = function(opt_includeIn
  */
 proto.sygma_pb.CollectionsByGenreReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    genre: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    genresList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
     limit: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
@@ -2603,7 +2610,7 @@ proto.sygma_pb.CollectionsByGenreReq.deserializeBinaryFromReader = function(msg,
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setGenre(value);
+      msg.addGenres(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readInt32());
@@ -2638,9 +2645,9 @@ proto.sygma_pb.CollectionsByGenreReq.prototype.serializeBinary = function() {
  */
 proto.sygma_pb.CollectionsByGenreReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getGenre();
+  f = message.getGenresList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       1,
       f
     );
@@ -2656,20 +2663,39 @@ proto.sygma_pb.CollectionsByGenreReq.serializeBinaryToWriter = function(message,
 
 
 /**
- * optional string genre = 1;
- * @return {string}
+ * repeated string genres = 1;
+ * @return {!Array<string>}
  */
-proto.sygma_pb.CollectionsByGenreReq.prototype.getGenre = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.sygma_pb.CollectionsByGenreReq.prototype.getGenresList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sygma_pb.CollectionsByGenreReq} returns this
+ */
+proto.sygma_pb.CollectionsByGenreReq.prototype.setGenresList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.sygma_pb.CollectionsByGenreReq} returns this
  */
-proto.sygma_pb.CollectionsByGenreReq.prototype.setGenre = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.sygma_pb.CollectionsByGenreReq.prototype.addGenres = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sygma_pb.CollectionsByGenreReq} returns this
+ */
+proto.sygma_pb.CollectionsByGenreReq.prototype.clearGenresList = function() {
+  return this.setGenresList([]);
 };
 
 

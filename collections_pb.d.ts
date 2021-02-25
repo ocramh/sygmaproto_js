@@ -271,8 +271,10 @@ export namespace GetCollectionsRes {
 }
 
 export class CollectionsByGenreReq extends jspb.Message {
-  getGenre(): string;
-  setGenre(value: string): void;
+  clearGenresList(): void;
+  getGenresList(): Array<string>;
+  setGenresList(value: Array<string>): void;
+  addGenres(value: string, index?: number): string;
 
   getLimit(): number;
   setLimit(value: number): void;
@@ -289,7 +291,7 @@ export class CollectionsByGenreReq extends jspb.Message {
 
 export namespace CollectionsByGenreReq {
   export type AsObject = {
-    genre: string,
+    genresList: Array<string>,
     limit: number,
   }
 }
