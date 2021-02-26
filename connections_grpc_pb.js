@@ -139,9 +139,10 @@ function deserialize_sygma_pb_MutualConnReq(buffer_arg) {
 }
 
 
-var ConnectionsService = exports.ConnectionsService = {
-  findUsers: {
-    path: '/sygma_pb.Connections/FindUsers',
+var ConnectionsServiceService = exports.ConnectionsServiceService = {
+  // FindUsers returns users whose name matches the request query
+findUsers: {
+    path: '/sygma_pb.ConnectionsService/FindUsers',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.FindUsersReq,
@@ -151,8 +152,9 @@ var ConnectionsService = exports.ConnectionsService = {
     responseSerialize: serialize_sygma_pb_FindUsersRes,
     responseDeserialize: deserialize_sygma_pb_FindUsersRes,
   },
-  findUserByID: {
-    path: '/sygma_pb.Connections/FindUserByID',
+  // FindUserByID returns a single user
+findUserByID: {
+    path: '/sygma_pb.ConnectionsService/FindUserByID',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.FindUserReq,
@@ -162,8 +164,9 @@ var ConnectionsService = exports.ConnectionsService = {
     responseSerialize: serialize_sygma_pb_FindUserRes,
     responseDeserialize: deserialize_sygma_pb_FindUserRes,
   },
-  createFollowConnection: {
-    path: '/sygma_pb.Connections/CreateFollowConnection',
+  // CreateFollowConnection creates a follow connection from one user to another
+createFollowConnection: {
+    path: '/sygma_pb.ConnectionsService/CreateFollowConnection',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.FollowReq,
@@ -173,8 +176,9 @@ var ConnectionsService = exports.ConnectionsService = {
     responseSerialize: serialize_sygma_pb_ConnectedUser,
     responseDeserialize: deserialize_sygma_pb_ConnectedUser,
   },
-  createMutualConnection: {
-    path: '/sygma_pb.Connections/CreateMutualConnection',
+  // CreateMutualConnection creates a mutual connection between two users
+createMutualConnection: {
+    path: '/sygma_pb.ConnectionsService/CreateMutualConnection',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.MutualConnReq,
@@ -184,8 +188,9 @@ var ConnectionsService = exports.ConnectionsService = {
     responseSerialize: serialize_sygma_pb_ConnectedUser,
     responseDeserialize: deserialize_sygma_pb_ConnectedUser,
   },
-  getConnections: {
-    path: '/sygma_pb.Connections/GetConnections',
+  // GetConnections retruns existing connections for a user
+getConnections: {
+    path: '/sygma_pb.ConnectionsService/GetConnections',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.GetConnReq,
@@ -195,8 +200,9 @@ var ConnectionsService = exports.ConnectionsService = {
     responseSerialize: serialize_sygma_pb_GetConnRes,
     responseDeserialize: deserialize_sygma_pb_GetConnRes,
   },
-  deleteConnection: {
-    path: '/sygma_pb.Connections/DeleteConnection',
+  // DeleteConnection removes an existing connection
+deleteConnection: {
+    path: '/sygma_pb.ConnectionsService/DeleteConnection',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.DeleteConnReq,
@@ -209,7 +215,7 @@ var ConnectionsService = exports.ConnectionsService = {
   // SendJoinInvite sends an email invite to join Sygma from an existing user to a
 // prospect user
 sendJoinInvite: {
-    path: '/sygma_pb.Connections/SendJoinInvite',
+    path: '/sygma_pb.ConnectionsService/SendJoinInvite',
     requestStream: false,
     responseStream: false,
     requestType: connections_pb.JoinInviteReq,
@@ -221,4 +227,4 @@ sendJoinInvite: {
   },
 };
 
-exports.ConnectionsClient = grpc.makeGenericClientConstructor(ConnectionsService);
+exports.ConnectionsServiceClient = grpc.makeGenericClientConstructor(ConnectionsServiceService);

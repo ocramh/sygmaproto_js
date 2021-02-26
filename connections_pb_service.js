@@ -5,87 +5,87 @@ var connections_pb = require("./connections_pb");
 var google_protobuf_empty_pb = require("google-protobuf/google/protobuf/empty_pb");
 var grpc = require("@improbable-eng/grpc-web").grpc;
 
-var Connections = (function () {
-  function Connections() {}
-  Connections.serviceName = "sygma_pb.Connections";
-  return Connections;
+var ConnectionsService = (function () {
+  function ConnectionsService() {}
+  ConnectionsService.serviceName = "sygma_pb.ConnectionsService";
+  return ConnectionsService;
 }());
 
-Connections.FindUsers = {
+ConnectionsService.FindUsers = {
   methodName: "FindUsers",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.FindUsersReq,
   responseType: connections_pb.FindUsersRes
 };
 
-Connections.FindUserByID = {
+ConnectionsService.FindUserByID = {
   methodName: "FindUserByID",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.FindUserReq,
   responseType: connections_pb.FindUserRes
 };
 
-Connections.CreateFollowConnection = {
+ConnectionsService.CreateFollowConnection = {
   methodName: "CreateFollowConnection",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.FollowReq,
   responseType: connections_pb.ConnectedUser
 };
 
-Connections.CreateMutualConnection = {
+ConnectionsService.CreateMutualConnection = {
   methodName: "CreateMutualConnection",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.MutualConnReq,
   responseType: connections_pb.ConnectedUser
 };
 
-Connections.GetConnections = {
+ConnectionsService.GetConnections = {
   methodName: "GetConnections",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.GetConnReq,
   responseType: connections_pb.GetConnRes
 };
 
-Connections.DeleteConnection = {
+ConnectionsService.DeleteConnection = {
   methodName: "DeleteConnection",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.DeleteConnReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-Connections.SendJoinInvite = {
+ConnectionsService.SendJoinInvite = {
   methodName: "SendJoinInvite",
-  service: Connections,
+  service: ConnectionsService,
   requestStream: false,
   responseStream: false,
   requestType: connections_pb.JoinInviteReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
-exports.Connections = Connections;
+exports.ConnectionsService = ConnectionsService;
 
-function ConnectionsClient(serviceHost, options) {
+function ConnectionsServiceClient(serviceHost, options) {
   this.serviceHost = serviceHost;
   this.options = options || {};
 }
 
-ConnectionsClient.prototype.findUsers = function findUsers(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.findUsers = function findUsers(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.FindUsers, {
+  var client = grpc.unary(ConnectionsService.FindUsers, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -112,11 +112,11 @@ ConnectionsClient.prototype.findUsers = function findUsers(requestMessage, metad
   };
 };
 
-ConnectionsClient.prototype.findUserByID = function findUserByID(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.findUserByID = function findUserByID(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.FindUserByID, {
+  var client = grpc.unary(ConnectionsService.FindUserByID, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -143,11 +143,11 @@ ConnectionsClient.prototype.findUserByID = function findUserByID(requestMessage,
   };
 };
 
-ConnectionsClient.prototype.createFollowConnection = function createFollowConnection(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.createFollowConnection = function createFollowConnection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.CreateFollowConnection, {
+  var client = grpc.unary(ConnectionsService.CreateFollowConnection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -174,11 +174,11 @@ ConnectionsClient.prototype.createFollowConnection = function createFollowConnec
   };
 };
 
-ConnectionsClient.prototype.createMutualConnection = function createMutualConnection(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.createMutualConnection = function createMutualConnection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.CreateMutualConnection, {
+  var client = grpc.unary(ConnectionsService.CreateMutualConnection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -205,11 +205,11 @@ ConnectionsClient.prototype.createMutualConnection = function createMutualConnec
   };
 };
 
-ConnectionsClient.prototype.getConnections = function getConnections(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.getConnections = function getConnections(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.GetConnections, {
+  var client = grpc.unary(ConnectionsService.GetConnections, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -236,11 +236,11 @@ ConnectionsClient.prototype.getConnections = function getConnections(requestMess
   };
 };
 
-ConnectionsClient.prototype.deleteConnection = function deleteConnection(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.deleteConnection = function deleteConnection(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.DeleteConnection, {
+  var client = grpc.unary(ConnectionsService.DeleteConnection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -267,11 +267,11 @@ ConnectionsClient.prototype.deleteConnection = function deleteConnection(request
   };
 };
 
-ConnectionsClient.prototype.sendJoinInvite = function sendJoinInvite(requestMessage, metadata, callback) {
+ConnectionsServiceClient.prototype.sendJoinInvite = function sendJoinInvite(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(Connections.SendJoinInvite, {
+  var client = grpc.unary(ConnectionsService.SendJoinInvite, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
@@ -298,5 +298,5 @@ ConnectionsClient.prototype.sendJoinInvite = function sendJoinInvite(requestMess
   };
 };
 
-exports.ConnectionsClient = ConnectionsClient;
+exports.ConnectionsServiceClient = ConnectionsServiceClient;
 

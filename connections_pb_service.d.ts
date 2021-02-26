@@ -5,78 +5,78 @@ import * as connections_pb from "./connections_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type ConnectionsFindUsers = {
+type ConnectionsServiceFindUsers = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.FindUsersReq;
   readonly responseType: typeof connections_pb.FindUsersRes;
 };
 
-type ConnectionsFindUserByID = {
+type ConnectionsServiceFindUserByID = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.FindUserReq;
   readonly responseType: typeof connections_pb.FindUserRes;
 };
 
-type ConnectionsCreateFollowConnection = {
+type ConnectionsServiceCreateFollowConnection = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.FollowReq;
   readonly responseType: typeof connections_pb.ConnectedUser;
 };
 
-type ConnectionsCreateMutualConnection = {
+type ConnectionsServiceCreateMutualConnection = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.MutualConnReq;
   readonly responseType: typeof connections_pb.ConnectedUser;
 };
 
-type ConnectionsGetConnections = {
+type ConnectionsServiceGetConnections = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.GetConnReq;
   readonly responseType: typeof connections_pb.GetConnRes;
 };
 
-type ConnectionsDeleteConnection = {
+type ConnectionsServiceDeleteConnection = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.DeleteConnReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-type ConnectionsSendJoinInvite = {
+type ConnectionsServiceSendJoinInvite = {
   readonly methodName: string;
-  readonly service: typeof Connections;
+  readonly service: typeof ConnectionsService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof connections_pb.JoinInviteReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
-export class Connections {
+export class ConnectionsService {
   static readonly serviceName: string;
-  static readonly FindUsers: ConnectionsFindUsers;
-  static readonly FindUserByID: ConnectionsFindUserByID;
-  static readonly CreateFollowConnection: ConnectionsCreateFollowConnection;
-  static readonly CreateMutualConnection: ConnectionsCreateMutualConnection;
-  static readonly GetConnections: ConnectionsGetConnections;
-  static readonly DeleteConnection: ConnectionsDeleteConnection;
-  static readonly SendJoinInvite: ConnectionsSendJoinInvite;
+  static readonly FindUsers: ConnectionsServiceFindUsers;
+  static readonly FindUserByID: ConnectionsServiceFindUserByID;
+  static readonly CreateFollowConnection: ConnectionsServiceCreateFollowConnection;
+  static readonly CreateMutualConnection: ConnectionsServiceCreateMutualConnection;
+  static readonly GetConnections: ConnectionsServiceGetConnections;
+  static readonly DeleteConnection: ConnectionsServiceDeleteConnection;
+  static readonly SendJoinInvite: ConnectionsServiceSendJoinInvite;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -107,7 +107,7 @@ interface BidirectionalStream<ReqT, ResT> {
   on(type: 'status', handler: (status: Status) => void): BidirectionalStream<ReqT, ResT>;
 }
 
-export class ConnectionsClient {
+export class ConnectionsServiceClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
