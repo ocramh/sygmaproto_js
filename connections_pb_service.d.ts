@@ -59,6 +59,15 @@ type ConnectionsDeleteConnection = {
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
+type ConnectionsSendJoinInvite = {
+  readonly methodName: string;
+  readonly service: typeof Connections;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof connections_pb.JoinInviteReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 export class Connections {
   static readonly serviceName: string;
   static readonly FindUsers: ConnectionsFindUsers;
@@ -67,6 +76,7 @@ export class Connections {
   static readonly CreateMutualConnection: ConnectionsCreateMutualConnection;
   static readonly GetConnections: ConnectionsGetConnections;
   static readonly DeleteConnection: ConnectionsDeleteConnection;
+  static readonly SendJoinInvite: ConnectionsSendJoinInvite;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -153,6 +163,15 @@ export class ConnectionsClient {
   ): UnaryResponse;
   deleteConnection(
     requestMessage: connections_pb.DeleteConnReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  sendJoinInvite(
+    requestMessage: connections_pb.JoinInviteReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  sendJoinInvite(
+    requestMessage: connections_pb.JoinInviteReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
 }

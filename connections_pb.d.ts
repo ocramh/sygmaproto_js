@@ -249,6 +249,30 @@ export namespace DeleteConnReq {
   }
 }
 
+export class JoinInviteReq extends jspb.Message {
+  getTousername(): string;
+  setTousername(value: string): void;
+
+  getTouseremail(): string;
+  setTouseremail(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): JoinInviteReq.AsObject;
+  static toObject(includeInstance: boolean, msg: JoinInviteReq): JoinInviteReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: JoinInviteReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): JoinInviteReq;
+  static deserializeBinaryFromReader(message: JoinInviteReq, reader: jspb.BinaryReader): JoinInviteReq;
+}
+
+export namespace JoinInviteReq {
+  export type AsObject = {
+    tousername: string,
+    touseremail: string,
+  }
+}
+
 export interface ConnectionTypeMap {
   FOLLOW: 0;
   CONNECT: 1;

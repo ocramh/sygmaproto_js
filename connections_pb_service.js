@@ -65,6 +65,15 @@ Connections.DeleteConnection = {
   responseType: google_protobuf_empty_pb.Empty
 };
 
+Connections.SendJoinInvite = {
+  methodName: "SendJoinInvite",
+  service: Connections,
+  requestStream: false,
+  responseStream: false,
+  requestType: connections_pb.JoinInviteReq,
+  responseType: google_protobuf_empty_pb.Empty
+};
+
 exports.Connections = Connections;
 
 function ConnectionsClient(serviceHost, options) {
@@ -232,6 +241,37 @@ ConnectionsClient.prototype.deleteConnection = function deleteConnection(request
     callback = arguments[1];
   }
   var client = grpc.unary(Connections.DeleteConnection, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+ConnectionsClient.prototype.sendJoinInvite = function sendJoinInvite(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(Connections.SendJoinInvite, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

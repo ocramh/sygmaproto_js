@@ -116,6 +116,17 @@ function deserialize_sygma_pb_GetConnRes(buffer_arg) {
   return connections_pb.GetConnRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_JoinInviteReq(arg) {
+  if (!(arg instanceof connections_pb.JoinInviteReq)) {
+    throw new Error('Expected argument of type sygma_pb.JoinInviteReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_JoinInviteReq(buffer_arg) {
+  return connections_pb.JoinInviteReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_MutualConnReq(arg) {
   if (!(arg instanceof connections_pb.MutualConnReq)) {
     throw new Error('Expected argument of type sygma_pb.MutualConnReq');
@@ -192,6 +203,19 @@ var ConnectionsService = exports.ConnectionsService = {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_sygma_pb_DeleteConnReq,
     requestDeserialize: deserialize_sygma_pb_DeleteConnReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // SendJoinInvite sends an email invite to join Sygma from an existing user to a
+// prospect user
+sendJoinInvite: {
+    path: '/sygma_pb.Connections/SendJoinInvite',
+    requestStream: false,
+    responseStream: false,
+    requestType: connections_pb.JoinInviteReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_JoinInviteReq,
+    requestDeserialize: deserialize_sygma_pb_JoinInviteReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
