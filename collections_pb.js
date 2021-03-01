@@ -499,7 +499,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sygma_pb.CollectionShortInfo = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sygma_pb.CollectionShortInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sygma_pb.CollectionShortInfo, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -4830,6 +4830,13 @@ proto.sygma_pb.GetUserInfoRes.prototype.clearGenresinfoList = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sygma_pb.CollectionShortInfo.repeatedFields_ = [7];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -4863,9 +4870,11 @@ proto.sygma_pb.CollectionShortInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, ""),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
     updatedat: (f = msg.getUpdatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    documentscount: jspb.Message.getFieldWithDefault(msg, 4, 0),
-    userscount: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    documentscount: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    userscount: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    genresList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -4911,17 +4920,25 @@ proto.sygma_pb.CollectionShortInfo.deserializeBinaryFromReader = function(msg, r
       msg.setName(value);
       break;
     case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 4:
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setUpdatedat(value);
       break;
-    case 4:
+    case 5:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setDocumentscount(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {number} */ (reader.readInt64());
       msg.setUserscount(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addGenres(value);
       break;
     default:
       reader.skipField();
@@ -4966,10 +4983,17 @@ proto.sygma_pb.CollectionShortInfo.serializeBinaryToWriter = function(message, w
       f
     );
   }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
   f = message.getUpdatedat();
   if (f != null) {
     writer.writeMessage(
-      3,
+      4,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
@@ -4977,14 +5001,21 @@ proto.sygma_pb.CollectionShortInfo.serializeBinaryToWriter = function(message, w
   f = message.getDocumentscount();
   if (f !== 0) {
     writer.writeInt64(
-      4,
+      5,
       f
     );
   }
   f = message.getUserscount();
   if (f !== 0) {
     writer.writeInt64(
-      5,
+      6,
+      f
+    );
+  }
+  f = message.getGenresList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
       f
     );
   }
@@ -5028,12 +5059,30 @@ proto.sygma_pb.CollectionShortInfo.prototype.setName = function(value) {
 
 
 /**
- * optional google.protobuf.Timestamp updatedAt = 3;
+ * optional string description = 3;
+ * @return {string}
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp updatedAt = 4;
  * @return {?proto.google.protobuf.Timestamp}
  */
 proto.sygma_pb.CollectionShortInfo.prototype.getUpdatedat = function() {
   return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
 };
 
 
@@ -5042,7 +5091,7 @@ proto.sygma_pb.CollectionShortInfo.prototype.getUpdatedat = function() {
  * @return {!proto.sygma_pb.CollectionShortInfo} returns this
 */
 proto.sygma_pb.CollectionShortInfo.prototype.setUpdatedat = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -5060,33 +5109,15 @@ proto.sygma_pb.CollectionShortInfo.prototype.clearUpdatedat = function() {
  * @return {boolean}
  */
 proto.sygma_pb.CollectionShortInfo.prototype.hasUpdatedat = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
 /**
- * optional int64 documentsCount = 4;
+ * optional int64 documentsCount = 5;
  * @return {number}
  */
 proto.sygma_pb.CollectionShortInfo.prototype.getDocumentscount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.sygma_pb.CollectionShortInfo} returns this
- */
-proto.sygma_pb.CollectionShortInfo.prototype.setDocumentscount = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
-};
-
-
-/**
- * optional int64 usersCount = 5;
- * @return {number}
- */
-proto.sygma_pb.CollectionShortInfo.prototype.getUserscount = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
 };
 
@@ -5095,8 +5126,63 @@ proto.sygma_pb.CollectionShortInfo.prototype.getUserscount = function() {
  * @param {number} value
  * @return {!proto.sygma_pb.CollectionShortInfo} returns this
  */
-proto.sygma_pb.CollectionShortInfo.prototype.setUserscount = function(value) {
+proto.sygma_pb.CollectionShortInfo.prototype.setDocumentscount = function(value) {
   return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional int64 usersCount = 6;
+ * @return {number}
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.getUserscount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.setUserscount = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * repeated string genres = 7;
+ * @return {!Array<string>}
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.getGenresList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.setGenresList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.addGenres = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.clearGenresList = function() {
+  return this.setGenresList([]);
 };
 
 

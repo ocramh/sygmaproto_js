@@ -601,6 +601,9 @@ export class CollectionShortInfo extends jspb.Message {
   getName(): string;
   setName(value: string): void;
 
+  getDescription(): string;
+  setDescription(value: string): void;
+
   hasUpdatedat(): boolean;
   clearUpdatedat(): void;
   getUpdatedat(): google_protobuf_timestamp_pb.Timestamp | undefined;
@@ -611,6 +614,11 @@ export class CollectionShortInfo extends jspb.Message {
 
   getUserscount(): number;
   setUserscount(value: number): void;
+
+  clearGenresList(): void;
+  getGenresList(): Array<string>;
+  setGenresList(value: Array<string>): void;
+  addGenres(value: string, index?: number): string;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CollectionShortInfo.AsObject;
@@ -626,9 +634,11 @@ export namespace CollectionShortInfo {
   export type AsObject = {
     id: string,
     name: string,
+    description: string,
     updatedat?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     documentscount: number,
     userscount: number,
+    genresList: Array<string>,
   }
 }
 
