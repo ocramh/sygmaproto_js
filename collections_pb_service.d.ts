@@ -59,6 +59,15 @@ type CollectionsServiceDeleteCollection = {
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
+type CollectionsServiceFollowCollection = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.FollowCollectionReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 type CollectionsServiceShareWithUser = {
   readonly methodName: string;
   readonly service: typeof CollectionsService;
@@ -121,6 +130,7 @@ export class CollectionsService {
   static readonly GetCollection: CollectionsServiceGetCollection;
   static readonly UpdateCollection: CollectionsServiceUpdateCollection;
   static readonly DeleteCollection: CollectionsServiceDeleteCollection;
+  static readonly FollowCollection: CollectionsServiceFollowCollection;
   static readonly ShareWithUser: CollectionsServiceShareWithUser;
   static readonly AddDocument: CollectionsServiceAddDocument;
   static readonly DeleteDocument: CollectionsServiceDeleteDocument;
@@ -213,6 +223,15 @@ export class CollectionsServiceClient {
   ): UnaryResponse;
   deleteCollection(
     requestMessage: collections_pb.DeleteCollectionReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  followCollection(
+    requestMessage: collections_pb.FollowCollectionReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  followCollection(
+    requestMessage: collections_pb.FollowCollectionReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
   shareWithUser(

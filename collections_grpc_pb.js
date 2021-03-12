@@ -84,6 +84,17 @@ function deserialize_sygma_pb_DeleteDocumentReq(buffer_arg) {
   return collections_pb.DeleteDocumentReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_FollowCollectionReq(arg) {
+  if (!(arg instanceof collections_pb.FollowCollectionReq)) {
+    throw new Error('Expected argument of type sygma_pb.FollowCollectionReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_FollowCollectionReq(buffer_arg) {
+  return collections_pb.FollowCollectionReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetAlbumInfoReq(arg) {
   if (!(arg instanceof collections_pb.GetAlbumInfoReq)) {
     throw new Error('Expected argument of type sygma_pb.GetAlbumInfoReq');
@@ -321,6 +332,18 @@ deleteCollection: {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_sygma_pb_DeleteCollectionReq,
     requestDeserialize: deserialize_sygma_pb_DeleteCollectionReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // FollowCollection adds a new follower to a collection
+followCollection: {
+    path: '/sygma_pb.CollectionsService/FollowCollection',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.FollowCollectionReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_FollowCollectionReq,
+    requestDeserialize: deserialize_sygma_pb_FollowCollectionReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },

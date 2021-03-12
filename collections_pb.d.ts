@@ -390,6 +390,32 @@ export namespace DeleteCollectionReq {
   }
 }
 
+export class FollowCollectionReq extends jspb.Message {
+  getCollectionid(): string;
+  setCollectionid(value: string): void;
+
+  hasFollower(): boolean;
+  clearFollower(): void;
+  getFollower(): types_pb.User | undefined;
+  setFollower(value?: types_pb.User): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): FollowCollectionReq.AsObject;
+  static toObject(includeInstance: boolean, msg: FollowCollectionReq): FollowCollectionReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: FollowCollectionReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): FollowCollectionReq;
+  static deserializeBinaryFromReader(message: FollowCollectionReq, reader: jspb.BinaryReader): FollowCollectionReq;
+}
+
+export namespace FollowCollectionReq {
+  export type AsObject = {
+    collectionid: string,
+    follower?: types_pb.User.AsObject,
+  }
+}
+
 export class ShareWithUserReq extends jspb.Message {
   getCollectionid(): string;
   setCollectionid(value: string): void;
