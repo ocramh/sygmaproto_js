@@ -238,6 +238,17 @@ function deserialize_sygma_pb_ShareWithUserReq(buffer_arg) {
   return collections_pb.ShareWithUserReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_UnfollowCollectionReq(arg) {
+  if (!(arg instanceof collections_pb.UnfollowCollectionReq)) {
+    throw new Error('Expected argument of type sygma_pb.UnfollowCollectionReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_UnfollowCollectionReq(buffer_arg) {
+  return collections_pb.UnfollowCollectionReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_UpdateCollectionReq(arg) {
   if (!(arg instanceof collections_pb.UpdateCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.UpdateCollectionReq');
@@ -344,6 +355,18 @@ followCollection: {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_sygma_pb_FollowCollectionReq,
     requestDeserialize: deserialize_sygma_pb_FollowCollectionReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // UnfollowCollection removes a follower from a collection
+unfollowCollection: {
+    path: '/sygma_pb.CollectionsService/UnfollowCollection',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.UnfollowCollectionReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_UnfollowCollectionReq,
+    requestDeserialize: deserialize_sygma_pb_UnfollowCollectionReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },

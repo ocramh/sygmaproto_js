@@ -416,6 +416,26 @@ export namespace FollowCollectionReq {
   }
 }
 
+export class UnfollowCollectionReq extends jspb.Message {
+  getCollectionid(): string;
+  setCollectionid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UnfollowCollectionReq.AsObject;
+  static toObject(includeInstance: boolean, msg: UnfollowCollectionReq): UnfollowCollectionReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UnfollowCollectionReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UnfollowCollectionReq;
+  static deserializeBinaryFromReader(message: UnfollowCollectionReq, reader: jspb.BinaryReader): UnfollowCollectionReq;
+}
+
+export namespace UnfollowCollectionReq {
+  export type AsObject = {
+    collectionid: string,
+  }
+}
+
 export class ShareWithUserReq extends jspb.Message {
   getCollectionid(): string;
   setCollectionid(value: string): void;

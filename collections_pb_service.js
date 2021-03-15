@@ -74,6 +74,15 @@ CollectionsService.FollowCollection = {
   responseType: google_protobuf_empty_pb.Empty
 };
 
+CollectionsService.UnfollowCollection = {
+  methodName: "UnfollowCollection",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.UnfollowCollectionReq,
+  responseType: google_protobuf_empty_pb.Empty
+};
+
 CollectionsService.ShareWithUser = {
   methodName: "ShareWithUser",
   service: CollectionsService,
@@ -326,6 +335,37 @@ CollectionsServiceClient.prototype.followCollection = function followCollection(
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsService.FollowCollection, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsServiceClient.prototype.unfollowCollection = function unfollowCollection(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.UnfollowCollection, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
