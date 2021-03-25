@@ -356,3 +356,23 @@ export namespace UpdateProfileReq {
   }
 }
 
+export class PreferencesReq extends jspb.Message {
+  getAccept(): boolean;
+  setAccept(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PreferencesReq.AsObject;
+  static toObject(includeInstance: boolean, msg: PreferencesReq): PreferencesReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: PreferencesReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PreferencesReq;
+  static deserializeBinaryFromReader(message: PreferencesReq, reader: jspb.BinaryReader): PreferencesReq;
+}
+
+export namespace PreferencesReq {
+  export type AsObject = {
+    accept: boolean,
+  }
+}
+

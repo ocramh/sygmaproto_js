@@ -117,6 +117,17 @@ function deserialize_sygma_pb_LoginResp(buffer_arg) {
   return auth_pb.LoginResp.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_PreferencesReq(arg) {
+  if (!(arg instanceof auth_pb.PreferencesReq)) {
+    throw new Error('Expected argument of type sygma_pb.PreferencesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_PreferencesReq(buffer_arg) {
+  return auth_pb.PreferencesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_RefeshTokenReq(arg) {
   if (!(arg instanceof auth_pb.RefeshTokenReq)) {
     throw new Error('Expected argument of type sygma_pb.RefeshTokenReq');
@@ -279,6 +290,18 @@ updateUserProfile: {
     responseType: google_protobuf_empty_pb.Empty,
     requestSerialize: serialize_sygma_pb_UpdateProfileReq,
     requestDeserialize: deserialize_sygma_pb_UpdateProfileReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // Turns on or off the user notifications prefences
+updateEmailNotificationsPreferences: {
+    path: '/sygma_pb.AuthService/UpdateEmailNotificationsPreferences',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.PreferencesReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_PreferencesReq,
+    requestDeserialize: deserialize_sygma_pb_PreferencesReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
