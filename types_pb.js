@@ -2031,7 +2031,8 @@ proto.sygma_pb.UserProfile.toObject = function(includeInstance, msg) {
     onboarded: jspb.Message.getBooleanFieldWithDefault(msg, 2, false),
     bio: jspb.Message.getFieldWithDefault(msg, 3, ""),
     profilepicurl: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    favouritegenresList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
+    favouritegenresList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+    receivenotificationemails: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -2088,6 +2089,10 @@ proto.sygma_pb.UserProfile.deserializeBinaryFromReader = function(msg, reader) {
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.addFavouritegenres(value);
+      break;
+    case 6:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setReceivenotificationemails(value);
       break;
     default:
       reader.skipField();
@@ -2151,6 +2156,13 @@ proto.sygma_pb.UserProfile.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeRepeatedString(
       5,
+      f
+    );
+  }
+  f = message.getReceivenotificationemails();
+  if (f) {
+    writer.writeBool(
+      6,
       f
     );
   }
@@ -2282,6 +2294,24 @@ proto.sygma_pb.UserProfile.prototype.addFavouritegenres = function(value, opt_in
  */
 proto.sygma_pb.UserProfile.prototype.clearFavouritegenresList = function() {
   return this.setFavouritegenresList([]);
+};
+
+
+/**
+ * optional bool receiveNotificationEmails = 6;
+ * @return {boolean}
+ */
+proto.sygma_pb.UserProfile.prototype.getReceivenotificationemails = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sygma_pb.UserProfile} returns this
+ */
+proto.sygma_pb.UserProfile.prototype.setReceivenotificationemails = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 

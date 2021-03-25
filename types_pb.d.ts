@@ -274,6 +274,9 @@ export class UserProfile extends jspb.Message {
   setFavouritegenresList(value: Array<string>): void;
   addFavouritegenres(value: string, index?: number): string;
 
+  getReceivenotificationemails(): boolean;
+  setReceivenotificationemails(value: boolean): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UserProfile.AsObject;
   static toObject(includeInstance: boolean, msg: UserProfile): UserProfile.AsObject;
@@ -291,6 +294,7 @@ export namespace UserProfile {
     bio: string,
     profilepicurl: string,
     favouritegenresList: Array<string>,
+    receivenotificationemails: boolean,
   }
 }
 
