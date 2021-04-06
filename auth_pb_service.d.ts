@@ -95,6 +95,15 @@ type AuthServiceUpdateEmailNotificationsPreferences = {
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
+type AuthServiceGetUserEmail = {
+  readonly methodName: string;
+  readonly service: typeof AuthService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof auth_pb.GetUserEmailReq;
+  readonly responseType: typeof auth_pb.GetUserEmailRes;
+};
+
 export class AuthService {
   static readonly serviceName: string;
   static readonly CreateAccount: AuthServiceCreateAccount;
@@ -107,6 +116,7 @@ export class AuthService {
   static readonly GetUserProfile: AuthServiceGetUserProfile;
   static readonly UpdateUserProfile: AuthServiceUpdateUserProfile;
   static readonly UpdateEmailNotificationsPreferences: AuthServiceUpdateEmailNotificationsPreferences;
+  static readonly GetUserEmail: AuthServiceGetUserEmail;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -230,6 +240,15 @@ export class AuthServiceClient {
   updateEmailNotificationsPreferences(
     requestMessage: auth_pb.PreferencesReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  getUserEmail(
+    requestMessage: auth_pb.GetUserEmailReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.GetUserEmailRes|null) => void
+  ): UnaryResponse;
+  getUserEmail(
+    requestMessage: auth_pb.GetUserEmailReq,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.GetUserEmailRes|null) => void
   ): UnaryResponse;
 }
 

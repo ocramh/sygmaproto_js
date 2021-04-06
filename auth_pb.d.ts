@@ -6,6 +6,50 @@ import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as types_pb from "./types_pb";
 
+export class GetUserEmailReq extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetUserEmailReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetUserEmailReq): GetUserEmailReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetUserEmailReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetUserEmailReq;
+  static deserializeBinaryFromReader(message: GetUserEmailReq, reader: jspb.BinaryReader): GetUserEmailReq;
+}
+
+export namespace GetUserEmailReq {
+  export type AsObject = {
+    userid: string,
+  }
+}
+
+export class GetUserEmailRes extends jspb.Message {
+  getUseremail(): string;
+  setUseremail(value: string): void;
+
+  getNotificationsallowed(): boolean;
+  setNotificationsallowed(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetUserEmailRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetUserEmailRes): GetUserEmailRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetUserEmailRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetUserEmailRes;
+  static deserializeBinaryFromReader(message: GetUserEmailRes, reader: jspb.BinaryReader): GetUserEmailRes;
+}
+
+export namespace GetUserEmailRes {
+  export type AsObject = {
+    useremail: string,
+    notificationsallowed: boolean,
+  }
+}
+
 export class CreateAccountReq extends jspb.Message {
   getUsername(): string;
   setUsername(value: string): void;

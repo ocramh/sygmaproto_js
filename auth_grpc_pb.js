@@ -95,6 +95,28 @@ function deserialize_sygma_pb_GetProfileRes(buffer_arg) {
   return auth_pb.GetProfileRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetUserEmailReq(arg) {
+  if (!(arg instanceof auth_pb.GetUserEmailReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserEmailReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserEmailReq(buffer_arg) {
+  return auth_pb.GetUserEmailReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetUserEmailRes(arg) {
+  if (!(arg instanceof auth_pb.GetUserEmailRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserEmailRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserEmailRes(buffer_arg) {
+  return auth_pb.GetUserEmailRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_LoginReq(arg) {
   if (!(arg instanceof auth_pb.LoginReq)) {
     throw new Error('Expected argument of type sygma_pb.LoginReq');
@@ -304,6 +326,19 @@ updateEmailNotificationsPreferences: {
     requestDeserialize: deserialize_sygma_pb_PreferencesReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // Returns the email address associated with a user account.
+// ONly internal services are allowed to call this method
+getUserEmail: {
+    path: '/sygma_pb.AuthService/GetUserEmail',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.GetUserEmailReq,
+    responseType: auth_pb.GetUserEmailRes,
+    requestSerialize: serialize_sygma_pb_GetUserEmailReq,
+    requestDeserialize: deserialize_sygma_pb_GetUserEmailReq,
+    responseSerialize: serialize_sygma_pb_GetUserEmailRes,
+    responseDeserialize: deserialize_sygma_pb_GetUserEmailRes,
   },
 };
 
