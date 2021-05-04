@@ -640,6 +640,48 @@ export namespace GetUserInfoRes {
   }
 }
 
+export class GetAlbumsByUserReq extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAlbumsByUserReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAlbumsByUserReq): GetAlbumsByUserReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetAlbumsByUserReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAlbumsByUserReq;
+  static deserializeBinaryFromReader(message: GetAlbumsByUserReq, reader: jspb.BinaryReader): GetAlbumsByUserReq;
+}
+
+export namespace GetAlbumsByUserReq {
+  export type AsObject = {
+    userid: string,
+  }
+}
+
+export class GetAlbumsByUserRes extends jspb.Message {
+  clearUploadedalbumsList(): void;
+  getUploadedalbumsList(): Array<CollectionItem>;
+  setUploadedalbumsList(value: Array<CollectionItem>): void;
+  addUploadedalbums(value?: CollectionItem, index?: number): CollectionItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetAlbumsByUserRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetAlbumsByUserRes): GetAlbumsByUserRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetAlbumsByUserRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetAlbumsByUserRes;
+  static deserializeBinaryFromReader(message: GetAlbumsByUserRes, reader: jspb.BinaryReader): GetAlbumsByUserRes;
+}
+
+export namespace GetAlbumsByUserRes {
+  export type AsObject = {
+    uploadedalbumsList: Array<CollectionItem.AsObject>,
+  }
+}
+
 export class CollectionShortInfo extends jspb.Message {
   getId(): string;
   setId(value: string): void;

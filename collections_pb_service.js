@@ -128,6 +128,15 @@ CollectionsService.GetUserInfo = {
   responseType: collections_pb.GetUserInfoRes
 };
 
+CollectionsService.GetAlbumsByUser = {
+  methodName: "GetAlbumsByUser",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetAlbumsByUserReq,
+  responseType: collections_pb.GetAlbumsByUserRes
+};
+
 CollectionsService.GetGenres = {
   methodName: "GetGenres",
   service: CollectionsService,
@@ -521,6 +530,37 @@ CollectionsServiceClient.prototype.getUserInfo = function getUserInfo(requestMes
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsService.GetUserInfo, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsServiceClient.prototype.getAlbumsByUser = function getAlbumsByUser(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.GetAlbumsByUser, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

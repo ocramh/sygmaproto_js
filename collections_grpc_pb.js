@@ -117,6 +117,28 @@ function deserialize_sygma_pb_GetAlbumInfoRes(buffer_arg) {
   return collections_pb.GetAlbumInfoRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetAlbumsByUserReq(arg) {
+  if (!(arg instanceof collections_pb.GetAlbumsByUserReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetAlbumsByUserReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetAlbumsByUserReq(buffer_arg) {
+  return collections_pb.GetAlbumsByUserReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetAlbumsByUserRes(arg) {
+  if (!(arg instanceof collections_pb.GetAlbumsByUserRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetAlbumsByUserRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetAlbumsByUserRes(buffer_arg) {
+  return collections_pb.GetAlbumsByUserRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetCollectionReq(arg) {
   if (!(arg instanceof collections_pb.GetCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.GetCollectionReq');
@@ -430,6 +452,18 @@ getUserInfo: {
     requestDeserialize: deserialize_sygma_pb_GetUserInfoReq,
     responseSerialize: serialize_sygma_pb_GetUserInfoRes,
     responseDeserialize: deserialize_sygma_pb_GetUserInfoRes,
+  },
+  // GetAlbumsByUser returns a list of albums uploaded by a user
+getAlbumsByUser: {
+    path: '/sygma_pb.CollectionsService/GetAlbumsByUser',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetAlbumsByUserReq,
+    responseType: collections_pb.GetAlbumsByUserRes,
+    requestSerialize: serialize_sygma_pb_GetAlbumsByUserReq,
+    requestDeserialize: deserialize_sygma_pb_GetAlbumsByUserReq,
+    responseSerialize: serialize_sygma_pb_GetAlbumsByUserRes,
+    responseDeserialize: deserialize_sygma_pb_GetAlbumsByUserRes,
   },
   // GetGenres returns either the genres of music available on the platfom. If the
 // request inUse option is set to true the genres returned will only include the
