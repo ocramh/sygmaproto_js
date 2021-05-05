@@ -430,7 +430,8 @@ proto.sygma_pb.CreateAccountReq.toObject = function(includeInstance, msg) {
     emailaddress: jspb.Message.getFieldWithDefault(msg, 2, ""),
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
     confirmpassword: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    deviceid: jspb.Message.getFieldWithDefault(msg, 5, "")
+    deviceid: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    referrer: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -486,6 +487,10 @@ proto.sygma_pb.CreateAccountReq.deserializeBinaryFromReader = function(msg, read
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeviceid(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setReferrer(value);
       break;
     default:
       reader.skipField();
@@ -548,6 +553,13 @@ proto.sygma_pb.CreateAccountReq.serializeBinaryToWriter = function(message, writ
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getReferrer();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -641,6 +653,24 @@ proto.sygma_pb.CreateAccountReq.prototype.getDeviceid = function() {
  */
 proto.sygma_pb.CreateAccountReq.prototype.setDeviceid = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string referrer = 6;
+ * @return {string}
+ */
+proto.sygma_pb.CreateAccountReq.prototype.getReferrer = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.CreateAccountReq} returns this
+ */
+proto.sygma_pb.CreateAccountReq.prototype.setReferrer = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

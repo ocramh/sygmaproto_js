@@ -22,6 +22,9 @@ export class CreateAccountReq extends jspb.Message {
   getDeviceid(): string;
   setDeviceid(value: string): void;
 
+  getReferrer(): string;
+  setReferrer(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CreateAccountReq.AsObject;
   static toObject(includeInstance: boolean, msg: CreateAccountReq): CreateAccountReq.AsObject;
@@ -39,6 +42,7 @@ export namespace CreateAccountReq {
     password: string,
     confirmpassword: string,
     deviceid: string,
+    referrer: string,
   }
 }
 
