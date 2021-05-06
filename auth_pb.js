@@ -431,7 +431,9 @@ proto.sygma_pb.CreateAccountReq.toObject = function(includeInstance, msg) {
     password: jspb.Message.getFieldWithDefault(msg, 3, ""),
     confirmpassword: jspb.Message.getFieldWithDefault(msg, 4, ""),
     deviceid: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    referrer: jspb.Message.getFieldWithDefault(msg, 6, "")
+    referrerid: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    referrername: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    referrermutualconn: jspb.Message.getBooleanFieldWithDefault(msg, 8, false)
   };
 
   if (includeInstance) {
@@ -490,7 +492,15 @@ proto.sygma_pb.CreateAccountReq.deserializeBinaryFromReader = function(msg, read
       break;
     case 6:
       var value = /** @type {string} */ (reader.readString());
-      msg.setReferrer(value);
+      msg.setReferrerid(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setReferrername(value);
+      break;
+    case 8:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setReferrermutualconn(value);
       break;
     default:
       reader.skipField();
@@ -556,10 +566,24 @@ proto.sygma_pb.CreateAccountReq.serializeBinaryToWriter = function(message, writ
       f
     );
   }
-  f = message.getReferrer();
+  f = message.getReferrerid();
   if (f.length > 0) {
     writer.writeString(
       6,
+      f
+    );
+  }
+  f = message.getReferrername();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getReferrermutualconn();
+  if (f) {
+    writer.writeBool(
+      8,
       f
     );
   }
@@ -657,10 +681,10 @@ proto.sygma_pb.CreateAccountReq.prototype.setDeviceid = function(value) {
 
 
 /**
- * optional string referrer = 6;
+ * optional string referrerID = 6;
  * @return {string}
  */
-proto.sygma_pb.CreateAccountReq.prototype.getReferrer = function() {
+proto.sygma_pb.CreateAccountReq.prototype.getReferrerid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
@@ -669,8 +693,44 @@ proto.sygma_pb.CreateAccountReq.prototype.getReferrer = function() {
  * @param {string} value
  * @return {!proto.sygma_pb.CreateAccountReq} returns this
  */
-proto.sygma_pb.CreateAccountReq.prototype.setReferrer = function(value) {
+proto.sygma_pb.CreateAccountReq.prototype.setReferrerid = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string referrerName = 7;
+ * @return {string}
+ */
+proto.sygma_pb.CreateAccountReq.prototype.getReferrername = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.CreateAccountReq} returns this
+ */
+proto.sygma_pb.CreateAccountReq.prototype.setReferrername = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional bool referrerMutualConn = 8;
+ * @return {boolean}
+ */
+proto.sygma_pb.CreateAccountReq.prototype.getReferrermutualconn = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sygma_pb.CreateAccountReq} returns this
+ */
+proto.sygma_pb.CreateAccountReq.prototype.setReferrermutualconn = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 8, value);
 };
 
 
