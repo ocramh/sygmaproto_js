@@ -140,6 +140,24 @@ type CollectionsServiceGetGenres = {
   readonly responseType: typeof collections_pb.GetGenresRes;
 };
 
+type CollectionsServiceLikeDocument = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.LikeDocumentReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
+type CollectionsServiceGetUserLikes = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetUserLikesReq;
+  readonly responseType: typeof collections_pb.GetUserLikesRes;
+};
+
 export class CollectionsService {
   static readonly serviceName: string;
   static readonly NewCollection: CollectionsServiceNewCollection;
@@ -157,6 +175,8 @@ export class CollectionsService {
   static readonly GetUserInfo: CollectionsServiceGetUserInfo;
   static readonly GetAlbumsByUser: CollectionsServiceGetAlbumsByUser;
   static readonly GetGenres: CollectionsServiceGetGenres;
+  static readonly LikeDocument: CollectionsServiceLikeDocument;
+  static readonly GetUserLikes: CollectionsServiceGetUserLikes;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -325,6 +345,24 @@ export class CollectionsServiceClient {
   getGenres(
     requestMessage: collections_pb.GetGenresReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetGenresRes|null) => void
+  ): UnaryResponse;
+  likeDocument(
+    requestMessage: collections_pb.LikeDocumentReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  likeDocument(
+    requestMessage: collections_pb.LikeDocumentReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  getUserLikes(
+    requestMessage: collections_pb.GetUserLikesReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetUserLikesRes|null) => void
+  ): UnaryResponse;
+  getUserLikes(
+    requestMessage: collections_pb.GetUserLikesReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetUserLikesRes|null) => void
   ): UnaryResponse;
 }
 

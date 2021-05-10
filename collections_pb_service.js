@@ -146,6 +146,24 @@ CollectionsService.GetGenres = {
   responseType: collections_pb.GetGenresRes
 };
 
+CollectionsService.LikeDocument = {
+  methodName: "LikeDocument",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.LikeDocumentReq,
+  responseType: google_protobuf_empty_pb.Empty
+};
+
+CollectionsService.GetUserLikes = {
+  methodName: "GetUserLikes",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetUserLikesReq,
+  responseType: collections_pb.GetUserLikesRes
+};
+
 exports.CollectionsService = CollectionsService;
 
 function CollectionsServiceClient(serviceHost, options) {
@@ -592,6 +610,68 @@ CollectionsServiceClient.prototype.getGenres = function getGenres(requestMessage
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsService.GetGenres, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsServiceClient.prototype.likeDocument = function likeDocument(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.LikeDocument, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsServiceClient.prototype.getUserLikes = function getUserLikes(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.GetUserLikes, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

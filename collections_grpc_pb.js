@@ -227,6 +227,39 @@ function deserialize_sygma_pb_GetUserInfoRes(buffer_arg) {
   return collections_pb.GetUserInfoRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetUserLikesReq(arg) {
+  if (!(arg instanceof collections_pb.GetUserLikesReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserLikesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserLikesReq(buffer_arg) {
+  return collections_pb.GetUserLikesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetUserLikesRes(arg) {
+  if (!(arg instanceof collections_pb.GetUserLikesRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetUserLikesRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetUserLikesRes(buffer_arg) {
+  return collections_pb.GetUserLikesRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_LikeDocumentReq(arg) {
+  if (!(arg instanceof collections_pb.LikeDocumentReq)) {
+    throw new Error('Expected argument of type sygma_pb.LikeDocumentReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_LikeDocumentReq(buffer_arg) {
+  return collections_pb.LikeDocumentReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_NewCollectionReq(arg) {
   if (!(arg instanceof collections_pb.NewCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.NewCollectionReq');
@@ -478,6 +511,31 @@ getGenres: {
     requestDeserialize: deserialize_sygma_pb_GetGenresReq,
     responseSerialize: serialize_sygma_pb_GetGenresRes,
     responseDeserialize: deserialize_sygma_pb_GetGenresRes,
+  },
+  // LikeDocument allows an authentucated user to like a document
+likeDocument: {
+    path: '/sygma_pb.CollectionsService/LikeDocument',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.LikeDocumentReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_LikeDocumentReq,
+    requestDeserialize: deserialize_sygma_pb_LikeDocumentReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // GetUserLikes returns the id of the documents liked by a user from a specified
+// timestamp
+getUserLikes: {
+    path: '/sygma_pb.CollectionsService/GetUserLikes',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetUserLikesReq,
+    responseType: collections_pb.GetUserLikesRes,
+    requestSerialize: serialize_sygma_pb_GetUserLikesReq,
+    requestDeserialize: deserialize_sygma_pb_GetUserLikesReq,
+    responseSerialize: serialize_sygma_pb_GetUserLikesRes,
+    responseDeserialize: deserialize_sygma_pb_GetUserLikesRes,
   },
 };
 

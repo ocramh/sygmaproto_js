@@ -898,3 +898,71 @@ export namespace GetGenresRes {
   }
 }
 
+export class LikeDocumentReq extends jspb.Message {
+  getDocumentid(): string;
+  setDocumentid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LikeDocumentReq.AsObject;
+  static toObject(includeInstance: boolean, msg: LikeDocumentReq): LikeDocumentReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LikeDocumentReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LikeDocumentReq;
+  static deserializeBinaryFromReader(message: LikeDocumentReq, reader: jspb.BinaryReader): LikeDocumentReq;
+}
+
+export namespace LikeDocumentReq {
+  export type AsObject = {
+    documentid: string,
+  }
+}
+
+export class GetUserLikesReq extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  hasFrom(): boolean;
+  clearFrom(): void;
+  getFrom(): google_protobuf_timestamp_pb.Timestamp | undefined;
+  setFrom(value?: google_protobuf_timestamp_pb.Timestamp): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetUserLikesReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetUserLikesReq): GetUserLikesReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetUserLikesReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetUserLikesReq;
+  static deserializeBinaryFromReader(message: GetUserLikesReq, reader: jspb.BinaryReader): GetUserLikesReq;
+}
+
+export namespace GetUserLikesReq {
+  export type AsObject = {
+    userid: string,
+    from?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+  }
+}
+
+export class GetUserLikesRes extends jspb.Message {
+  clearDocumentidList(): void;
+  getDocumentidList(): Array<string>;
+  setDocumentidList(value: Array<string>): void;
+  addDocumentid(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetUserLikesRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetUserLikesRes): GetUserLikesRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetUserLikesRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetUserLikesRes;
+  static deserializeBinaryFromReader(message: GetUserLikesRes, reader: jspb.BinaryReader): GetUserLikesRes;
+}
+
+export namespace GetUserLikesRes {
+  export type AsObject = {
+    documentidList: Array<string>,
+  }
+}
+
