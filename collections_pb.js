@@ -6387,7 +6387,7 @@ proto.sygma_pb.GenreInfo.prototype.setCount = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.CollectionItem.repeatedFields_ = [8];
+proto.sygma_pb.CollectionItem.repeatedFields_ = [7];
 
 
 
@@ -6426,8 +6426,9 @@ proto.sygma_pb.CollectionItem.toObject = function(includeInstance, msg) {
     title: jspb.Message.getFieldWithDefault(msg, 4, ""),
     id: jspb.Message.getFieldWithDefault(msg, 5, ""),
     description: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    score: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    tagsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    totallikes: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    liked: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
     album: (f = msg.getAlbum()) && types_pb.Album.toObject(includeInstance, f)
   };
 
@@ -6493,14 +6494,18 @@ proto.sygma_pb.CollectionItem.deserializeBinaryFromReader = function(msg, reader
       msg.setDescription(value);
       break;
     case 7:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setScore(value);
-      break;
-    case 8:
       var value = /** @type {string} */ (reader.readString());
       msg.addTags(value);
       break;
+    case 8:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotallikes(value);
+      break;
     case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setLiked(value);
+      break;
+    case 10:
       var value = new types_pb.Album;
       reader.readMessage(value,types_pb.Album.deserializeBinaryFromReader);
       msg.setAlbum(value);
@@ -6579,24 +6584,31 @@ proto.sygma_pb.CollectionItem.serializeBinaryToWriter = function(message, writer
       f
     );
   }
-  f = message.getScore();
-  if (f !== 0) {
-    writer.writeInt32(
+  f = message.getTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
       7,
       f
     );
   }
-  f = message.getTagsList();
-  if (f.length > 0) {
-    writer.writeRepeatedString(
+  f = message.getTotallikes();
+  if (f !== 0) {
+    writer.writeInt32(
       8,
+      f
+    );
+  }
+  f = message.getLiked();
+  if (f) {
+    writer.writeBool(
+      9,
       f
     );
   }
   f = message.getAlbum();
   if (f != null) {
     writer.writeMessage(
-      9,
+      10,
       f,
       types_pb.Album.serializeBinaryToWriter
     );
@@ -6770,29 +6782,11 @@ proto.sygma_pb.CollectionItem.prototype.setDescription = function(value) {
 
 
 /**
- * optional int32 score = 7;
- * @return {number}
- */
-proto.sygma_pb.CollectionItem.prototype.getScore = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.sygma_pb.CollectionItem} returns this
- */
-proto.sygma_pb.CollectionItem.prototype.setScore = function(value) {
-  return jspb.Message.setProto3IntField(this, 7, value);
-};
-
-
-/**
- * repeated string tags = 8;
+ * repeated string tags = 7;
  * @return {!Array<string>}
  */
 proto.sygma_pb.CollectionItem.prototype.getTagsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
@@ -6801,7 +6795,7 @@ proto.sygma_pb.CollectionItem.prototype.getTagsList = function() {
  * @return {!proto.sygma_pb.CollectionItem} returns this
  */
 proto.sygma_pb.CollectionItem.prototype.setTagsList = function(value) {
-  return jspb.Message.setField(this, 8, value || []);
+  return jspb.Message.setField(this, 7, value || []);
 };
 
 
@@ -6811,7 +6805,7 @@ proto.sygma_pb.CollectionItem.prototype.setTagsList = function(value) {
  * @return {!proto.sygma_pb.CollectionItem} returns this
  */
 proto.sygma_pb.CollectionItem.prototype.addTags = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
 };
 
 
@@ -6825,12 +6819,48 @@ proto.sygma_pb.CollectionItem.prototype.clearTagsList = function() {
 
 
 /**
- * optional Album album = 9;
+ * optional int32 totalLikes = 8;
+ * @return {number}
+ */
+proto.sygma_pb.CollectionItem.prototype.getTotallikes = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sygma_pb.CollectionItem} returns this
+ */
+proto.sygma_pb.CollectionItem.prototype.setTotallikes = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional bool liked = 9;
+ * @return {boolean}
+ */
+proto.sygma_pb.CollectionItem.prototype.getLiked = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sygma_pb.CollectionItem} returns this
+ */
+proto.sygma_pb.CollectionItem.prototype.setLiked = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional Album album = 10;
  * @return {?proto.sygma_pb.Album}
  */
 proto.sygma_pb.CollectionItem.prototype.getAlbum = function() {
   return /** @type{?proto.sygma_pb.Album} */ (
-    jspb.Message.getWrapperField(this, types_pb.Album, 9));
+    jspb.Message.getWrapperField(this, types_pb.Album, 10));
 };
 
 
@@ -6839,7 +6869,7 @@ proto.sygma_pb.CollectionItem.prototype.getAlbum = function() {
  * @return {!proto.sygma_pb.CollectionItem} returns this
 */
 proto.sygma_pb.CollectionItem.prototype.setAlbum = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 10, value);
 };
 
 
@@ -6857,7 +6887,7 @@ proto.sygma_pb.CollectionItem.prototype.clearAlbum = function() {
  * @return {boolean}
  */
 proto.sygma_pb.CollectionItem.prototype.hasAlbum = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 10) != null;
 };
 
 

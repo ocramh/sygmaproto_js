@@ -819,13 +819,16 @@ export class CollectionItem extends jspb.Message {
   getDescription(): string;
   setDescription(value: string): void;
 
-  getScore(): number;
-  setScore(value: number): void;
-
   clearTagsList(): void;
   getTagsList(): Array<string>;
   setTagsList(value: Array<string>): void;
   addTags(value: string, index?: number): string;
+
+  getTotallikes(): number;
+  setTotallikes(value: number): void;
+
+  getLiked(): boolean;
+  setLiked(value: boolean): void;
 
   hasAlbum(): boolean;
   clearAlbum(): void;
@@ -850,8 +853,9 @@ export namespace CollectionItem {
     title: string,
     id: string,
     description: string,
-    score: number,
     tagsList: Array<string>,
+    totallikes: number,
+    liked: boolean,
     album?: types_pb.Album.AsObject,
   }
 }
