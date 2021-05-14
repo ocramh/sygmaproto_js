@@ -56,24 +56,6 @@ EventsService.GetEvents = {
   responseType: events_pb.GetEventsRes
 };
 
-EventsService.SubscribeToEvent = {
-  methodName: "SubscribeToEvent",
-  service: EventsService,
-  requestStream: false,
-  responseStream: false,
-  requestType: events_pb.SubscribeToEventReq,
-  responseType: google_protobuf_empty_pb.Empty
-};
-
-EventsService.UnsubscribeToEvent = {
-  methodName: "UnsubscribeToEvent",
-  service: EventsService,
-  requestStream: false,
-  responseStream: false,
-  requestType: events_pb.UnsubscribeToEventReq,
-  responseType: google_protobuf_empty_pb.Empty
-};
-
 exports.EventsService = EventsService;
 
 function EventsServiceClient(serviceHost, options) {
@@ -210,68 +192,6 @@ EventsServiceClient.prototype.getEvents = function getEvents(requestMessage, met
     callback = arguments[1];
   }
   var client = grpc.unary(EventsService.GetEvents, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-EventsServiceClient.prototype.subscribeToEvent = function subscribeToEvent(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(EventsService.SubscribeToEvent, {
-    request: requestMessage,
-    host: this.serviceHost,
-    metadata: metadata,
-    transport: this.options.transport,
-    debug: this.options.debug,
-    onEnd: function (response) {
-      if (callback) {
-        if (response.status !== grpc.Code.OK) {
-          var err = new Error(response.statusMessage);
-          err.code = response.status;
-          err.metadata = response.trailers;
-          callback(err, null);
-        } else {
-          callback(null, response.message);
-        }
-      }
-    }
-  });
-  return {
-    cancel: function () {
-      callback = null;
-      client.close();
-    }
-  };
-};
-
-EventsServiceClient.prototype.unsubscribeToEvent = function unsubscribeToEvent(requestMessage, metadata, callback) {
-  if (arguments.length === 2) {
-    callback = arguments[1];
-  }
-  var client = grpc.unary(EventsService.UnsubscribeToEvent, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

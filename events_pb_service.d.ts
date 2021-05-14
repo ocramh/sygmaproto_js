@@ -50,24 +50,6 @@ type EventsServiceGetEvents = {
   readonly responseType: typeof events_pb.GetEventsRes;
 };
 
-type EventsServiceSubscribeToEvent = {
-  readonly methodName: string;
-  readonly service: typeof EventsService;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof events_pb.SubscribeToEventReq;
-  readonly responseType: typeof google_protobuf_empty_pb.Empty;
-};
-
-type EventsServiceUnsubscribeToEvent = {
-  readonly methodName: string;
-  readonly service: typeof EventsService;
-  readonly requestStream: false;
-  readonly responseStream: false;
-  readonly requestType: typeof events_pb.UnsubscribeToEventReq;
-  readonly responseType: typeof google_protobuf_empty_pb.Empty;
-};
-
 export class EventsService {
   static readonly serviceName: string;
   static readonly NewEvent: EventsServiceNewEvent;
@@ -75,8 +57,6 @@ export class EventsService {
   static readonly DeleteEvent: EventsServiceDeleteEvent;
   static readonly GetEvent: EventsServiceGetEvent;
   static readonly GetEvents: EventsServiceGetEvents;
-  static readonly SubscribeToEvent: EventsServiceSubscribeToEvent;
-  static readonly UnsubscribeToEvent: EventsServiceUnsubscribeToEvent;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -155,24 +135,6 @@ export class EventsServiceClient {
   getEvents(
     requestMessage: events_pb.GetEventsReq,
     callback: (error: ServiceError|null, responseMessage: events_pb.GetEventsRes|null) => void
-  ): UnaryResponse;
-  subscribeToEvent(
-    requestMessage: events_pb.SubscribeToEventReq,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
-  ): UnaryResponse;
-  subscribeToEvent(
-    requestMessage: events_pb.SubscribeToEventReq,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
-  ): UnaryResponse;
-  unsubscribeToEvent(
-    requestMessage: events_pb.UnsubscribeToEventReq,
-    metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
-  ): UnaryResponse;
-  unsubscribeToEvent(
-    requestMessage: events_pb.UnsubscribeToEventReq,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
 }
 

@@ -84,28 +84,6 @@ function deserialize_sygma_pb_NewEventReq(buffer_arg) {
   return events_pb.NewEventReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sygma_pb_SubscribeToEventReq(arg) {
-  if (!(arg instanceof events_pb.SubscribeToEventReq)) {
-    throw new Error('Expected argument of type sygma_pb.SubscribeToEventReq');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sygma_pb_SubscribeToEventReq(buffer_arg) {
-  return events_pb.SubscribeToEventReq.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_sygma_pb_UnsubscribeToEventReq(arg) {
-  if (!(arg instanceof events_pb.UnsubscribeToEventReq)) {
-    throw new Error('Expected argument of type sygma_pb.UnsubscribeToEventReq');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_sygma_pb_UnsubscribeToEventReq(buffer_arg) {
-  return events_pb.UnsubscribeToEventReq.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_sygma_pb_UpdateEventReq(arg) {
   if (!(arg instanceof events_pb.UpdateEventReq)) {
     throw new Error('Expected argument of type sygma_pb.UpdateEventReq');
@@ -173,28 +151,6 @@ var EventsServiceService = exports.EventsServiceService = {
     requestDeserialize: deserialize_sygma_pb_GetEventsReq,
     responseSerialize: serialize_sygma_pb_GetEventsRes,
     responseDeserialize: deserialize_sygma_pb_GetEventsRes,
-  },
-  subscribeToEvent: {
-    path: '/sygma_pb.EventsService/SubscribeToEvent',
-    requestStream: false,
-    responseStream: false,
-    requestType: events_pb.SubscribeToEventReq,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_sygma_pb_SubscribeToEventReq,
-    requestDeserialize: deserialize_sygma_pb_SubscribeToEventReq,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
-  },
-  unsubscribeToEvent: {
-    path: '/sygma_pb.EventsService/UnsubscribeToEvent',
-    requestStream: false,
-    responseStream: false,
-    requestType: events_pb.UnsubscribeToEventReq,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_sygma_pb_UnsubscribeToEventReq,
-    requestDeserialize: deserialize_sygma_pb_UnsubscribeToEventReq,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 
