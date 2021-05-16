@@ -336,9 +336,6 @@ export class Event extends jspb.Message {
   getSubscriberscount(): number;
   setSubscriberscount(value: number): void;
 
-  getDocumentscount(): number;
-  setDocumentscount(value: number): void;
-
   clearGenresList(): void;
   getGenresList(): Array<string>;
   setGenresList(value: Array<string>): void;
@@ -376,7 +373,6 @@ export namespace Event {
     todate?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     createdby?: User.AsObject,
     subscriberscount: number,
-    documentscount: number,
     genresList: Array<string>,
     imageurl: string,
     externallink: string,

@@ -28,6 +28,28 @@ export namespace NewEventReq {
   }
 }
 
+export class NewEventRes extends jspb.Message {
+  hasEvent(): boolean;
+  clearEvent(): void;
+  getEvent(): types_pb.Event | undefined;
+  setEvent(value?: types_pb.Event): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): NewEventRes.AsObject;
+  static toObject(includeInstance: boolean, msg: NewEventRes): NewEventRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: NewEventRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NewEventRes;
+  static deserializeBinaryFromReader(message: NewEventRes, reader: jspb.BinaryReader): NewEventRes;
+}
+
+export namespace NewEventRes {
+  export type AsObject = {
+    event?: types_pb.Event.AsObject,
+  }
+}
+
 export class UpdateEventReq extends jspb.Message {
   hasEvent(): boolean;
   clearEvent(): void;

@@ -11,7 +11,7 @@ type EventsServiceNewEvent = {
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof events_pb.NewEventReq;
-  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+  readonly responseType: typeof events_pb.NewEventRes;
 };
 
 type EventsServiceUpdateEvent = {
@@ -94,11 +94,11 @@ export class EventsServiceClient {
   newEvent(
     requestMessage: events_pb.NewEventReq,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+    callback: (error: ServiceError|null, responseMessage: events_pb.NewEventRes|null) => void
   ): UnaryResponse;
   newEvent(
     requestMessage: events_pb.NewEventReq,
-    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+    callback: (error: ServiceError|null, responseMessage: events_pb.NewEventRes|null) => void
   ): UnaryResponse;
   updateEvent(
     requestMessage: events_pb.UpdateEventReq,

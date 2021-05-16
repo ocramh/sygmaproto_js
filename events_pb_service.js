@@ -17,7 +17,7 @@ EventsService.NewEvent = {
   requestStream: false,
   responseStream: false,
   requestType: events_pb.NewEventReq,
-  responseType: google_protobuf_empty_pb.Empty
+  responseType: events_pb.NewEventRes
 };
 
 EventsService.UpdateEvent = {

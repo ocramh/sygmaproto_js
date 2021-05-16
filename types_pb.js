@@ -2343,7 +2343,7 @@ proto.sygma_pb.UserProfile.prototype.setReceivenotificationemails = function(val
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.Event.repeatedFields_ = [11,14];
+proto.sygma_pb.Event.repeatedFields_ = [10,13];
 
 
 
@@ -2385,10 +2385,9 @@ proto.sygma_pb.Event.toObject = function(includeInstance, msg) {
     todate: (f = msg.getTodate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     createdby: (f = msg.getCreatedby()) && proto.sygma_pb.User.toObject(includeInstance, f),
     subscriberscount: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    documentscount: jspb.Message.getFieldWithDefault(msg, 10, 0),
-    genresList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
-    imageurl: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    externallink: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    genresList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
+    imageurl: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    externallink: jspb.Message.getFieldWithDefault(msg, 12, ""),
     albumsList: jspb.Message.toObjectList(msg.getAlbumsList(),
     proto.sygma_pb.Album.toObject, includeInstance)
   };
@@ -2469,22 +2468,18 @@ proto.sygma_pb.Event.deserializeBinaryFromReader = function(msg, reader) {
       msg.setSubscriberscount(value);
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setDocumentscount(value);
-      break;
-    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.addGenres(value);
       break;
-    case 12:
+    case 11:
       var value = /** @type {string} */ (reader.readString());
       msg.setImageurl(value);
       break;
-    case 13:
+    case 12:
       var value = /** @type {string} */ (reader.readString());
       msg.setExternallink(value);
       break;
-    case 14:
+    case 13:
       var value = new proto.sygma_pb.Album;
       reader.readMessage(value,proto.sygma_pb.Album.deserializeBinaryFromReader);
       msg.addAlbums(value);
@@ -2586,38 +2581,31 @@ proto.sygma_pb.Event.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getDocumentscount();
-  if (f !== 0) {
-    writer.writeInt32(
-      10,
-      f
-    );
-  }
   f = message.getGenresList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      11,
+      10,
       f
     );
   }
   f = message.getImageurl();
   if (f.length > 0) {
     writer.writeString(
-      12,
+      11,
       f
     );
   }
   f = message.getExternallink();
   if (f.length > 0) {
     writer.writeString(
-      13,
+      12,
       f
     );
   }
   f = message.getAlbumsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      14,
+      13,
       f,
       proto.sygma_pb.Album.serializeBinaryToWriter
     );
@@ -2883,29 +2871,11 @@ proto.sygma_pb.Event.prototype.setSubscriberscount = function(value) {
 
 
 /**
- * optional int32 documentsCount = 10;
- * @return {number}
- */
-proto.sygma_pb.Event.prototype.getDocumentscount = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.sygma_pb.Event} returns this
- */
-proto.sygma_pb.Event.prototype.setDocumentscount = function(value) {
-  return jspb.Message.setProto3IntField(this, 10, value);
-};
-
-
-/**
- * repeated string genres = 11;
+ * repeated string genres = 10;
  * @return {!Array<string>}
  */
 proto.sygma_pb.Event.prototype.getGenresList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 10));
 };
 
 
@@ -2914,7 +2884,7 @@ proto.sygma_pb.Event.prototype.getGenresList = function() {
  * @return {!proto.sygma_pb.Event} returns this
  */
 proto.sygma_pb.Event.prototype.setGenresList = function(value) {
-  return jspb.Message.setField(this, 11, value || []);
+  return jspb.Message.setField(this, 10, value || []);
 };
 
 
@@ -2924,7 +2894,7 @@ proto.sygma_pb.Event.prototype.setGenresList = function(value) {
  * @return {!proto.sygma_pb.Event} returns this
  */
 proto.sygma_pb.Event.prototype.addGenres = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
 };
 
 
@@ -2938,11 +2908,11 @@ proto.sygma_pb.Event.prototype.clearGenresList = function() {
 
 
 /**
- * optional string imageURL = 12;
+ * optional string imageURL = 11;
  * @return {string}
  */
 proto.sygma_pb.Event.prototype.getImageurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
 };
 
 
@@ -2951,16 +2921,16 @@ proto.sygma_pb.Event.prototype.getImageurl = function() {
  * @return {!proto.sygma_pb.Event} returns this
  */
 proto.sygma_pb.Event.prototype.setImageurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 12, value);
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 
 /**
- * optional string externalLink = 13;
+ * optional string externalLink = 12;
  * @return {string}
  */
 proto.sygma_pb.Event.prototype.getExternallink = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
 };
 
 
@@ -2969,17 +2939,17 @@ proto.sygma_pb.Event.prototype.getExternallink = function() {
  * @return {!proto.sygma_pb.Event} returns this
  */
 proto.sygma_pb.Event.prototype.setExternallink = function(value) {
-  return jspb.Message.setProto3StringField(this, 13, value);
+  return jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
 /**
- * repeated Album albums = 14;
+ * repeated Album albums = 13;
  * @return {!Array<!proto.sygma_pb.Album>}
  */
 proto.sygma_pb.Event.prototype.getAlbumsList = function() {
   return /** @type{!Array<!proto.sygma_pb.Album>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Album, 14));
+    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Album, 13));
 };
 
 
@@ -2988,7 +2958,7 @@ proto.sygma_pb.Event.prototype.getAlbumsList = function() {
  * @return {!proto.sygma_pb.Event} returns this
 */
 proto.sygma_pb.Event.prototype.setAlbumsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 14, value);
+  return jspb.Message.setRepeatedWrapperField(this, 13, value);
 };
 
 
@@ -2998,7 +2968,7 @@ proto.sygma_pb.Event.prototype.setAlbumsList = function(value) {
  * @return {!proto.sygma_pb.Album}
  */
 proto.sygma_pb.Event.prototype.addAlbums = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 14, opt_value, proto.sygma_pb.Album, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 13, opt_value, proto.sygma_pb.Album, opt_index);
 };
 
 

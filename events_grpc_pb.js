@@ -84,6 +84,17 @@ function deserialize_sygma_pb_NewEventReq(buffer_arg) {
   return events_pb.NewEventReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_NewEventRes(arg) {
+  if (!(arg instanceof events_pb.NewEventRes)) {
+    throw new Error('Expected argument of type sygma_pb.NewEventRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_NewEventRes(buffer_arg) {
+  return events_pb.NewEventRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_UpdateEventReq(arg) {
   if (!(arg instanceof events_pb.UpdateEventReq)) {
     throw new Error('Expected argument of type sygma_pb.UpdateEventReq');
@@ -102,11 +113,11 @@ var EventsServiceService = exports.EventsServiceService = {
     requestStream: false,
     responseStream: false,
     requestType: events_pb.NewEventReq,
-    responseType: google_protobuf_empty_pb.Empty,
+    responseType: events_pb.NewEventRes,
     requestSerialize: serialize_sygma_pb_NewEventReq,
     requestDeserialize: deserialize_sygma_pb_NewEventReq,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
+    responseSerialize: serialize_sygma_pb_NewEventRes,
+    responseDeserialize: deserialize_sygma_pb_NewEventRes,
   },
   updateEvent: {
     path: '/sygma_pb.EventsService/UpdateEvent',
