@@ -50,6 +50,15 @@ type EventsServiceGetEvents = {
   readonly responseType: typeof events_pb.GetEventsRes;
 };
 
+type EventsServiceLikeEvent = {
+  readonly methodName: string;
+  readonly service: typeof EventsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof events_pb.LikeEventReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 export class EventsService {
   static readonly serviceName: string;
   static readonly NewEvent: EventsServiceNewEvent;
@@ -57,6 +66,7 @@ export class EventsService {
   static readonly DeleteEvent: EventsServiceDeleteEvent;
   static readonly GetEvent: EventsServiceGetEvent;
   static readonly GetEvents: EventsServiceGetEvents;
+  static readonly LikeEvent: EventsServiceLikeEvent;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -135,6 +145,15 @@ export class EventsServiceClient {
   getEvents(
     requestMessage: events_pb.GetEventsReq,
     callback: (error: ServiceError|null, responseMessage: events_pb.GetEventsRes|null) => void
+  ): UnaryResponse;
+  likeEvent(
+    requestMessage: events_pb.LikeEventReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  likeEvent(
+    requestMessage: events_pb.LikeEventReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
 }
 

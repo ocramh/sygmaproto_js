@@ -2343,7 +2343,7 @@ proto.sygma_pb.UserProfile.prototype.setReceivenotificationemails = function(val
  * @private {!Array<number>}
  * @const
  */
-proto.sygma_pb.Event.repeatedFields_ = [10,13];
+proto.sygma_pb.Event.repeatedFields_ = [10,15];
 
 
 
@@ -2388,6 +2388,8 @@ proto.sygma_pb.Event.toObject = function(includeInstance, msg) {
     genresList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f,
     imageurl: jspb.Message.getFieldWithDefault(msg, 11, ""),
     externallink: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    totallikes: jspb.Message.getFieldWithDefault(msg, 13, 0),
+    liked: jspb.Message.getBooleanFieldWithDefault(msg, 14, false),
     albumsList: jspb.Message.toObjectList(msg.getAlbumsList(),
     proto.sygma_pb.Album.toObject, includeInstance)
   };
@@ -2480,6 +2482,14 @@ proto.sygma_pb.Event.deserializeBinaryFromReader = function(msg, reader) {
       msg.setExternallink(value);
       break;
     case 13:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotallikes(value);
+      break;
+    case 14:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setLiked(value);
+      break;
+    case 15:
       var value = new proto.sygma_pb.Album;
       reader.readMessage(value,proto.sygma_pb.Album.deserializeBinaryFromReader);
       msg.addAlbums(value);
@@ -2602,10 +2612,24 @@ proto.sygma_pb.Event.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getTotallikes();
+  if (f !== 0) {
+    writer.writeInt32(
+      13,
+      f
+    );
+  }
+  f = message.getLiked();
+  if (f) {
+    writer.writeBool(
+      14,
+      f
+    );
+  }
   f = message.getAlbumsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      13,
+      15,
       f,
       proto.sygma_pb.Album.serializeBinaryToWriter
     );
@@ -2944,12 +2968,48 @@ proto.sygma_pb.Event.prototype.setExternallink = function(value) {
 
 
 /**
- * repeated Album albums = 13;
+ * optional int32 totalLikes = 13;
+ * @return {number}
+ */
+proto.sygma_pb.Event.prototype.getTotallikes = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.sygma_pb.Event} returns this
+ */
+proto.sygma_pb.Event.prototype.setTotallikes = function(value) {
+  return jspb.Message.setProto3IntField(this, 13, value);
+};
+
+
+/**
+ * optional bool liked = 14;
+ * @return {boolean}
+ */
+proto.sygma_pb.Event.prototype.getLiked = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 14, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.sygma_pb.Event} returns this
+ */
+proto.sygma_pb.Event.prototype.setLiked = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 14, value);
+};
+
+
+/**
+ * repeated Album albums = 15;
  * @return {!Array<!proto.sygma_pb.Album>}
  */
 proto.sygma_pb.Event.prototype.getAlbumsList = function() {
   return /** @type{!Array<!proto.sygma_pb.Album>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Album, 13));
+    jspb.Message.getRepeatedWrapperField(this, proto.sygma_pb.Album, 15));
 };
 
 
@@ -2958,7 +3018,7 @@ proto.sygma_pb.Event.prototype.getAlbumsList = function() {
  * @return {!proto.sygma_pb.Event} returns this
 */
 proto.sygma_pb.Event.prototype.setAlbumsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 13, value);
+  return jspb.Message.setRepeatedWrapperField(this, 15, value);
 };
 
 
@@ -2968,7 +3028,7 @@ proto.sygma_pb.Event.prototype.setAlbumsList = function(value) {
  * @return {!proto.sygma_pb.Album}
  */
 proto.sygma_pb.Event.prototype.addAlbums = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 13, opt_value, proto.sygma_pb.Album, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 15, opt_value, proto.sygma_pb.Album, opt_index);
 };
 
 

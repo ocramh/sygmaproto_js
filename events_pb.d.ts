@@ -188,3 +188,23 @@ export namespace GetEventsRes {
   }
 }
 
+export class LikeEventReq extends jspb.Message {
+  getEventid(): string;
+  setEventid(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LikeEventReq.AsObject;
+  static toObject(includeInstance: boolean, msg: LikeEventReq): LikeEventReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LikeEventReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LikeEventReq;
+  static deserializeBinaryFromReader(message: LikeEventReq, reader: jspb.BinaryReader): LikeEventReq;
+}
+
+export namespace LikeEventReq {
+  export type AsObject = {
+    eventid: string,
+  }
+}
+

@@ -347,6 +347,12 @@ export class Event extends jspb.Message {
   getExternallink(): string;
   setExternallink(value: string): void;
 
+  getTotallikes(): number;
+  setTotallikes(value: number): void;
+
+  getLiked(): boolean;
+  setLiked(value: boolean): void;
+
   clearAlbumsList(): void;
   getAlbumsList(): Array<Album>;
   setAlbumsList(value: Array<Album>): void;
@@ -376,6 +382,8 @@ export namespace Event {
     genresList: Array<string>,
     imageurl: string,
     externallink: string,
+    totallikes: number,
+    liked: boolean,
     albumsList: Array<Album.AsObject>,
   }
 }

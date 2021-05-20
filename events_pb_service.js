@@ -56,6 +56,15 @@ EventsService.GetEvents = {
   responseType: events_pb.GetEventsRes
 };
 
+EventsService.LikeEvent = {
+  methodName: "LikeEvent",
+  service: EventsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: events_pb.LikeEventReq,
+  responseType: google_protobuf_empty_pb.Empty
+};
+
 exports.EventsService = EventsService;
 
 function EventsServiceClient(serviceHost, options) {
@@ -192,6 +201,37 @@ EventsServiceClient.prototype.getEvents = function getEvents(requestMessage, met
     callback = arguments[1];
   }
   var client = grpc.unary(EventsService.GetEvents, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+EventsServiceClient.prototype.likeEvent = function likeEvent(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(EventsService.LikeEvent, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

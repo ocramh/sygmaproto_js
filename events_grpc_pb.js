@@ -73,6 +73,17 @@ function deserialize_sygma_pb_GetEventsRes(buffer_arg) {
   return events_pb.GetEventsRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_LikeEventReq(arg) {
+  if (!(arg instanceof events_pb.LikeEventReq)) {
+    throw new Error('Expected argument of type sygma_pb.LikeEventReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_LikeEventReq(buffer_arg) {
+  return events_pb.LikeEventReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_NewEventReq(arg) {
   if (!(arg instanceof events_pb.NewEventReq)) {
     throw new Error('Expected argument of type sygma_pb.NewEventReq');
@@ -162,6 +173,17 @@ var EventsServiceService = exports.EventsServiceService = {
     requestDeserialize: deserialize_sygma_pb_GetEventsReq,
     responseSerialize: serialize_sygma_pb_GetEventsRes,
     responseDeserialize: deserialize_sygma_pb_GetEventsRes,
+  },
+  likeEvent: {
+    path: '/sygma_pb.EventsService/LikeEvent',
+    requestStream: false,
+    responseStream: false,
+    requestType: events_pb.LikeEventReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_LikeEventReq,
+    requestDeserialize: deserialize_sygma_pb_LikeEventReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 
