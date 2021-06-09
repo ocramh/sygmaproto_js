@@ -7720,7 +7720,8 @@ proto.sygma_pb.GetDocumentLikesReq.prototype.toObject = function(opt_includeInst
  */
 proto.sygma_pb.GetDocumentLikesReq.toObject = function(includeInstance, msg) {
   var f, obj = {
-    documentid: jspb.Message.getFieldWithDefault(msg, 1, "")
+    userid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    documentid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -7759,6 +7760,10 @@ proto.sygma_pb.GetDocumentLikesReq.deserializeBinaryFromReader = function(msg, r
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
+      msg.setUserid(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
       msg.setDocumentid(value);
       break;
     default:
@@ -7790,10 +7795,17 @@ proto.sygma_pb.GetDocumentLikesReq.prototype.serializeBinary = function() {
  */
 proto.sygma_pb.GetDocumentLikesReq.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getDocumentid();
+  f = message.getUserid();
   if (f.length > 0) {
     writer.writeString(
       1,
+      f
+    );
+  }
+  f = message.getDocumentid();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
       f
     );
   }
@@ -7801,10 +7813,10 @@ proto.sygma_pb.GetDocumentLikesReq.serializeBinaryToWriter = function(message, w
 
 
 /**
- * optional string documentID = 1;
+ * optional string userID = 1;
  * @return {string}
  */
-proto.sygma_pb.GetDocumentLikesReq.prototype.getDocumentid = function() {
+proto.sygma_pb.GetDocumentLikesReq.prototype.getUserid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -7813,8 +7825,26 @@ proto.sygma_pb.GetDocumentLikesReq.prototype.getDocumentid = function() {
  * @param {string} value
  * @return {!proto.sygma_pb.GetDocumentLikesReq} returns this
  */
-proto.sygma_pb.GetDocumentLikesReq.prototype.setDocumentid = function(value) {
+proto.sygma_pb.GetDocumentLikesReq.prototype.setUserid = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string documentID = 2;
+ * @return {string}
+ */
+proto.sygma_pb.GetDocumentLikesReq.prototype.getDocumentid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.GetDocumentLikesReq} returns this
+ */
+proto.sygma_pb.GetDocumentLikesReq.prototype.setDocumentid = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

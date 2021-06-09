@@ -971,6 +971,9 @@ export namespace GetUserLikesRes {
 }
 
 export class GetDocumentLikesReq extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
   getDocumentid(): string;
   setDocumentid(value: string): void;
 
@@ -986,6 +989,7 @@ export class GetDocumentLikesReq extends jspb.Message {
 
 export namespace GetDocumentLikesReq {
   export type AsObject = {
+    userid: string,
     documentid: string,
   }
 }
