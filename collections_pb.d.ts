@@ -6,6 +6,50 @@ import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/t
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as types_pb from "./types_pb";
 
+export class GetDocumentLikesReq extends jspb.Message {
+  getDocumentid(): string;
+  setDocumentid(value: string): void;
+
+  getFromuser(): boolean;
+  setFromuser(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetDocumentLikesReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetDocumentLikesReq): GetDocumentLikesReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetDocumentLikesReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetDocumentLikesReq;
+  static deserializeBinaryFromReader(message: GetDocumentLikesReq, reader: jspb.BinaryReader): GetDocumentLikesReq;
+}
+
+export namespace GetDocumentLikesReq {
+  export type AsObject = {
+    documentid: string,
+    fromuser: boolean,
+  }
+}
+
+export class GetDocuemntLikesRes extends jspb.Message {
+  getCount(): number;
+  setCount(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetDocuemntLikesRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetDocuemntLikesRes): GetDocuemntLikesRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetDocuemntLikesRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetDocuemntLikesRes;
+  static deserializeBinaryFromReader(message: GetDocuemntLikesRes, reader: jspb.BinaryReader): GetDocuemntLikesRes;
+}
+
+export namespace GetDocuemntLikesRes {
+  export type AsObject = {
+    count: number,
+  }
+}
+
 export class CollectionInfo extends jspb.Message {
   getId(): string;
   setId(value: string): void;

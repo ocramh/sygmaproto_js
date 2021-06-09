@@ -183,6 +183,28 @@ function deserialize_sygma_pb_GetCollectionsRes(buffer_arg) {
   return collections_pb.GetCollectionsRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetDocuemntLikesRes(arg) {
+  if (!(arg instanceof collections_pb.GetDocuemntLikesRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetDocuemntLikesRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetDocuemntLikesRes(buffer_arg) {
+  return collections_pb.GetDocuemntLikesRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetDocumentLikesReq(arg) {
+  if (!(arg instanceof collections_pb.GetDocumentLikesReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetDocumentLikesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetDocumentLikesReq(buffer_arg) {
+  return collections_pb.GetDocumentLikesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetGenresReq(arg) {
   if (!(arg instanceof collections_pb.GetGenresReq)) {
     throw new Error('Expected argument of type sygma_pb.GetGenresReq');
@@ -536,6 +558,18 @@ getUserLikes: {
     requestDeserialize: deserialize_sygma_pb_GetUserLikesReq,
     responseSerialize: serialize_sygma_pb_GetUserLikesRes,
     responseDeserialize: deserialize_sygma_pb_GetUserLikesRes,
+  },
+  // GetDocumentLikes returns the numer of likes a document has received
+getDocumentLikes: {
+    path: '/sygma_pb.CollectionsService/GetDocumentLikes',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetDocumentLikesReq,
+    responseType: collections_pb.GetDocuemntLikesRes,
+    requestSerialize: serialize_sygma_pb_GetDocumentLikesReq,
+    requestDeserialize: deserialize_sygma_pb_GetDocumentLikesReq,
+    responseSerialize: serialize_sygma_pb_GetDocuemntLikesRes,
+    responseDeserialize: deserialize_sygma_pb_GetDocuemntLikesRes,
   },
 };
 

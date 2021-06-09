@@ -4,7 +4,6 @@
 import * as jspb from "google-protobuf";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as types_pb from "./types_pb";
-import * as connections_pb from "./connections_pb";
 
 export class AlbumsForUserReq extends jspb.Message {
   getUserid(): string;

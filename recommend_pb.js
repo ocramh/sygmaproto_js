@@ -18,8 +18,6 @@ var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/time
 goog.object.extend(proto, google_protobuf_timestamp_pb);
 var types_pb = require('./types_pb.js');
 goog.object.extend(proto, types_pb);
-var connections_pb = require('./connections_pb.js');
-goog.object.extend(proto, connections_pb);
 goog.exportSymbol('proto.sygma_pb.AlbumsForUserReq', null, global);
 goog.exportSymbol('proto.sygma_pb.ConnectionsForUserReq', null, global);
 goog.exportSymbol('proto.sygma_pb.ConnectionsForUserRes', null, global);

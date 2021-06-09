@@ -5,7 +5,6 @@ var grpc = require('grpc');
 var recommend_pb = require('./recommend_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var types_pb = require('./types_pb.js');
-var connections_pb = require('./connections_pb.js');
 
 function serialize_sygma_pb_AlbumsForUserReq(arg) {
   if (!(arg instanceof recommend_pb.AlbumsForUserReq)) {
