@@ -559,7 +559,7 @@ getUserLikes: {
     responseSerialize: serialize_sygma_pb_GetUserLikesRes,
     responseDeserialize: deserialize_sygma_pb_GetUserLikesRes,
   },
-  // GetDocumentLikes returns the numer of likes a document has received
+  // GetDocumentLikes returns the number of likes a document has received
 getDocumentLikes: {
     path: '/sygma_pb.CollectionsService/GetDocumentLikes',
     requestStream: false,

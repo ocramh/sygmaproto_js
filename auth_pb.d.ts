@@ -127,6 +127,9 @@ export class LoginReq extends jspb.Message {
   getDeviceid(): string;
   setDeviceid(value: string): void;
 
+  getPushtoken(): string;
+  setPushtoken(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginReq.AsObject;
   static toObject(includeInstance: boolean, msg: LoginReq): LoginReq.AsObject;
@@ -142,6 +145,7 @@ export namespace LoginReq {
     username: string,
     password: string,
     deviceid: string,
+    pushtoken: string,
   }
 }
 

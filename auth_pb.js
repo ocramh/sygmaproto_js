@@ -1186,7 +1186,8 @@ proto.sygma_pb.LoginReq.toObject = function(includeInstance, msg) {
   var f, obj = {
     username: jspb.Message.getFieldWithDefault(msg, 1, ""),
     password: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    deviceid: jspb.Message.getFieldWithDefault(msg, 3, "")
+    deviceid: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    pushtoken: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1235,6 +1236,10 @@ proto.sygma_pb.LoginReq.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setDeviceid(value);
       break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPushtoken(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1282,6 +1287,13 @@ proto.sygma_pb.LoginReq.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getPushtoken();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -1339,6 +1351,24 @@ proto.sygma_pb.LoginReq.prototype.getDeviceid = function() {
  */
 proto.sygma_pb.LoginReq.prototype.setDeviceid = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string pushToken = 4;
+ * @return {string}
+ */
+proto.sygma_pb.LoginReq.prototype.getPushtoken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.LoginReq} returns this
+ */
+proto.sygma_pb.LoginReq.prototype.setPushtoken = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
