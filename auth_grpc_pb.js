@@ -138,6 +138,17 @@ function deserialize_sygma_pb_LoginResp(buffer_arg) {
   return auth_pb.LoginResp.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_LogoutReq(arg) {
+  if (!(arg instanceof auth_pb.LogoutReq)) {
+    throw new Error('Expected argument of type sygma_pb.LogoutReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_LogoutReq(buffer_arg) {
+  return auth_pb.LogoutReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_PreferencesReq(arg) {
   if (!(arg instanceof auth_pb.PreferencesReq)) {
     throw new Error('Expected argument of type sygma_pb.PreferencesReq');
@@ -241,6 +252,18 @@ login: {
     requestDeserialize: deserialize_sygma_pb_LoginReq,
     responseSerialize: serialize_sygma_pb_LoginResp,
     responseDeserialize: deserialize_sygma_pb_LoginResp,
+  },
+  // Cleans any session related data and tokens
+logout: {
+    path: '/sygma_pb.AuthService/Logout',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.LogoutReq,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_sygma_pb_LogoutReq,
+    requestDeserialize: deserialize_sygma_pb_LogoutReq,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // Returns a new access and refresh token for authenticated users
 refeshToken: {

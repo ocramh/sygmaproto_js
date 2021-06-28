@@ -191,6 +191,22 @@ export namespace LoginResp {
   }
 }
 
+export class LogoutReq extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LogoutReq.AsObject;
+  static toObject(includeInstance: boolean, msg: LogoutReq): LogoutReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: LogoutReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LogoutReq;
+  static deserializeBinaryFromReader(message: LogoutReq, reader: jspb.BinaryReader): LogoutReq;
+}
+
+export namespace LogoutReq {
+  export type AsObject = {
+  }
+}
+
 export class RefeshTokenReq extends jspb.Message {
   getUserid(): string;
   setUserid(value: string): void;

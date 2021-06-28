@@ -32,6 +32,15 @@ type AuthServiceLogin = {
   readonly responseType: typeof auth_pb.LoginResp;
 };
 
+type AuthServiceLogout = {
+  readonly methodName: string;
+  readonly service: typeof AuthService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof auth_pb.LogoutReq;
+  readonly responseType: typeof google_protobuf_empty_pb.Empty;
+};
+
 type AuthServiceRefeshToken = {
   readonly methodName: string;
   readonly service: typeof AuthService;
@@ -109,6 +118,7 @@ export class AuthService {
   static readonly CreateAccount: AuthServiceCreateAccount;
   static readonly ActivateAccount: AuthServiceActivateAccount;
   static readonly Login: AuthServiceLogin;
+  static readonly Logout: AuthServiceLogout;
   static readonly RefeshToken: AuthServiceRefeshToken;
   static readonly RequestPasswordReset: AuthServiceRequestPasswordReset;
   static readonly ResetPassword: AuthServiceResetPassword;
@@ -177,6 +187,15 @@ export class AuthServiceClient {
   login(
     requestMessage: auth_pb.LoginReq,
     callback: (error: ServiceError|null, responseMessage: auth_pb.LoginResp|null) => void
+  ): UnaryResponse;
+  logout(
+    requestMessage: auth_pb.LogoutReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
+  ): UnaryResponse;
+  logout(
+    requestMessage: auth_pb.LogoutReq,
+    callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
   refeshToken(
     requestMessage: auth_pb.RefeshTokenReq,
