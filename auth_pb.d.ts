@@ -455,3 +455,71 @@ export namespace GetUserEmailRes {
   }
 }
 
+export class NotifTokenReq extends jspb.Message {
+  clearUseridsList(): void;
+  getUseridsList(): Array<string>;
+  setUseridsList(value: Array<string>): void;
+  addUserids(value: string, index?: number): string;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): NotifTokenReq.AsObject;
+  static toObject(includeInstance: boolean, msg: NotifTokenReq): NotifTokenReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: NotifTokenReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NotifTokenReq;
+  static deserializeBinaryFromReader(message: NotifTokenReq, reader: jspb.BinaryReader): NotifTokenReq;
+}
+
+export namespace NotifTokenReq {
+  export type AsObject = {
+    useridsList: Array<string>,
+  }
+}
+
+export class UserPushToken extends jspb.Message {
+  getUserid(): string;
+  setUserid(value: string): void;
+
+  getToken(): string;
+  setToken(value: string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UserPushToken.AsObject;
+  static toObject(includeInstance: boolean, msg: UserPushToken): UserPushToken.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UserPushToken, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UserPushToken;
+  static deserializeBinaryFromReader(message: UserPushToken, reader: jspb.BinaryReader): UserPushToken;
+}
+
+export namespace UserPushToken {
+  export type AsObject = {
+    userid: string,
+    token: string,
+  }
+}
+
+export class NotifTokenRes extends jspb.Message {
+  clearTokensList(): void;
+  getTokensList(): Array<UserPushToken>;
+  setTokensList(value: Array<UserPushToken>): void;
+  addTokens(value?: UserPushToken, index?: number): UserPushToken;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): NotifTokenRes.AsObject;
+  static toObject(includeInstance: boolean, msg: NotifTokenRes): NotifTokenRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: NotifTokenRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NotifTokenRes;
+  static deserializeBinaryFromReader(message: NotifTokenRes, reader: jspb.BinaryReader): NotifTokenRes;
+}
+
+export namespace NotifTokenRes {
+  export type AsObject = {
+    tokensList: Array<UserPushToken.AsObject>,
+  }
+}
+

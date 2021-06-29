@@ -149,6 +149,28 @@ function deserialize_sygma_pb_LogoutReq(buffer_arg) {
   return auth_pb.LogoutReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_NotifTokenReq(arg) {
+  if (!(arg instanceof auth_pb.NotifTokenReq)) {
+    throw new Error('Expected argument of type sygma_pb.NotifTokenReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_NotifTokenReq(buffer_arg) {
+  return auth_pb.NotifTokenReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_NotifTokenRes(arg) {
+  if (!(arg instanceof auth_pb.NotifTokenRes)) {
+    throw new Error('Expected argument of type sygma_pb.NotifTokenRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_NotifTokenRes(buffer_arg) {
+  return auth_pb.NotifTokenRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_PreferencesReq(arg) {
   if (!(arg instanceof auth_pb.PreferencesReq)) {
     throw new Error('Expected argument of type sygma_pb.PreferencesReq');
@@ -361,6 +383,19 @@ getUserEmail: {
     requestDeserialize: deserialize_sygma_pb_GetUserEmailReq,
     responseSerialize: serialize_sygma_pb_GetUserEmailRes,
     responseDeserialize: deserialize_sygma_pb_GetUserEmailRes,
+  },
+  // Returns push notification tokens to use for sending push notifcation to mobile
+// app users
+getUsersNotificationToken: {
+    path: '/sygma_pb.AuthService/GetUsersNotificationToken',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_pb.NotifTokenReq,
+    responseType: auth_pb.NotifTokenRes,
+    requestSerialize: serialize_sygma_pb_NotifTokenReq,
+    requestDeserialize: deserialize_sygma_pb_NotifTokenReq,
+    responseSerialize: serialize_sygma_pb_NotifTokenRes,
+    responseDeserialize: deserialize_sygma_pb_NotifTokenRes,
   },
 };
 

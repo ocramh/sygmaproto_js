@@ -113,6 +113,15 @@ type AuthServiceGetUserEmail = {
   readonly responseType: typeof auth_pb.GetUserEmailRes;
 };
 
+type AuthServiceGetUsersNotificationToken = {
+  readonly methodName: string;
+  readonly service: typeof AuthService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof auth_pb.NotifTokenReq;
+  readonly responseType: typeof auth_pb.NotifTokenRes;
+};
+
 export class AuthService {
   static readonly serviceName: string;
   static readonly CreateAccount: AuthServiceCreateAccount;
@@ -127,6 +136,7 @@ export class AuthService {
   static readonly UpdateUserProfile: AuthServiceUpdateUserProfile;
   static readonly UpdateEmailNotificationsPreferences: AuthServiceUpdateEmailNotificationsPreferences;
   static readonly GetUserEmail: AuthServiceGetUserEmail;
+  static readonly GetUsersNotificationToken: AuthServiceGetUsersNotificationToken;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -268,6 +278,15 @@ export class AuthServiceClient {
   getUserEmail(
     requestMessage: auth_pb.GetUserEmailReq,
     callback: (error: ServiceError|null, responseMessage: auth_pb.GetUserEmailRes|null) => void
+  ): UnaryResponse;
+  getUsersNotificationToken(
+    requestMessage: auth_pb.NotifTokenReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.NotifTokenRes|null) => void
+  ): UnaryResponse;
+  getUsersNotificationToken(
+    requestMessage: auth_pb.NotifTokenReq,
+    callback: (error: ServiceError|null, responseMessage: auth_pb.NotifTokenRes|null) => void
   ): UnaryResponse;
 }
 

@@ -119,6 +119,15 @@ AuthService.GetUserEmail = {
   responseType: auth_pb.GetUserEmailRes
 };
 
+AuthService.GetUsersNotificationToken = {
+  methodName: "GetUsersNotificationToken",
+  service: AuthService,
+  requestStream: false,
+  responseStream: false,
+  requestType: auth_pb.NotifTokenReq,
+  responseType: auth_pb.NotifTokenRes
+};
+
 exports.AuthService = AuthService;
 
 function AuthServiceClient(serviceHost, options) {
@@ -472,6 +481,37 @@ AuthServiceClient.prototype.getUserEmail = function getUserEmail(requestMessage,
     callback = arguments[1];
   }
   var client = grpc.unary(AuthService.GetUserEmail, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+AuthServiceClient.prototype.getUsersNotificationToken = function getUsersNotificationToken(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(AuthService.GetUsersNotificationToken, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
