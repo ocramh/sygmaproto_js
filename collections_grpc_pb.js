@@ -84,6 +84,28 @@ function deserialize_sygma_pb_DeleteDocumentReq(buffer_arg) {
   return collections_pb.DeleteDocumentReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_DocsByGenreReq(arg) {
+  if (!(arg instanceof collections_pb.DocsByGenreReq)) {
+    throw new Error('Expected argument of type sygma_pb.DocsByGenreReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_DocsByGenreReq(buffer_arg) {
+  return collections_pb.DocsByGenreReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_DocsByGenreRes(arg) {
+  if (!(arg instanceof collections_pb.DocsByGenreRes)) {
+    throw new Error('Expected argument of type sygma_pb.DocsByGenreRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_DocsByGenreRes(buffer_arg) {
+  return collections_pb.DocsByGenreRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_FollowCollectionReq(arg) {
   if (!(arg instanceof collections_pb.FollowCollectionReq)) {
     throw new Error('Expected argument of type sygma_pb.FollowCollectionReq');
@@ -385,6 +407,18 @@ getCollectionsByGenre: {
     requestDeserialize: deserialize_sygma_pb_CollectionsByGenreReq,
     responseSerialize: serialize_sygma_pb_CollectionsByGenreRes,
     responseDeserialize: deserialize_sygma_pb_CollectionsByGenreRes,
+  },
+  // GetDocumentsByGenre returns documents matching the input genre or tag
+getDocumentsByGenre: {
+    path: '/sygma_pb.CollectionsService/GetDocumentsByGenre',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.DocsByGenreReq,
+    responseType: collections_pb.DocsByGenreRes,
+    requestSerialize: serialize_sygma_pb_DocsByGenreReq,
+    requestDeserialize: deserialize_sygma_pb_DocsByGenreReq,
+    responseSerialize: serialize_sygma_pb_DocsByGenreRes,
+    responseDeserialize: deserialize_sygma_pb_DocsByGenreRes,
   },
   // GetCollection returns a single Collection
 getCollection: {

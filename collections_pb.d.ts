@@ -318,6 +318,52 @@ export namespace CollectionsByGenreRes {
   }
 }
 
+export class DocsByGenreReq extends jspb.Message {
+  getValue(): string;
+  setValue(value: string): void;
+
+  getOffset(): number;
+  setOffset(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocsByGenreReq.AsObject;
+  static toObject(includeInstance: boolean, msg: DocsByGenreReq): DocsByGenreReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocsByGenreReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocsByGenreReq;
+  static deserializeBinaryFromReader(message: DocsByGenreReq, reader: jspb.BinaryReader): DocsByGenreReq;
+}
+
+export namespace DocsByGenreReq {
+  export type AsObject = {
+    value: string,
+    offset: number,
+  }
+}
+
+export class DocsByGenreRes extends jspb.Message {
+  clearDocumentsList(): void;
+  getDocumentsList(): Array<CollectionItem>;
+  setDocumentsList(value: Array<CollectionItem>): void;
+  addDocuments(value?: CollectionItem, index?: number): CollectionItem;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): DocsByGenreRes.AsObject;
+  static toObject(includeInstance: boolean, msg: DocsByGenreRes): DocsByGenreRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: DocsByGenreRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): DocsByGenreRes;
+  static deserializeBinaryFromReader(message: DocsByGenreRes, reader: jspb.BinaryReader): DocsByGenreRes;
+}
+
+export namespace DocsByGenreRes {
+  export type AsObject = {
+    documentsList: Array<CollectionItem.AsObject>,
+  }
+}
+
 export class GetCollectionReq extends jspb.Message {
   getCollectionid(): string;
   setCollectionid(value: string): void;
@@ -835,6 +881,12 @@ export class CollectionItem extends jspb.Message {
   getAlbum(): types_pb.Album | undefined;
   setAlbum(value?: types_pb.Album): void;
 
+  getCollectionid(): string;
+  setCollectionid(value: string): void;
+
+  getCollectionname(): string;
+  setCollectionname(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CollectionItem.AsObject;
   static toObject(includeInstance: boolean, msg: CollectionItem): CollectionItem.AsObject;
@@ -857,6 +909,8 @@ export namespace CollectionItem {
     totallikes: number,
     liked: boolean,
     album?: types_pb.Album.AsObject,
+    collectionid: string,
+    collectionname: string,
   }
 }
 
