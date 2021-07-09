@@ -783,8 +783,10 @@ export class UploadInfo extends jspb.Message {
   getAlbumname(): string;
   setAlbumname(value: string): void;
 
-  getGenre(): string;
-  setGenre(value: string): void;
+  clearGenresList(): void;
+  getGenresList(): Array<string>;
+  setGenresList(value: Array<string>): void;
+  addGenres(value: string, index?: number): string;
 
   getArtworkurl(): string;
   setArtworkurl(value: string): void;
@@ -809,7 +811,7 @@ export namespace UploadInfo {
   export type AsObject = {
     albumid: string,
     albumname: string,
-    genre: string,
+    genresList: Array<string>,
     artworkurl: string,
     artistid: string,
     artistname: string,

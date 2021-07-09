@@ -657,7 +657,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.sygma_pb.UploadInfo = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.sygma_pb.UploadInfo.repeatedFields_, null);
 };
 goog.inherits(proto.sygma_pb.UploadInfo, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -6350,6 +6350,13 @@ proto.sygma_pb.CollectionShortInfo.prototype.clearGenresList = function() {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.sygma_pb.UploadInfo.repeatedFields_ = [3];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -6383,7 +6390,7 @@ proto.sygma_pb.UploadInfo.toObject = function(includeInstance, msg) {
   var f, obj = {
     albumid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     albumname: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    genre: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    genresList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
     artworkurl: jspb.Message.getFieldWithDefault(msg, 4, ""),
     artistid: jspb.Message.getFieldWithDefault(msg, 5, ""),
     artistname: jspb.Message.getFieldWithDefault(msg, 6, "")
@@ -6433,7 +6440,7 @@ proto.sygma_pb.UploadInfo.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setGenre(value);
+      msg.addGenres(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
@@ -6490,9 +6497,9 @@ proto.sygma_pb.UploadInfo.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getGenre();
+  f = message.getGenresList();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeRepeatedString(
       3,
       f
     );
@@ -6558,20 +6565,39 @@ proto.sygma_pb.UploadInfo.prototype.setAlbumname = function(value) {
 
 
 /**
- * optional string genre = 3;
- * @return {string}
+ * repeated string genres = 3;
+ * @return {!Array<string>}
  */
-proto.sygma_pb.UploadInfo.prototype.getGenre = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+proto.sygma_pb.UploadInfo.prototype.getGenresList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.sygma_pb.UploadInfo} returns this
+ */
+proto.sygma_pb.UploadInfo.prototype.setGenresList = function(value) {
+  return jspb.Message.setField(this, 3, value || []);
 };
 
 
 /**
  * @param {string} value
+ * @param {number=} opt_index
  * @return {!proto.sygma_pb.UploadInfo} returns this
  */
-proto.sygma_pb.UploadInfo.prototype.setGenre = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+proto.sygma_pb.UploadInfo.prototype.addGenres = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.sygma_pb.UploadInfo} returns this
+ */
+proto.sygma_pb.UploadInfo.prototype.clearGenresList = function() {
+  return this.setGenresList([]);
 };
 
 
