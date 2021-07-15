@@ -1074,3 +1074,49 @@ export namespace GetDocuemntLikesRes {
   }
 }
 
+export class GetCollectionUsersReq extends jspb.Message {
+  getCollectionid(): string;
+  setCollectionid(value: string): void;
+
+  getOffset(): number;
+  setOffset(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetCollectionUsersReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetCollectionUsersReq): GetCollectionUsersReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetCollectionUsersReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetCollectionUsersReq;
+  static deserializeBinaryFromReader(message: GetCollectionUsersReq, reader: jspb.BinaryReader): GetCollectionUsersReq;
+}
+
+export namespace GetCollectionUsersReq {
+  export type AsObject = {
+    collectionid: string,
+    offset: number,
+  }
+}
+
+export class GetCollectionUsersRes extends jspb.Message {
+  clearUsersList(): void;
+  getUsersList(): Array<types_pb.User>;
+  setUsersList(value: Array<types_pb.User>): void;
+  addUsers(value?: types_pb.User, index?: number): types_pb.User;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetCollectionUsersRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetCollectionUsersRes): GetCollectionUsersRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetCollectionUsersRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetCollectionUsersRes;
+  static deserializeBinaryFromReader(message: GetCollectionUsersRes, reader: jspb.BinaryReader): GetCollectionUsersRes;
+}
+
+export namespace GetCollectionUsersRes {
+  export type AsObject = {
+    usersList: Array<types_pb.User.AsObject>,
+  }
+}
+

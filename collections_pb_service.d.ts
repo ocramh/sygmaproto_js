@@ -176,6 +176,15 @@ type CollectionsServiceGetDocumentLikes = {
   readonly responseType: typeof collections_pb.GetDocuemntLikesRes;
 };
 
+type CollectionsServiceGetCollectionUsers = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetCollectionUsersReq;
+  readonly responseType: typeof collections_pb.GetCollectionUsersRes;
+};
+
 export class CollectionsService {
   static readonly serviceName: string;
   static readonly NewCollection: CollectionsServiceNewCollection;
@@ -197,6 +206,7 @@ export class CollectionsService {
   static readonly LikeDocument: CollectionsServiceLikeDocument;
   static readonly GetUserLikes: CollectionsServiceGetUserLikes;
   static readonly GetDocumentLikes: CollectionsServiceGetDocumentLikes;
+  static readonly GetCollectionUsers: CollectionsServiceGetCollectionUsers;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -401,6 +411,15 @@ export class CollectionsServiceClient {
   getDocumentLikes(
     requestMessage: collections_pb.GetDocumentLikesReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetDocuemntLikesRes|null) => void
+  ): UnaryResponse;
+  getCollectionUsers(
+    requestMessage: collections_pb.GetCollectionUsersReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionUsersRes|null) => void
+  ): UnaryResponse;
+  getCollectionUsers(
+    requestMessage: collections_pb.GetCollectionUsersReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionUsersRes|null) => void
   ): UnaryResponse;
 }
 

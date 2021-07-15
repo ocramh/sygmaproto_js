@@ -182,6 +182,15 @@ CollectionsService.GetDocumentLikes = {
   responseType: collections_pb.GetDocuemntLikesRes
 };
 
+CollectionsService.GetCollectionUsers = {
+  methodName: "GetCollectionUsers",
+  service: CollectionsService,
+  requestStream: false,
+  responseStream: false,
+  requestType: collections_pb.GetCollectionUsersReq,
+  responseType: collections_pb.GetCollectionUsersRes
+};
+
 exports.CollectionsService = CollectionsService;
 
 function CollectionsServiceClient(serviceHost, options) {
@@ -752,6 +761,37 @@ CollectionsServiceClient.prototype.getDocumentLikes = function getDocumentLikes(
     callback = arguments[1];
   }
   var client = grpc.unary(CollectionsService.GetDocumentLikes, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+CollectionsServiceClient.prototype.getCollectionUsers = function getCollectionUsers(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(CollectionsService.GetCollectionUsers, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

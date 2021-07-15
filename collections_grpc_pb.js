@@ -183,6 +183,28 @@ function deserialize_sygma_pb_GetCollectionRes(buffer_arg) {
   return collections_pb.GetCollectionRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetCollectionUsersReq(arg) {
+  if (!(arg instanceof collections_pb.GetCollectionUsersReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetCollectionUsersReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetCollectionUsersReq(buffer_arg) {
+  return collections_pb.GetCollectionUsersReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetCollectionUsersRes(arg) {
+  if (!(arg instanceof collections_pb.GetCollectionUsersRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetCollectionUsersRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetCollectionUsersRes(buffer_arg) {
+  return collections_pb.GetCollectionUsersRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetCollectionsReq(arg) {
   if (!(arg instanceof collections_pb.GetCollectionsReq)) {
     throw new Error('Expected argument of type sygma_pb.GetCollectionsReq');
@@ -604,6 +626,19 @@ getDocumentLikes: {
     requestDeserialize: deserialize_sygma_pb_GetDocumentLikesReq,
     responseSerialize: serialize_sygma_pb_GetDocuemntLikesRes,
     responseDeserialize: deserialize_sygma_pb_GetDocuemntLikesRes,
+  },
+  // GetCollectionUsers returns an array of users collaborating on and following
+// a collection
+getCollectionUsers: {
+    path: '/sygma_pb.CollectionsService/GetCollectionUsers',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetCollectionUsersReq,
+    responseType: collections_pb.GetCollectionUsersRes,
+    requestSerialize: serialize_sygma_pb_GetCollectionUsersReq,
+    requestDeserialize: deserialize_sygma_pb_GetCollectionUsersReq,
+    responseSerialize: serialize_sygma_pb_GetCollectionUsersRes,
+    responseDeserialize: deserialize_sygma_pb_GetCollectionUsersRes,
   },
 };
 
