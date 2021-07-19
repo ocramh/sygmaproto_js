@@ -6081,7 +6081,9 @@ proto.sygma_pb.CollectionShortInfo.toObject = function(includeInstance, msg) {
     updatedat: (f = msg.getUpdatedat()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     documentscount: jspb.Message.getFieldWithDefault(msg, 5, 0),
     userscount: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    genresList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
+    genresList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    onwerid: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    ownername: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -6146,6 +6148,14 @@ proto.sygma_pb.CollectionShortInfo.deserializeBinaryFromReader = function(msg, r
     case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.addGenres(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOnwerid(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOwnername(value);
       break;
     default:
       reader.skipField();
@@ -6223,6 +6233,20 @@ proto.sygma_pb.CollectionShortInfo.serializeBinaryToWriter = function(message, w
   if (f.length > 0) {
     writer.writeRepeatedString(
       7,
+      f
+    );
+  }
+  f = message.getOnwerid();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getOwnername();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -6390,6 +6414,42 @@ proto.sygma_pb.CollectionShortInfo.prototype.addGenres = function(value, opt_ind
  */
 proto.sygma_pb.CollectionShortInfo.prototype.clearGenresList = function() {
   return this.setGenresList([]);
+};
+
+
+/**
+ * optional string onwerID = 8;
+ * @return {string}
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.getOnwerid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.setOnwerid = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string ownerName = 9;
+ * @return {string}
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.getOwnername = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.sygma_pb.CollectionShortInfo} returns this
+ */
+proto.sygma_pb.CollectionShortInfo.prototype.setOwnername = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

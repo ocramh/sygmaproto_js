@@ -754,6 +754,12 @@ export class CollectionShortInfo extends jspb.Message {
   setGenresList(value: Array<string>): void;
   addGenres(value: string, index?: number): string;
 
+  getOnwerid(): string;
+  setOnwerid(value: string): void;
+
+  getOwnername(): string;
+  setOwnername(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): CollectionShortInfo.AsObject;
   static toObject(includeInstance: boolean, msg: CollectionShortInfo): CollectionShortInfo.AsObject;
@@ -773,6 +779,8 @@ export namespace CollectionShortInfo {
     documentscount: number,
     userscount: number,
     genresList: Array<string>,
+    onwerid: string,
+    ownername: string,
   }
 }
 
