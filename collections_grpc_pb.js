@@ -271,6 +271,50 @@ function deserialize_sygma_pb_GetGenresRes(buffer_arg) {
   return collections_pb.GetGenresRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_sygma_pb_GetLabelsReleasesReq(arg) {
+  if (!(arg instanceof collections_pb.GetLabelsReleasesReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetLabelsReleasesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetLabelsReleasesReq(buffer_arg) {
+  return collections_pb.GetLabelsReleasesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetLabelsReleasesRes(arg) {
+  if (!(arg instanceof collections_pb.GetLabelsReleasesRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetLabelsReleasesRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetLabelsReleasesRes(buffer_arg) {
+  return collections_pb.GetLabelsReleasesRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetTagsReleasesReq(arg) {
+  if (!(arg instanceof collections_pb.GetTagsReleasesReq)) {
+    throw new Error('Expected argument of type sygma_pb.GetTagsReleasesReq');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetTagsReleasesReq(buffer_arg) {
+  return collections_pb.GetTagsReleasesReq.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_sygma_pb_GetTagsReleasesRes(arg) {
+  if (!(arg instanceof collections_pb.GetTagsReleasesRes)) {
+    throw new Error('Expected argument of type sygma_pb.GetTagsReleasesRes');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_sygma_pb_GetTagsReleasesRes(buffer_arg) {
+  return collections_pb.GetTagsReleasesRes.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_sygma_pb_GetUserInfoReq(arg) {
   if (!(arg instanceof collections_pb.GetUserInfoReq)) {
     throw new Error('Expected argument of type sygma_pb.GetUserInfoReq');
@@ -639,6 +683,30 @@ getCollectionUsers: {
     requestDeserialize: deserialize_sygma_pb_GetCollectionUsersReq,
     responseSerialize: serialize_sygma_pb_GetCollectionUsersRes,
     responseDeserialize: deserialize_sygma_pb_GetCollectionUsersRes,
+  },
+  // GetLabelsReleasesInfo returns a list of albums published by a record labe;
+getLabelsReleasesInfo: {
+    path: '/sygma_pb.CollectionsService/GetLabelsReleasesInfo',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetLabelsReleasesReq,
+    responseType: collections_pb.GetLabelsReleasesRes,
+    requestSerialize: serialize_sygma_pb_GetLabelsReleasesReq,
+    requestDeserialize: deserialize_sygma_pb_GetLabelsReleasesReq,
+    responseSerialize: serialize_sygma_pb_GetLabelsReleasesRes,
+    responseDeserialize: deserialize_sygma_pb_GetLabelsReleasesRes,
+  },
+  // GetTagsReleasesInfo returns albums with a specified genre or tag
+getTagsReleasesInfo: {
+    path: '/sygma_pb.CollectionsService/GetTagsReleasesInfo',
+    requestStream: false,
+    responseStream: false,
+    requestType: collections_pb.GetTagsReleasesReq,
+    responseType: collections_pb.GetTagsReleasesRes,
+    requestSerialize: serialize_sygma_pb_GetTagsReleasesReq,
+    requestDeserialize: deserialize_sygma_pb_GetTagsReleasesReq,
+    responseSerialize: serialize_sygma_pb_GetTagsReleasesRes,
+    responseDeserialize: deserialize_sygma_pb_GetTagsReleasesRes,
   },
 };
 

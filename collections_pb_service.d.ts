@@ -185,6 +185,24 @@ type CollectionsServiceGetCollectionUsers = {
   readonly responseType: typeof collections_pb.GetCollectionUsersRes;
 };
 
+type CollectionsServiceGetLabelsReleasesInfo = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetLabelsReleasesReq;
+  readonly responseType: typeof collections_pb.GetLabelsReleasesRes;
+};
+
+type CollectionsServiceGetTagsReleasesInfo = {
+  readonly methodName: string;
+  readonly service: typeof CollectionsService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof collections_pb.GetTagsReleasesReq;
+  readonly responseType: typeof collections_pb.GetTagsReleasesRes;
+};
+
 export class CollectionsService {
   static readonly serviceName: string;
   static readonly NewCollection: CollectionsServiceNewCollection;
@@ -207,6 +225,8 @@ export class CollectionsService {
   static readonly GetUserLikes: CollectionsServiceGetUserLikes;
   static readonly GetDocumentLikes: CollectionsServiceGetDocumentLikes;
   static readonly GetCollectionUsers: CollectionsServiceGetCollectionUsers;
+  static readonly GetLabelsReleasesInfo: CollectionsServiceGetLabelsReleasesInfo;
+  static readonly GetTagsReleasesInfo: CollectionsServiceGetTagsReleasesInfo;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -420,6 +440,24 @@ export class CollectionsServiceClient {
   getCollectionUsers(
     requestMessage: collections_pb.GetCollectionUsersReq,
     callback: (error: ServiceError|null, responseMessage: collections_pb.GetCollectionUsersRes|null) => void
+  ): UnaryResponse;
+  getLabelsReleasesInfo(
+    requestMessage: collections_pb.GetLabelsReleasesReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetLabelsReleasesRes|null) => void
+  ): UnaryResponse;
+  getLabelsReleasesInfo(
+    requestMessage: collections_pb.GetLabelsReleasesReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetLabelsReleasesRes|null) => void
+  ): UnaryResponse;
+  getTagsReleasesInfo(
+    requestMessage: collections_pb.GetTagsReleasesReq,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetTagsReleasesRes|null) => void
+  ): UnaryResponse;
+  getTagsReleasesInfo(
+    requestMessage: collections_pb.GetTagsReleasesReq,
+    callback: (error: ServiceError|null, responseMessage: collections_pb.GetTagsReleasesRes|null) => void
   ): UnaryResponse;
 }
 
