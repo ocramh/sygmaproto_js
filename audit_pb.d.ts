@@ -6,7 +6,7 @@ import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/t
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as types_pb from "./types_pb";
 
-export class SetPlayTrackReq extends jspb.Message {
+export class TrackPlayedReq extends jspb.Message {
   getUserid(): string;
   setUserid(value: string): void;
 
@@ -25,6 +25,9 @@ export class SetPlayTrackReq extends jspb.Message {
   getAlbumname(): string;
   setAlbumname(value: string): void;
 
+  getIsrccode(): string;
+  setIsrccode(value: string): void;
+
   getArtistsMap(): jspb.Map<string, string>;
   clearArtistsMap(): void;
   getLabelid(): string;
@@ -32,12 +35,6 @@ export class SetPlayTrackReq extends jspb.Message {
 
   getLabelname(): string;
   setLabelname(value: string): void;
-
-  getSourcetype(): types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap];
-  setSourcetype(value: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap]): void;
-
-  getSourceurl(): string;
-  setSourceurl(value: string): void;
 
   getGenre(): string;
   setGenre(value: string): void;
@@ -51,16 +48,16 @@ export class SetPlayTrackReq extends jspb.Message {
   setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SetPlayTrackReq.AsObject;
-  static toObject(includeInstance: boolean, msg: SetPlayTrackReq): SetPlayTrackReq.AsObject;
+  toObject(includeInstance?: boolean): TrackPlayedReq.AsObject;
+  static toObject(includeInstance: boolean, msg: TrackPlayedReq): TrackPlayedReq.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: SetPlayTrackReq, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SetPlayTrackReq;
-  static deserializeBinaryFromReader(message: SetPlayTrackReq, reader: jspb.BinaryReader): SetPlayTrackReq;
+  static serializeBinaryToWriter(message: TrackPlayedReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): TrackPlayedReq;
+  static deserializeBinaryFromReader(message: TrackPlayedReq, reader: jspb.BinaryReader): TrackPlayedReq;
 }
 
-export namespace SetPlayTrackReq {
+export namespace TrackPlayedReq {
   export type AsObject = {
     userid: string,
     username: string,
@@ -68,11 +65,10 @@ export namespace SetPlayTrackReq {
     trackname: string,
     albumid: string,
     albumname: string,
+    isrccode: string,
     artistsMap: Array<[string, string]>,
     labelid: string,
     labelname: string,
-    sourcetype: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap],
-    sourceurl: string,
     genre: string,
     artworkUrl: string,
     timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -174,12 +170,6 @@ export class AuditedTrack extends jspb.Message {
   getLabelname(): string;
   setLabelname(value: string): void;
 
-  getSourcetype(): types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap];
-  setSourcetype(value: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap]): void;
-
-  getSourceurl(): string;
-  setSourceurl(value: string): void;
-
   getGenre(): string;
   setGenre(value: string): void;
 
@@ -208,8 +198,6 @@ export namespace AuditedTrack {
     artistsMap: Array<[string, string]>,
     labelid: string,
     labelname: string,
-    sourcetype: types_pb.SourceTypeMap[keyof types_pb.SourceTypeMap],
-    sourceurl: string,
     genre: string,
     artworkUrl: string,
     playCount: number,

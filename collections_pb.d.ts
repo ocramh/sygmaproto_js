@@ -1128,3 +1128,147 @@ export namespace GetCollectionUsersRes {
   }
 }
 
+export class GetLabelsReleasesReq extends jspb.Message {
+  getLabelid(): string;
+  setLabelid(value: string): void;
+
+  getOffset(): number;
+  setOffset(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetLabelsReleasesReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetLabelsReleasesReq): GetLabelsReleasesReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetLabelsReleasesReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetLabelsReleasesReq;
+  static deserializeBinaryFromReader(message: GetLabelsReleasesReq, reader: jspb.BinaryReader): GetLabelsReleasesReq;
+}
+
+export namespace GetLabelsReleasesReq {
+  export type AsObject = {
+    labelid: string,
+    offset: number,
+  }
+}
+
+export class GetTagsReleasesReq extends jspb.Message {
+  getTagid(): string;
+  setTagid(value: string): void;
+
+  getOffset(): number;
+  setOffset(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetTagsReleasesReq.AsObject;
+  static toObject(includeInstance: boolean, msg: GetTagsReleasesReq): GetTagsReleasesReq.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetTagsReleasesReq, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetTagsReleasesReq;
+  static deserializeBinaryFromReader(message: GetTagsReleasesReq, reader: jspb.BinaryReader): GetTagsReleasesReq;
+}
+
+export namespace GetTagsReleasesReq {
+  export type AsObject = {
+    tagid: string,
+    offset: number,
+  }
+}
+
+export class GetLabelsReleasesRes extends jspb.Message {
+  getTotalmatches(): number;
+  setTotalmatches(value: number): void;
+
+  clearReleasesList(): void;
+  getReleasesList(): Array<ReleaseInfo>;
+  setReleasesList(value: Array<ReleaseInfo>): void;
+  addReleases(value?: ReleaseInfo, index?: number): ReleaseInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetLabelsReleasesRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetLabelsReleasesRes): GetLabelsReleasesRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetLabelsReleasesRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetLabelsReleasesRes;
+  static deserializeBinaryFromReader(message: GetLabelsReleasesRes, reader: jspb.BinaryReader): GetLabelsReleasesRes;
+}
+
+export namespace GetLabelsReleasesRes {
+  export type AsObject = {
+    totalmatches: number,
+    releasesList: Array<ReleaseInfo.AsObject>,
+  }
+}
+
+export class ReleaseInfo extends jspb.Message {
+  hasAlbum(): boolean;
+  clearAlbum(): void;
+  getAlbum(): types_pb.Album | undefined;
+  setAlbum(value?: types_pb.Album): void;
+
+  hasLabel(): boolean;
+  clearLabel(): void;
+  getLabel(): types_pb.Label | undefined;
+  setLabel(value?: types_pb.Label): void;
+
+  clearArtistsList(): void;
+  getArtistsList(): Array<types_pb.Artist>;
+  setArtistsList(value: Array<types_pb.Artist>): void;
+  addArtists(value?: types_pb.Artist, index?: number): types_pb.Artist;
+
+  clearUploadedbyList(): void;
+  getUploadedbyList(): Array<types_pb.User>;
+  setUploadedbyList(value: Array<types_pb.User>): void;
+  addUploadedby(value?: types_pb.User, index?: number): types_pb.User;
+
+  getLikescount(): number;
+  setLikescount(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ReleaseInfo.AsObject;
+  static toObject(includeInstance: boolean, msg: ReleaseInfo): ReleaseInfo.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ReleaseInfo, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ReleaseInfo;
+  static deserializeBinaryFromReader(message: ReleaseInfo, reader: jspb.BinaryReader): ReleaseInfo;
+}
+
+export namespace ReleaseInfo {
+  export type AsObject = {
+    album?: types_pb.Album.AsObject,
+    label?: types_pb.Label.AsObject,
+    artistsList: Array<types_pb.Artist.AsObject>,
+    uploadedbyList: Array<types_pb.User.AsObject>,
+    likescount: number,
+  }
+}
+
+export class GetTagsReleasesRes extends jspb.Message {
+  getTotalmatches(): number;
+  setTotalmatches(value: number): void;
+
+  clearReleasesList(): void;
+  getReleasesList(): Array<ReleaseInfo>;
+  setReleasesList(value: Array<ReleaseInfo>): void;
+  addReleases(value?: ReleaseInfo, index?: number): ReleaseInfo;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): GetTagsReleasesRes.AsObject;
+  static toObject(includeInstance: boolean, msg: GetTagsReleasesRes): GetTagsReleasesRes.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: GetTagsReleasesRes, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): GetTagsReleasesRes;
+  static deserializeBinaryFromReader(message: GetTagsReleasesRes, reader: jspb.BinaryReader): GetTagsReleasesRes;
+}
+
+export namespace GetTagsReleasesRes {
+  export type AsObject = {
+    totalmatches: number,
+    releasesList: Array<ReleaseInfo.AsObject>,
+  }
+}
+

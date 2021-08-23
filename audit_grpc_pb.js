@@ -40,28 +40,28 @@ function deserialize_sygma_pb_GetUserUsageRes(buffer_arg) {
   return audit_pb.GetUserUsageRes.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_sygma_pb_SetPlayTrackReq(arg) {
-  if (!(arg instanceof audit_pb.SetPlayTrackReq)) {
-    throw new Error('Expected argument of type sygma_pb.SetPlayTrackReq');
+function serialize_sygma_pb_TrackPlayedReq(arg) {
+  if (!(arg instanceof audit_pb.TrackPlayedReq)) {
+    throw new Error('Expected argument of type sygma_pb.TrackPlayedReq');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_sygma_pb_SetPlayTrackReq(buffer_arg) {
-  return audit_pb.SetPlayTrackReq.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_sygma_pb_TrackPlayedReq(buffer_arg) {
+  return audit_pb.TrackPlayedReq.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 var UsageAuditManagerService = exports.UsageAuditManagerService = {
-  // SetPlayTrack records a play event
-setPlayTrack: {
-    path: '/sygma_pb.UsageAuditManager/SetPlayTrack',
+  // SetTrackPlayed records a play event
+setTrackPlayed: {
+    path: '/sygma_pb.UsageAuditManager/SetTrackPlayed',
     requestStream: false,
     responseStream: false,
-    requestType: audit_pb.SetPlayTrackReq,
+    requestType: audit_pb.TrackPlayedReq,
     responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_sygma_pb_SetPlayTrackReq,
-    requestDeserialize: deserialize_sygma_pb_SetPlayTrackReq,
+    requestSerialize: serialize_sygma_pb_TrackPlayedReq,
+    requestDeserialize: deserialize_sygma_pb_TrackPlayedReq,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },

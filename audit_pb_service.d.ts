@@ -5,12 +5,12 @@ import * as audit_pb from "./audit_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import {grpc} from "@improbable-eng/grpc-web";
 
-type UsageAuditManagerSetPlayTrack = {
+type UsageAuditManagerSetTrackPlayed = {
   readonly methodName: string;
   readonly service: typeof UsageAuditManager;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof audit_pb.SetPlayTrackReq;
+  readonly requestType: typeof audit_pb.TrackPlayedReq;
   readonly responseType: typeof google_protobuf_empty_pb.Empty;
 };
 
@@ -25,7 +25,7 @@ type UsageAuditManagerGetUserUsage = {
 
 export class UsageAuditManager {
   static readonly serviceName: string;
-  static readonly SetPlayTrack: UsageAuditManagerSetPlayTrack;
+  static readonly SetTrackPlayed: UsageAuditManagerSetTrackPlayed;
   static readonly GetUserUsage: UsageAuditManagerGetUserUsage;
 }
 
@@ -61,13 +61,13 @@ export class UsageAuditManagerClient {
   readonly serviceHost: string;
 
   constructor(serviceHost: string, options?: grpc.RpcOptions);
-  setPlayTrack(
-    requestMessage: audit_pb.SetPlayTrackReq,
+  setTrackPlayed(
+    requestMessage: audit_pb.TrackPlayedReq,
     metadata: grpc.Metadata,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
-  setPlayTrack(
-    requestMessage: audit_pb.SetPlayTrackReq,
+  setTrackPlayed(
+    requestMessage: audit_pb.TrackPlayedReq,
     callback: (error: ServiceError|null, responseMessage: google_protobuf_empty_pb.Empty|null) => void
   ): UnaryResponse;
   getUserUsage(

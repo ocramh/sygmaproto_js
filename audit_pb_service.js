@@ -11,12 +11,12 @@ var UsageAuditManager = (function () {
   return UsageAuditManager;
 }());
 
-UsageAuditManager.SetPlayTrack = {
-  methodName: "SetPlayTrack",
+UsageAuditManager.SetTrackPlayed = {
+  methodName: "SetTrackPlayed",
   service: UsageAuditManager,
   requestStream: false,
   responseStream: false,
-  requestType: audit_pb.SetPlayTrackReq,
+  requestType: audit_pb.TrackPlayedReq,
   responseType: google_protobuf_empty_pb.Empty
 };
 
@@ -36,11 +36,11 @@ function UsageAuditManagerClient(serviceHost, options) {
   this.options = options || {};
 }
 
-UsageAuditManagerClient.prototype.setPlayTrack = function setPlayTrack(requestMessage, metadata, callback) {
+UsageAuditManagerClient.prototype.setTrackPlayed = function setTrackPlayed(requestMessage, metadata, callback) {
   if (arguments.length === 2) {
     callback = arguments[1];
   }
-  var client = grpc.unary(UsageAuditManager.SetPlayTrack, {
+  var client = grpc.unary(UsageAuditManager.SetTrackPlayed, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
